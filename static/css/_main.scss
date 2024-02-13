@@ -1,0 +1,164 @@
+main {
+    position: relative;
+    z-index: 2;
+
+    background-color: $white-color;
+    $area: 20px;
+    .tit {
+        padding: $area 0;
+        font-size: $tit;
+        font-weight: bold;
+        margin-bottom: $area;
+    }
+    .sub_tit {
+        font-size: $sub-tit;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .btn {
+        padding: 15px $area * 2;
+        margin: $area auto;
+        font-weight: 500;
+        color: $black-color;
+        border: 1px solid $point-color;
+        position: relative;
+        overflow: hidden;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        &:hover {
+            color: #fff;
+            &::before {
+                bottom: 0;
+                background-color: $point-color;
+            }
+        }
+    }
+    // .icon{
+    //     &_plus{
+    //         &::before, &::after{
+    //             content: "";
+    //             position: absolute;
+    //             width: 20px;
+    //             height: 20px;
+
+    //         }
+    //     }
+    // }
+    .section {
+        width: 100%;
+        &:not(.section_intro) {
+            padding: 200px 0;
+        }
+        // intro
+        &_intro {
+            height: 100vh;
+            .inner {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                > div {
+                    width: 100%;
+                    &.wrap_img {
+                        text-align: center;
+                        img {
+                            width: 75%;
+                        }
+                    }
+                }
+            }
+        }
+        // about
+        &_about {
+        }
+        // work
+        &_work {
+            .inner {
+                .wrap {
+                    &_work {
+                        .wrap_list {
+                            counter-reset: li;
+                            // column-count: 3;
+                            // column-gap: 20px;
+                            // padding: 0;
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            .list {
+                                width: calc((100% - (#{$area} * 2)) / 3);
+                                padding: $area * 2;
+                                box-sizing: border-box;
+                                background: #fafafa;
+                                position: relative;
+                                margin: 0 $area $area 0;
+                                &:nth-of-type(3n + 3) {
+                                    margin-right: 0;
+                                }
+                                &:nth-of-type(-n + 9) {
+                                    &::before {
+                                        content: "0" counter(li) "";
+                                    }
+                                }
+                                &:nth-of-type(n + 10) {
+                                    &::before {
+                                        content: "" counter(li) "";
+                                    }
+                                }
+                                &::before {
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                    counter-increment: li;
+                                    font-size: 50px;
+                                    font-weight: bold;
+                                    left: 5%;
+                                    color: #eee;
+                                }
+                                .sub_tit {
+                                    position: relative;
+                                }
+                                .desc {
+                                    color: $black-color;
+                                    padding: 20px;
+                                    margin-bottom: 10px;
+                                    .per {
+                                        font-weight: bold;
+                                        font-size: 20px;
+                                        color: $point-color;
+                                    }
+                                }
+                                .date {
+                                    text-align: right;
+                                    font-size: 14px;
+                                }
+                                .link_btn {
+                                    width: fit-content;
+                                    margin-left: auto;
+                                    margin-top: $area;
+                                    &.no_link {
+                                        pointer-events: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//pc hover
+@media screen and (min-width: 1480px) {
+    main {
+        .btn {
+        }
+    }
+}
