@@ -69,6 +69,12 @@
     }
 }
 
+@keyframes loading {
+    0% {
+        max-height: 0;
+    }
+}
+
 //푸터
 .footer {
     position: sticky;
@@ -81,7 +87,7 @@
     padding: 100px 0;
     .inner {
         dl {
-            font-size: 20px;
+            font-size: 28px;
             div {
                 display: flex;
                 + div {
@@ -92,6 +98,29 @@
                 }
                 dd {
                     font-weight: 600;
+                    color: white;
+                    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: #fff;
+
+                    &::before {
+                        content: attr(data-text);
+                        position: absolute;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        max-height: 30px;
+                    }
+                }
+                &:hover {
+                    dd {
+                        color: #000;
+                        // -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                        // -webkit-text-stroke-width: 1px;
+                        // -webkit-text-stroke-color: #000;
+                        &::before {
+                            animation: loading 1.5s linear reverse forwards;
+                        }
+                    }
                 }
             }
         }
