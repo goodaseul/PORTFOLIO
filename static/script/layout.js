@@ -23,6 +23,43 @@ navLinks.forEach((link) => {
     });
 });
 
+// nav
+const headerHeight = document.querySelector(".header").clientHeight;
+const navigationLink = document.querySelectorAll("nav li");
+const navigationLinkA = document.querySelectorAll("nav li a");
+const sectors = document.querySelectorAll(".l_main .section");
+window.onload = function () {
+    ActiveMenu();
+    window.addEventListener("scroll", ActiveMenu);
+
+    ClickContent();
+    window.addEventListener("click", ClickContent);
+};
+
+function ClickContent() {
+    navigationLinkA.forEach((item, index) => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            let contentHref = e.currentTarget.getAttribute("href").split("#")[1];
+            sectors[index].getAttribute(contentHref);
+            if (sectors[index].getAttribute("id") == contentHref) {
+                window.scroll({
+                    behavior: "smooth",
+                    top: sectors[index].offsetTop - headerHeight,
+                });
+            }
+        });
+    });
+}
+
+function ActiveMenu() {
+    let len = sectors.length;
+    while (--len && window.scrollY < sectors[len].offsetTop - headerHeight) {}
+
+    navigationLink.forEach((item) => item.classList.remove("active"));
+    navigationLink[len].classList.add("active");
+}
+
 // work
 
 // $(".section_work .wrap_work li").each(function () {

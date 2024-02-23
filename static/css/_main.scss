@@ -41,17 +41,6 @@ main {
             }
         }
     }
-    // .icon{
-    //     &_plus{
-    //         &::before, &::after{
-    //             content: "";
-    //             position: absolute;
-    //             width: 20px;
-    //             height: 20px;
-
-    //         }
-    //     }
-    // }
     .section {
         width: 100%;
         &:not(.section_intro) {
@@ -85,15 +74,13 @@ main {
                     &_work {
                         .wrap_list {
                             counter-reset: li;
-                            // column-count: 3;
-                            // column-gap: 20px;
-                            // padding: 0;
                             width: 100%;
                             display: flex;
                             flex-wrap: wrap;
                             .list {
                                 width: calc((100% - (#{$area} * 2)) / 3);
                                 padding: $area * 2;
+                                height: fit-content;
                                 box-sizing: border-box;
                                 background: #fafafa;
                                 position: relative;
@@ -142,8 +129,38 @@ main {
                                     width: fit-content;
                                     margin-left: auto;
                                     margin-top: $area;
+                                    box-sizing: border-box;
+                                    position: relative;
+                                    z-index: 1;
+                                    text-align: center;
+                                    padding: 10px 20px;
+
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    align-items: center;
+                                    .wrap_arrow {
+                                        width: 20px;
+                                        filter: invert(0%) sepia(0%) saturate(105%) hue-rotate(197deg) brightness(78%) contrast(87%);
+                                        top: -0.2rem;
+                                    }
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 0;
+                                        height: 100%;
+                                        background-color: #eee;
+                                        z-index: -1;
+                                        transition: width 0.5s;
+                                    }
+
                                     &.no_link {
                                         pointer-events: none;
+                                        &::before {
+                                            display: none;
+                                            padding-left: 0;
+                                        }
                                     }
                                 }
                             }
@@ -158,7 +175,47 @@ main {
 //pc hover
 @media screen and (min-width: 1480px) {
     main {
-        .btn {
+        .section {
+            // work
+            &_work {
+                .inner {
+                    .wrap {
+                        &_work {
+                            .wrap_list {
+                                .list {
+                                    &:hover {
+                                        .sub_tit {
+                                            padding-left: 10px;
+                                        }
+                                        .link_btn {
+                                            color: $black-color !important;
+                                            margin-right: 10px;
+                                            .wrap_arrow {
+                                                .arrow {
+                                                    transform: translate3d(0, 0, 0);
+                                                }
+                                            }
+                                            // &:hover {
+                                            //     transform: scale(1.05);
+                                            // }
+                                            &::before {
+                                                width: 100%;
+                                            }
+
+                                            &.no_link {
+                                                margin-right: 0;
+                                                &::before {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
