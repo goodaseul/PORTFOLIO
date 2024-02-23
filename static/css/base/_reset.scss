@@ -26,93 +26,93 @@ body {
 }
 html {
     scroll-behavior: smooth;
-    body,
-    div,
-    span,
-    object,
-    iframe,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    blockquote,
-    pre,
-    abbr,
-    address,
-    cite,
-    code,
-    del,
-    dfn,
-    em,
-    img,
-    ins,
-    kbd,
-    q,
-    samp,
-    small,
-    strong,
-    sub,
-    sup,
-    var,
-    b,
-    i,
-    dl,
-    dt,
-    dd,
-    ol,
-    ul,
-    li,
-    fieldset,
-    form,
-    label,
-    legend,
-    table,
-    caption,
-    tbody,
-    tfoot,
-    thead,
-    tr,
-    th,
-    td,
-    article,
-    aside,
-    canvas,
-    details,
-    figcaption,
-    figure,
-    footer,
-    header,
-    hgroup,
-    menu,
-    nav,
-    section,
-    summary,
-    time,
-    mark,
-    audio,
-    video,
-    button,
-    input,
-    select {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        // outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-        font-weight: 400;
-        letter-spacing: -0.005em;
-        line-height: 1.5;
-        font-style: normal;
-        font-family: "Pretendard", sans-serif;
+}
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button,
+input,
+select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    // outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.5;
+    font-style: normal;
+    font-family: "Pretendard", sans-serif;
 
-        word-break: keep-all;
-        word-wrap: break-word;
-    }
+    word-break: keep-all;
+    word-wrap: break-word;
 }
 
 img {
@@ -187,9 +187,9 @@ ins {
 
 /* change colours to suit your needs */
 mark {
-    background-color: #ff9;
-    color: #000;
-    font-style: italic;
+    padding: 0 5px;
+    background-color: $point-color;
+    color: #fff;
     font-weight: bold;
 }
 

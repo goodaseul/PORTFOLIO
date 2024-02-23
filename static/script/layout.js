@@ -62,6 +62,24 @@ function ActiveMenu() {
 
 // work
 
+// 더보기
+
+const workBtn = document.querySelector(".section_work .btn_more");
+
+function btnLoad(id, cnt, btn) {
+    const list = document.querySelectorAll(".section_wrok .list");
+    const list_length = list.length;
+    let list_total_cnt;
+    console.log(list, list_length);
+    if (cnt < list_length) {
+        list_total_cnt = cnt;
+    } else {
+        list_total_cnt = list_length;
+        $(btn).hide();
+    }
+    // $(list + ":lt(" + girls_total_cnt + ")").addClass("active");
+}
+
 // $(".section_work .wrap_work li").each(function () {
 //     var box = $(this).parent().parent();
 //     var box_index = box.index();
