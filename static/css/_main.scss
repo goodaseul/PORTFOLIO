@@ -53,12 +53,16 @@ main {
                 height: 100%;
                 display: flex;
                 align-items: center;
-                > div {
-                    width: 100%;
-                    &.wrap_img {
-                        text-align: center;
-                        img {
-                            width: 75%;
+                .wrap_info {
+                    display: flex;
+                    align-items: flex-end;
+                    > div {
+                        width: 100%;
+                        &.wrap_img {
+                            text-align: center;
+                            img {
+                                width: 75%;
+                            }
                         }
                     }
                 }
@@ -66,6 +70,48 @@ main {
         }
         // about
         &_about {
+            // background-color: #eee;
+            // background-attachment: fixed;
+            .inner {
+                .summary {
+                    $topArea: 150px;
+                    > div {
+                        background-color: #fff;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        .box {
+                            position: sticky;
+                            left: 0;
+                            top: 0;
+                            width: 99%;
+                        }
+                        .box_height {
+                            width: 1%;
+                            height: 300px;
+                        }
+                        // top: 0;
+                        // height: 100vh;
+                        // top: calc(#{$topArea} * var(--i));
+                    }
+                    dl {
+                        position: sticky;
+                        left: 0;
+                        top: 0;
+                        // top: calc(#{$topArea} * var(--i));
+                        dt {
+                            font-size: 24px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .summary {
+                > div {
+                    height: 30px 0;
+                }
+            }
         }
         // work
         &_work {
@@ -80,7 +126,7 @@ main {
                             .list {
                                 width: calc((100% - (#{$area} * 2)) / 3);
                                 padding: $area * 2;
-                                height: fit-content;
+                                // height: fit-content;
                                 box-sizing: border-box;
                                 background: #fafafa;
                                 position: relative;
@@ -124,6 +170,11 @@ main {
                                 .date {
                                     text-align: right;
                                     font-size: 14px;
+                                }
+                                .wrap_link {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: flex-end;
                                 }
                                 .link_btn {
                                     width: fit-content;
@@ -189,7 +240,7 @@ main {
                                         }
                                         .link_btn {
                                             color: $black-color !important;
-                                            margin-right: 10px;
+                                            margin-right: 10px !important;
                                             .wrap_arrow {
                                                 .arrow {
                                                     transform: translate3d(0, 0, 0);

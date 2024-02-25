@@ -26,7 +26,7 @@
         transform: scale(2);
     }
 }
-
+// 화살표
 .wrap_arrow {
     overflow: hidden;
     position: relative;
@@ -82,12 +82,6 @@
     }
 }
 
-@keyframes loading {
-    0% {
-        max-height: 0;
-    }
-}
-
 //푸터
 .footer {
     position: sticky;
@@ -107,7 +101,7 @@
                     align-items: baseline;
                     width: fit-content;
                     + div {
-                        margin-top: 15px;
+                        margin-top: 30px;
                     }
                     dt {
                         font-weight: bold;
@@ -147,7 +141,6 @@
 }
 
 // hover effect
-
 .hover_effect {
     position: relative;
     overflow: hidden;
