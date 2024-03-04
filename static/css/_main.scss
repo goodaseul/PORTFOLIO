@@ -1,7 +1,6 @@
 main {
     position: relative;
     z-index: 2;
-
     background-color: $white-color;
     $area: 20px;
     .tit {
@@ -70,8 +69,8 @@ main {
         }
         // about
         &_about {
-            // background-color: #eee;
-            // background-attachment: fixed;
+            background-color: $black-color-02;
+            color: $white-color;
             .inner {
                 .summary {
                     $topArea: 150px;
@@ -106,112 +105,125 @@ main {
                         }
                     }
                 }
-            }
-            .summary {
-                > div {
-                    height: 30px 0;
+                .wrap_about {
+                    padding: 0 $area;
+                    .wrap_box {
+                        display: flex;
+                        justify-content: space-between;
+                        .box {
+                            width: calc((100% - #{$area}) / 2);
+                            padding: 40px 0;
+                            background: rgba(255, 255, 255, 0.02);
+                            // box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+                            ul {
+                                text-align: center;
+                                li {
+                                    line-height: 40px;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
         // work
         &_work {
             .inner {
-                .wrap {
-                    &_work {
-                        .wrap_list {
-                            counter-reset: li;
-                            width: 100%;
-                            display: flex;
-                            flex-wrap: wrap;
-                            .list {
-                                width: calc((100% - (#{$area} * 2)) / 3);
-                                padding: $area * 2;
-                                // height: fit-content;
-                                box-sizing: border-box;
-                                background: #fafafa;
+                .wrap_work {
+                    .wrap_list {
+                        counter-reset: li;
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        .list {
+                            width: calc((100% - (#{$area} * 2)) / 3);
+                            padding: $area * 2;
+                            // height: fit-content;
+                            box-sizing: border-box;
+                            background: #fafafa;
+                            position: relative;
+                            margin: 0 $area $area 0;
+                            &:nth-of-type(3n + 3) {
+                                margin-right: 0;
+                            }
+                            &:nth-of-type(-n + 9) {
+                                &::before {
+                                    content: "0" counter(li) "";
+                                }
+                            }
+                            &:nth-of-type(n + 10) {
+                                &::before {
+                                    content: "" counter(li) "";
+                                }
+                            }
+                            &::before {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                counter-increment: li;
+                                font-size: 50px;
+                                font-weight: bold;
+                                left: 5%;
+                                color: $gray-light-color;
+                            }
+                            .sub_tit {
                                 position: relative;
-                                margin: 0 $area $area 0;
-                                &:nth-of-type(3n + 3) {
-                                    margin-right: 0;
+                            }
+                            .desc {
+                                color: $black-color;
+                                padding: $area;
+                                margin-bottom: 10px;
+                                .per {
+                                    font-weight: bold;
+                                    font-size: 20px;
+                                    color: $point-color;
                                 }
-                                &:nth-of-type(-n + 9) {
-                                    &::before {
-                                        content: "0" counter(li) "";
-                                    }
-                                }
-                                &:nth-of-type(n + 10) {
-                                    &::before {
-                                        content: "" counter(li) "";
-                                    }
+                            }
+                            .date {
+                                text-align: right;
+                                font-size: 14px;
+                            }
+                            .wrap_link {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: flex-end;
+                            }
+                            .link_btn {
+                                width: fit-content;
+                                margin-left: auto;
+                                margin-top: $area;
+                                box-sizing: border-box;
+                                position: relative;
+                                z-index: 1;
+                                text-align: center;
+                                padding: 10px $area;
+
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: center;
+                                .wrap_arrow {
+                                    width: 20px;
+                                    filter: invert(0%) sepia(0%) saturate(105%) hue-rotate(197deg) brightness(78%) contrast(87%);
+                                    top: -0.2rem;
                                 }
                                 &::before {
+                                    content: "";
                                     position: absolute;
-                                    left: 0;
                                     top: 0;
-                                    counter-increment: li;
-                                    font-size: 50px;
-                                    font-weight: bold;
-                                    left: 5%;
-                                    color: #eee;
+                                    left: 0;
+                                    width: 0;
+                                    height: 100%;
+                                    background-color: $gray-light-color;
+                                    z-index: -1;
+                                    transition: width 0.5s;
                                 }
-                                .sub_tit {
-                                    position: relative;
-                                }
-                                .desc {
-                                    color: $black-color;
-                                    padding: 20px;
-                                    margin-bottom: 10px;
-                                    .per {
-                                        font-weight: bold;
-                                        font-size: 20px;
-                                        color: $point-color;
-                                    }
-                                }
-                                .date {
-                                    text-align: right;
-                                    font-size: 14px;
-                                }
-                                .wrap_link {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    justify-content: flex-end;
-                                }
-                                .link_btn {
-                                    width: fit-content;
-                                    margin-left: auto;
-                                    margin-top: $area;
-                                    box-sizing: border-box;
-                                    position: relative;
-                                    z-index: 1;
-                                    text-align: center;
-                                    padding: 10px 20px;
 
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    align-items: center;
-                                    .wrap_arrow {
-                                        width: 20px;
-                                        filter: invert(0%) sepia(0%) saturate(105%) hue-rotate(197deg) brightness(78%) contrast(87%);
-                                        top: -0.2rem;
-                                    }
+                                &.no_link {
+                                    pointer-events: none;
                                     &::before {
-                                        content: "";
-                                        position: absolute;
-                                        top: 0;
-                                        left: 0;
-                                        width: 0;
-                                        height: 100%;
-                                        background-color: #eee;
-                                        z-index: -1;
-                                        transition: width 0.5s;
-                                    }
-
-                                    &.no_link {
-                                        pointer-events: none;
-                                        &::before {
-                                            display: none;
-                                            padding-left: 0;
-                                        }
+                                        display: none;
+                                        padding-left: 0;
                                     }
                                 }
                             }
@@ -230,34 +242,32 @@ main {
             // work
             &_work {
                 .inner {
-                    .wrap {
-                        &_work {
-                            .wrap_list {
-                                .list {
-                                    &:hover {
-                                        .sub_tit {
-                                            padding-left: 10px;
+                    .wrap_work {
+                        .wrap_list {
+                            .list {
+                                &:hover {
+                                    .sub_tit {
+                                        padding-left: 10px;
+                                    }
+                                    .link_btn {
+                                        color: $black-color !important;
+                                        margin-right: 10px !important;
+                                        .wrap_arrow {
+                                            .arrow {
+                                                transform: translate3d(0, 0, 0);
+                                            }
                                         }
-                                        .link_btn {
-                                            color: $black-color !important;
-                                            margin-right: 10px !important;
-                                            .wrap_arrow {
-                                                .arrow {
-                                                    transform: translate3d(0, 0, 0);
-                                                }
-                                            }
-                                            // &:hover {
-                                            //     transform: scale(1.05);
-                                            // }
-                                            &::before {
-                                                width: 100%;
-                                            }
+                                        // &:hover {
+                                        //     transform: scale(1.05);
+                                        // }
+                                        &::before {
+                                            width: 100%;
+                                        }
 
-                                            &.no_link {
-                                                margin-right: 0;
-                                                &::before {
-                                                    display: none;
-                                                }
+                                        &.no_link {
+                                            margin-right: 0;
+                                            &::before {
+                                                display: none;
                                             }
                                         }
                                     }
