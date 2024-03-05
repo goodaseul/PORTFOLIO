@@ -629,37 +629,6 @@ main .section_about {
   color: #fff;
 }
 
-main .section_about .inner .summary > div {
-  background-color: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-main .section_about .inner .summary > div .box {
-  position: sticky;
-  left: 0;
-  top: 0;
-  width: 99%;
-}
-
-main .section_about .inner .summary > div .box_height {
-  width: 1%;
-  height: 300px;
-}
-
-main .section_about .inner .summary dl {
-  position: sticky;
-  left: 0;
-  top: 0;
-}
-
-main .section_about .inner .summary dl dt {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 main .section_about .inner .wrap_about {
   padding: 0 20px;
 }
@@ -673,6 +642,17 @@ main .section_about .inner .wrap_about .wrap_box .box {
   width: calc((100% - 20px) / 2);
   padding: 40px 0;
   background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+main .section_about .inner .wrap_about .wrap_box .box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 10%;
+  background: rgba(45, 68, 37, 0.5);
 }
 
 main .section_about .inner .wrap_about .wrap_box .box ul {
@@ -792,6 +772,10 @@ main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link::before 
 }
 
 @media screen and (min-width: 1480px) {
+  main .section_about .inner .wrap_about .wrap_box .box:hover::before {
+    width: 100%;
+    height: 100%;
+  }
   main .section_work .inner .wrap_work .wrap_list .list:hover .sub_tit {
     padding-left: 10px;
   }

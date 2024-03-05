@@ -72,39 +72,6 @@ main {
             background-color: $black-color-02;
             color: $white-color;
             .inner {
-                .summary {
-                    $topArea: 150px;
-                    > div {
-                        background-color: #fff;
-                        display: flex;
-                        flex-wrap: wrap;
-                        align-items: flex-start;
-                        justify-content: space-between;
-                        .box {
-                            position: sticky;
-                            left: 0;
-                            top: 0;
-                            width: 99%;
-                        }
-                        .box_height {
-                            width: 1%;
-                            height: 300px;
-                        }
-                        // top: 0;
-                        // height: 100vh;
-                        // top: calc(#{$topArea} * var(--i));
-                    }
-                    dl {
-                        position: sticky;
-                        left: 0;
-                        top: 0;
-                        // top: calc(#{$topArea} * var(--i));
-                        dt {
-                            font-size: 24px;
-                            font-weight: bold;
-                        }
-                    }
-                }
                 .wrap_about {
                     padding: 0 $area;
                     .wrap_box {
@@ -115,6 +82,16 @@ main {
                             padding: 40px 0;
                             background: rgba(255, 255, 255, 0.02);
                             // box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+                            position: relative;
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 10%;
+                                height: 10%;
+                                background: rgba(45, 68, 37, 0.5);
+                            }
                             ul {
                                 text-align: center;
                                 li {
@@ -239,6 +216,23 @@ main {
 @media screen and (min-width: 1480px) {
     main {
         .section {
+            // about
+            &_about {
+                .inner {
+                    .wrap_about {
+                        .wrap_box {
+                            .box {
+                                &:hover {
+                                    &::before {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             // work
             &_work {
                 .inner {
