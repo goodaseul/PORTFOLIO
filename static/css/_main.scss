@@ -43,7 +43,7 @@ main {
     .section {
         width: 100%;
         &:not(.section_intro) {
-            padding: 200px 0;
+            padding: 150px 0;
         }
         // intro
         &_intro {
@@ -71,30 +71,74 @@ main {
         &_about {
             background-color: $black-color-02;
             color: $white-color;
+            position: relative;
+
+            .swiper--top {
+                width: 100%;
+                position: absolute;
+                bottom: -5%;
+                // left: 50%;
+                // transform: translateX(-50%);
+                .swiper-wrapper {
+                    transition-timing-function: linear !important;
+                    .swiper-slide {
+                        width: auto;
+                        font-size: 10rem;
+                        overflow: hidden;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        opacity: 0.1;
+                    }
+                }
+            }
             .inner {
+                .tit {
+                    text-align: center;
+                    margin-bottom: 50px;
+                }
                 .wrap_about {
-                    padding: 0 $area;
+                    padding: 0 300px;
+                    .sub_tit {
+                        margin-bottom: 40px;
+                        height: 48px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: flex-end;
+                        .status {
+                            font-weight: bold;
+                            font-size: 0;
+                        }
+                    }
                     .wrap_box {
                         display: flex;
                         justify-content: space-between;
+
                         .box {
+                            border-radius: 16px;
                             width: calc((100% - #{$area}) / 2);
                             padding: 40px 0;
-                            background: rgba(255, 255, 255, 0.02);
-                            // box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+                            // background: $gray-color;
+                            background: rgba(45, 68, 37, 0.2);
                             position: relative;
+                            z-index: 1;
+                            overflow: hidden;
+
                             &::before {
                                 content: "";
                                 position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 10%;
-                                height: 10%;
-                                background: rgba(45, 68, 37, 0.5);
+                                background: rgba(45, 68, 37, 0.3);
+                                inset: 0;
+                                transform: scaleX(0);
+                                transform-origin: right;
+                                transition: transform 0.5s ease-in-out;
                             }
                             ul {
                                 text-align: center;
                                 li {
+                                    // color: $black-color-02;
                                     line-height: 40px;
                                     font-weight: 500;
                                 }
@@ -220,12 +264,24 @@ main {
             &_about {
                 .inner {
                     .wrap_about {
+                        .sub_tit {
+                            &:hover {
+                                .status {
+                                    font-size: 32px;
+                                }
+                            }
+                        }
                         .wrap_box {
                             .box {
                                 &:hover {
                                     &::before {
-                                        width: 100%;
-                                        height: 100%;
+                                        transform: scaleX(1);
+                                        transform-origin: left;
+                                    }
+                                    ul {
+                                        li {
+                                            transform: scale(1.05);
+                                        }
                                     }
                                 }
                             }

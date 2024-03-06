@@ -58,6 +58,26 @@ function ActiveMenu() {
     navigationLink[len].classList.add("active");
 }
 
+let SwiperTop = new Swiper(".swiper--top", {
+    // autoplay: {
+    //     delay: 1,
+    //     disableOnInteraction: false,
+    // },
+
+    loop: true,
+    centeredSlides: true,
+    allowTouchMove: false,
+    speed: 2000,
+    slidesPerView: "auto",
+    autoplay: {
+        delay: 0,
+        pauseOnMouseEnter: true, // stop autoplay when hovering
+        disableOnInteraction: false, // restart autoplay when hover is removed
+        reverseDirection: true, // reverse the autoplay direction
+    },
+    loopFillGroupWithBlank: true,
+});
+
 // work
 
 // 더보기
