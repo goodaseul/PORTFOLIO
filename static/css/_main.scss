@@ -72,28 +72,25 @@ main {
             background-color: $black-color-02;
             color: $white-color;
             position: relative;
-
-            .swiper--top {
-                width: 100%;
+            overflow: hidden;
+            .marquee {
                 position: absolute;
                 bottom: -5%;
-                // left: 50%;
-                // transform: translateX(-50%);
-                .swiper-wrapper {
-                    transition-timing-function: linear !important;
-                    .swiper-slide {
-                        width: auto;
-                        font-size: 10rem;
-                        overflow: hidden;
-                        display: flex;
-                        flex-wrap: wrap;
-                        align-items: center;
-                        justify-content: center;
-                        font-weight: bold;
-                        opacity: 0.1;
-                    }
+                width: 100vw;
+                display: flex;
+                pointer-events: none;
+                p {
+                    display: flex;
+                    font-size: 12rem;
+                    font-weight: bold;
+
+                    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: #fff;
+                    opacity: 0.2;
                 }
             }
+
             .inner {
                 .tit {
                     text-align: center;
@@ -262,6 +259,13 @@ main {
         .section {
             // about
             &_about {
+                .marquee_wrap {
+                    &:hover {
+                        .marquee {
+                            animation-play-state: paused;
+                        }
+                    }
+                }
                 .inner {
                     .wrap_about {
                         .sub_tit {

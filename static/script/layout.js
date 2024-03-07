@@ -32,6 +32,8 @@ window.onload = function () {
 
     ClickContent();
     window.addEventListener("click", ClickContent);
+
+    animate();
 };
 
 function ClickContent() {
@@ -58,27 +60,47 @@ function ActiveMenu() {
     navigationLink[len].classList.add("active");
 }
 
-let SwiperTop = new Swiper(".swiper--top", {
-    // autoplay: {
-    //     delay: 1,
-    //     disableOnInteraction: false,
-    // },
+// * about
+const pTag1 = document.querySelector(".marquee_txt");
 
-    loop: true,
-    centeredSlides: true,
-    allowTouchMove: false,
-    speed: 2000,
-    slidesPerView: "auto",
-    autoplay: {
-        delay: 0,
-        pauseOnMouseEnter: true, // stop autoplay when hovering
-        disableOnInteraction: false, // restart autoplay when hover is removed
-        reverseDirection: true, // reverse the autoplay direction
-    },
-    loopFillGroupWithBlank: true,
-});
+const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
 
-// work
+let count1 = 0;
+
+function initTexts(element, textArray) {
+    textArray.push(...textArray);
+    for (let i = 0; i < textArray.length; i++) {
+        element.innerText += `${textArray[i]}\u00A0`;
+    }
+}
+
+function marqueeText(count, element, direction) {
+    if (count > element.scrollWidth / 2) {
+        element.style.transform = `translate3d(0, 0, 0)`;
+        count = 0;
+    }
+    element.style.transform = `translate3d(${direction * count}px, 0, 0)`;
+
+    return count;
+}
+
+function animate() {
+    count1++;
+    count1 = marqueeText(count1, pTag1, -1);
+    window.requestAnimationFrame(animate);
+}
+
+function scrollHandler() {
+    count1 += 15;
+}
+
+window.onload = function () {
+    initTexts(pTag1, textArr1);
+    window.addEventListener("scroll", scrollHandler);
+
+    animate();
+};
+// * work
 
 // 더보기
 const workBtn = document.querySelector(".section_work .btn_more");
