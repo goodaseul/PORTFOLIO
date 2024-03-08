@@ -61,11 +61,13 @@ function ActiveMenu() {
 }
 
 // * about
-const pTag1 = document.querySelector(".marquee_txt");
+const pTag1 = document.querySelector(".marquee_top .marquee_txt");
+const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
 
 const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
 
 let count1 = 0;
+let count2 = 0;
 
 function initTexts(element, textArray) {
     textArray.push(...textArray);
@@ -86,16 +88,20 @@ function marqueeText(count, element, direction) {
 
 function animate() {
     count1++;
+    count2++;
     count1 = marqueeText(count1, pTag1, -1);
+    count1 = marqueeText(count2, pTag2, 1);
     window.requestAnimationFrame(animate);
 }
 
 function scrollHandler() {
-    count1 += 15;
+    count1 -= 15;
+    count2 += 15;
 }
 
 window.onload = function () {
     initTexts(pTag1, textArr1);
+    initTexts(pTag2, textArr1);
     window.addEventListener("scroll", scrollHandler);
 
     animate();
