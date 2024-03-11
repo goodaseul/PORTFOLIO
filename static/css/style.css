@@ -658,7 +658,6 @@ main .section_about .marquee p {
 }
 
 main .section_about .inner .tit {
-  text-align: center;
   margin-bottom: 50px;
   font-size: 34px;
 }
@@ -742,6 +741,7 @@ main .section_work .inner .wrap_work .wrap_list .list {
   background: #fafafa;
   position: relative;
   margin: 0 20px 20px 0;
+  display: none;
 }
 
 main .section_work .inner .wrap_work .wrap_list .list:nth-of-type(3n + 3) {
@@ -840,8 +840,8 @@ main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link::before 
     font-size: 32px;
   }
   main .section_about .inner .wrap_about .wrap_box .box:hover::before, main .section_about .inner .wrap_about .wrap_box .box:hover::after {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
+    width: calc(100% - 21.5px);
+    height: calc(100% - 21.5px);
   }
   main .section_work .inner .wrap_work .wrap_list .list:hover .sub_tit {
     padding-left: 10px;

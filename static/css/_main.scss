@@ -96,10 +96,8 @@ main {
                     opacity: 0.2;
                 }
             }
-
             .inner {
                 .tit {
-                    text-align: center;
                     margin-bottom: 50px;
                     font-size: 34px;
                 }
@@ -183,11 +181,12 @@ main {
                         .list {
                             width: calc((100% - (#{$area} * 2)) / 3);
                             padding: $area * 2;
-                            // height: fit-content;
                             box-sizing: border-box;
                             background: #fafafa;
                             position: relative;
                             margin: 0 $area $area 0;
+                            display: none;
+
                             &:nth-of-type(3n + 3) {
                                 margin-right: 0;
                             }
@@ -299,8 +298,8 @@ main {
                                 &:hover {
                                     &::before,
                                     &::after {
-                                        width: calc(100% - 20px);
-                                        height: calc(100% - 20px);
+                                        width: calc(100% - 21.5px);
+                                        height: calc(100% - 21.5px);
                                     }
                                 }
                             }

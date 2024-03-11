@@ -109,60 +109,15 @@ window.onload = function () {
 // * work
 
 // 더보기
-const workBtn = document.querySelector(".section_work .btn_more");
 
-function btnLoad(id, cnt, btn) {
-    const list = document.querySelectorAll(".section_wrok .list");
-    const list_length = list.length;
-    let list_total_cnt;
-    console.log(list, list_length);
-    if (cnt < list_length) {
-        list_total_cnt = cnt;
-    } else {
-        list_total_cnt = list_length;
-        $(btn).hide();
-    }
-    // $(list + ":lt(" + girls_total_cnt + ")").addClass("active");
-}
-
-// $(".section_work .wrap_work li").each(function () {
-//     var box = $(this).parent().parent();
-//     var box_index = box.index();
-
-//     box.find(".wrap_img").css({ height: $(this).outerHeight() - 20 });
-//     box.css({ height: $(this).outerHeight() });
-
-//     if (box_index > 2) {
-//         var prevBox = $(".wrap_complex_thumb .wrap_complex_inner .complex").eq(box_index - 3);
-//         var prevHeight = box.offset().top - prevBox.offset().top - prevBox.height() - 30;
-
-//         box.css("margin-top", -prevHeight);
+// const workList = document.querySelectorAll(".wrap_work .wrap_list .list");
+// workList.slice(0, 6).style.display = block;
+// $("div").slice(0, 4).show(); // select the first 4
+// $("p").click(function(e){ // click event for load more
+//     e.preventDefault();
+//     $("div:hidden").slice(0, 4).show(); // select next 4 hidden divs and show them
+//     if($("div:hidden").length == 0){ // check if any hidden divs still exist
+//         // alert("No more divs"); // alert if there are none left
+//         $('p').hide();
 //     }
-// });
-// window.onload = function () {
-//     const workBox = document.querySelectorAll(".wrap_list .list");
-//     workBox.forEach((item, index) => {
-//         const box = item;
-//         console.log(item.offsetHeight);
-
-//         workBox[index].style.height = item.offsetHeight + "px";
-
-//         if (index > 2) {
-//             let prevBox = workBox[index - 3];
-//             let prevHeight;
-
-//             prevHeight = workBox[index].offsetTop - prevBox.offsetTop - workBox[index].offsetHeight;
-//             workBox[index].style.marginTop = -prevHeight + "px";
-//         }
-//     });
-// };
-
-// $(".wrap_complex_thumb .wrap_info").each(function () {
-//         if (box_index > 2) {
-//             var prevBox = $(".wrap_complex_thumb .wrap_complex_inner .complex").eq(box_index - 3);
-//             var prevHeight = box.offset().top - prevBox.offset().top - prevBox.height() - 30;
-//             box.css("margin-top", -prevHeight);
-//             box.data("isTopSet", true);
-//         }
-
 // });
