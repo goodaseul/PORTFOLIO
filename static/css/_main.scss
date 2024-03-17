@@ -100,6 +100,7 @@ main {
                 .tit {
                     margin-bottom: 50px;
                     font-size: 34px;
+                    text-align: center;
                 }
                 .wrap_about {
                     padding: 0 250px;
@@ -109,6 +110,8 @@ main {
                         display: flex;
                         flex-wrap: wrap;
                         align-items: center;
+                        position: relative;
+                        left: 0;
                         .status {
                             font-weight: bold;
                             font-size: 0;
@@ -287,8 +290,8 @@ main {
                 .inner {
                     .wrap_about {
                         .sub_tit {
-                            &:hover {
-                                .status {
+                            .status {
+                                &.active {
                                     font-size: 32px;
                                 }
                             }

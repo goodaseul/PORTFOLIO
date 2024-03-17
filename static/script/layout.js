@@ -65,6 +65,7 @@ const pTag1 = document.querySelector(".marquee_top .marquee_txt");
 const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
 
 const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
+const textArr2 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
 
 let count1 = 0;
 let count2 = 0;
@@ -101,23 +102,44 @@ function scrollHandler() {
 
 window.onload = function () {
     initTexts(pTag1, textArr1);
-    initTexts(pTag2, textArr1);
+    initTexts(pTag2, textArr2);
     window.addEventListener("scroll", scrollHandler);
 
     animate();
 };
+
+let boxArea = document.querySelector(".section_about .wrap_box");
+const aboutBox = boxArea.querySelectorAll(".section_about .wrap_box .box");
+
+const moveTit = document.querySelector(".section_about .wrap_about .sub_tit");
+let status = moveTit.querySelector(".section_about .wrap_about .status");
+
+boxArea.addEventListener("mousemove", (e) => {
+    // const standardLeft = boxArea.getBoundingClientRect().left;
+    // const standardRight = boxArea.offsetLeft + boxArea.offsetWidth;
+
+    console.log(e.offsetX);
+    // if (standardRight == e.offsetX) {
+    //     moveTit.style.left = e.offsetX - boxArea.offsetLeft + "px";
+    // } else {
+    moveTit.style.left = e.offsetX + "px";
+    // }
+});
+
+aboutBox.forEach((aboutBoxes, index) => {
+    aboutBoxes.addEventListener("mouseover", () => {
+        status.classList.add("active");
+        if (index == 0) {
+            status.innerText = "일할 때";
+        } else {
+            status.innerText = "평상 시";
+        }
+    });
+
+    aboutBoxes.addEventListener("mouseleave", () => {
+        status.classList.remove("active");
+    });
+});
+
 // * work
-
 // 더보기
-
-// const workList = document.querySelectorAll(".wrap_work .wrap_list .list");
-// workList.slice(0, 6).style.display = block;
-// $("div").slice(0, 4).show(); // select the first 4
-// $("p").click(function(e){ // click event for load more
-//     e.preventDefault();
-//     $("div:hidden").slice(0, 4).show(); // select next 4 hidden divs and show them
-//     if($("div:hidden").length == 0){ // check if any hidden divs still exist
-//         // alert("No more divs"); // alert if there are none left
-//         $('p').hide();
-//     }
-// });
