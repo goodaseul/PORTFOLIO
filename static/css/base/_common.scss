@@ -12,7 +12,7 @@
 .cursor {
     width: 20px;
     height: 20px;
-    background-color: $white-color;
+    background-color: $gray-color;
     border-radius: 50%;
     position: fixed;
     z-index: 99;
@@ -27,6 +27,21 @@
         transform: scale(2);
     }
 }
+
+.before_content {
+    position: relative;
+    &::before {
+        background: $point-color;
+        content: "";
+        transform-origin: right;
+        inset: 0;
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+    }
+}
+
 // 화살표
 .wrap_arrow {
     overflow: hidden;
@@ -186,6 +201,7 @@
             }
         }
     }
+
     //헤더
     .header {
         .inner {

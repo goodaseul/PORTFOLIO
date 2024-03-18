@@ -60,6 +60,36 @@ function ActiveMenu() {
     navigationLink[len].classList.add("active");
 }
 
+// scroll motion
+
+var animateHTML = function () {
+    var elems, windowHeight;
+
+    var init = function () {
+        elems = document.getElementsByClassName("hidden");
+        windowHeight = window.innerHeight;
+        _addEventHandlers();
+    };
+
+    var _addEventHandlers = function () {
+        window.addEventListener("scroll", _checkPosition);
+        window.addEventListener("resize", init);
+    };
+    var _checkPosition = function () {
+        for (var i = 0; i < elems.length; i++) {
+            var posFromTop = elems[i].getBoundingClientRect().top;
+            if (posFromTop - windowHeight <= 0) {
+                elems[i].className = elems[i].className.replace("hidden", "fade-in");
+            }
+        }
+    };
+
+    return {
+        init: init,
+    };
+};
+
+animateHTML().init();
 // * about
 const pTag1 = document.querySelector(".marquee_top .marquee_txt");
 const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
@@ -95,49 +125,44 @@ function animate() {
     window.requestAnimationFrame(animate);
 }
 
-function scrollHandler() {
-    count1 -= 15;
-    count2 += 15;
-}
+// function scrollHandler() {
+//     count1 -= 15;
+//     count2 += 15;
+// }
 
 window.onload = function () {
     initTexts(pTag1, textArr1);
     initTexts(pTag2, textArr2);
-    window.addEventListener("scroll", scrollHandler);
+    // window.addEventListener("scroll", scrollHandler);
 
     animate();
 };
 
-let boxArea = document.querySelector(".section_about .wrap_box");
-const aboutBox = boxArea.querySelectorAll(".section_about .wrap_box .box");
+const aboutBox = document.querySelectorAll(".section_about .wrap_box .box");
 
-const moveTit = document.querySelector(".section_about .wrap_about .sub_tit");
-let status = moveTit.querySelector(".section_about .wrap_about .status");
-
-boxArea.addEventListener("mousemove", (e) => {
-    // const standardLeft = boxArea.getBoundingClientRect().left;
-    // const standardRight = boxArea.offsetLeft + boxArea.offsetWidth;
-
-    console.log(e.offsetX);
-    // if (standardRight == e.offsetX) {
-    //     moveTit.style.left = e.offsetX - boxArea.offsetLeft + "px";
-    // } else {
-    moveTit.style.left = e.offsetX + "px";
-    // }
-});
+let statusTit = document.querySelector(".section_about .wrap_about .tit");
+let status = document.querySelector(".section_about .wrap_about .status");
 
 aboutBox.forEach((aboutBoxes, index) => {
     aboutBoxes.addEventListener("mouseover", () => {
         status.classList.add("active");
         if (index == 0) {
             status.innerText = "일할 때";
+            statusTit.classList.add("left");
+            statusTit.classList.remove("right");
         } else {
             status.innerText = "평상 시";
+            statusTit.classList.remove("left");
+            statusTit.classList.add("right");
         }
     });
 
     aboutBoxes.addEventListener("mouseleave", () => {
         status.classList.remove("active");
+
+        status.innerText = "?";
+        statusTit.classList.remove("left");
+        statusTit.classList.remove("right");
     });
 });
 
