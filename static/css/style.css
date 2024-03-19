@@ -572,6 +572,28 @@ em {
   }
 }
 
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 1.666rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 395px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 main {
   position: relative;
   z-index: 2;
