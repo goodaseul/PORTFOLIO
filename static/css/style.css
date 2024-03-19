@@ -24,6 +24,7 @@ body {
 body {
   cursor: none;
   color: #111;
+  overflow-x: hidden;
 }
 
 html {
@@ -362,7 +363,7 @@ em {
 .cursor {
   width: 20px;
   height: 20px;
-  background-color: #fafafa;
+  background-color: #eee;
   border-radius: 50%;
   position: fixed;
   z-index: 99;
@@ -555,6 +556,22 @@ em {
   }
 }
 
+@media screen and (max-width: 1480px) {
+  .inner {
+    width: 1280px;
+  }
+  .footer .inner .info dl {
+    font-size: 26px;
+  }
+  .footer .inner .info dl div dd {
+    --_p: 100%;
+    padding-left: 10px;
+  }
+  .footer .inner .info dl div dd .wrap_arrow .arrow {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 main {
   position: relative;
   z-index: 2;
@@ -578,24 +595,14 @@ main .sub_tit {
   font-weight: bold;
 }
 
-main .btn {
-  padding: 15px 40px;
-  margin: 20px auto;
-  font-weight: 500;
-  color: #111;
-  border: 1px solid #2d4425;
-}
-
 main .section {
   width: 100%;
-}
-
-main .section:not(.section_intro) {
   padding: 200px 0;
 }
 
 main .section_intro {
   height: 100vh;
+  padding: 0;
 }
 
 main .section_intro .inner {
@@ -626,10 +633,20 @@ main .section_about {
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding: 0 !important;
   height: 100vh;
   display: flex;
   align-items: center;
+}
+
+main .section_about::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  border: 1px solid #fff;
+  left: 20px;
+  top: 20px;
 }
 
 main .section_about .marquee {
@@ -701,14 +718,22 @@ main .section_about .inner .wrap_about .wrap_box {
 
 main .section_about .inner .wrap_about .wrap_box .box {
   width: calc((100% - 20px) / 2);
+}
+
+main .section_about .inner .wrap_about .wrap_box .box > .tit {
+  display: none;
+}
+
+main .section_about .inner .wrap_about .wrap_box .box ul {
   padding: 60px 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.01);
+  text-align: center;
 }
 
-main .section_about .inner .wrap_about .wrap_box .box::before, main .section_about .inner .wrap_about .wrap_box .box::after {
+main .section_about .inner .wrap_about .wrap_box .box ul::before, main .section_about .inner .wrap_about .wrap_box .box ul::after {
   content: "";
   pointer-events: none;
   width: 10px;
@@ -720,22 +745,18 @@ main .section_about .inner .wrap_about .wrap_box .box::before, main .section_abo
   transition: 0.3s;
 }
 
-main .section_about .inner .wrap_about .wrap_box .box::before {
-  top: 10px;
-  right: 10px;
+main .section_about .inner .wrap_about .wrap_box .box ul::before {
+  top: 15px;
+  right: 15px;
   border-bottom-width: 0;
   border-left-width: 0;
 }
 
-main .section_about .inner .wrap_about .wrap_box .box::after {
-  bottom: 10px;
-  left: 10px;
+main .section_about .inner .wrap_about .wrap_box .box ul::after {
+  bottom: 15px;
+  left: 15px;
   border-top-width: 0;
   border-right-width: 0;
-}
-
-main .section_about .inner .wrap_about .wrap_box .box ul {
-  text-align: center;
 }
 
 main .section_about .inner .wrap_about .wrap_box .box ul li {
@@ -769,7 +790,6 @@ main .section_work .inner .wrap_work .wrap_list .list {
   background: #fafafa;
   position: relative;
   margin: 0 20px 20px 0;
-  display: none;
 }
 
 main .section_work .inner .wrap_work .wrap_list .list:nth-of-type(3n + 3) {
@@ -872,9 +892,9 @@ main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link::before 
     transform: scaleX(1);
     transform-origin: right;
   }
-  main .section_about .inner .wrap_about .wrap_box .box:hover::before, main .section_about .inner .wrap_about .wrap_box .box:hover::after {
-    width: calc(100% - 21.5px);
-    height: calc(100% - 21.5px);
+  main .section_about .inner .wrap_about .wrap_box .box:hover ul::before, main .section_about .inner .wrap_about .wrap_box .box:hover ul::after {
+    width: calc(100% - 30.5px);
+    height: calc(100% - 30.5px);
   }
   main .section_about .inner .wrap_about .wrap_box .box:hover ul li::before {
     transform: scaleX(1);
@@ -898,6 +918,88 @@ main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link::before 
     margin-right: 0;
   }
   main .section_work .inner .wrap_work .wrap_list .list:hover .link_btn.no_link::before {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1480px) {
+  main .tit {
+    padding: 10px 0;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  main .mid_tit {
+    font-size: 24px;
+  }
+  main .sub_tit {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  main .section {
+    padding: 280px 0;
+  }
+  main .section_intro {
+    height: auto;
+  }
+  main .section_about {
+    height: auto;
+  }
+  main .section_about::after {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    left: 10px;
+    top: 10px;
+  }
+  main .section_about .inner .wrap_about > .tit {
+    display: none;
+  }
+  main .section_about .inner .wrap_about .wrap_box {
+    justify-content: space-around;
+  }
+  main .section_about .inner .wrap_about .wrap_box .box > .tit {
+    display: block;
+    margin-bottom: 20px;
+  }
+  main .section_about .inner .wrap_about .wrap_box .box > .tit p {
+    position: relative;
+    width: 100%;
+  }
+  main .section_about .inner .wrap_about .wrap_box .box ul li {
+    padding: 0 10px;
+  }
+  main .section_about .inner .wrap_about .wrap_box .box ul li::before {
+    transform: scaleX(1) scaleY(0.2);
+  }
+  main .section_about .inner .wrap_about .wrap_box .box ul li + li {
+    margin-top: 10px;
+  }
+  main .section_work {
+    padding: 200px 0;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list {
+    width: calc((100% - (10px * 2)) / 2);
+    margin: 0 10px 10px 0;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .sub_tit {
+    text-indent: 25px;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list:nth-of-type(3n + 3) {
+    margin-right: 10px;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .link_btn {
+    color: #111 !important;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .link_btn .wrap_arrow .arrow {
+    transform: translate3d(0, 0, 0);
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .link_btn::before {
+    width: 100%;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link {
+    margin-right: 0;
+  }
+  main .section_work .inner .wrap_work .wrap_list .list .link_btn.no_link::before {
     display: none;
   }
 }

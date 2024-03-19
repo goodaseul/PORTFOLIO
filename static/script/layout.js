@@ -61,7 +61,6 @@ function ActiveMenu() {
 }
 
 // scroll motion
-
 var animateHTML = function () {
     var elems, windowHeight;
 
@@ -137,34 +136,45 @@ window.onload = function () {
 
     animate();
 };
+statusbox();
+window.addEventListener(
+    "resize",
+    function () {
+        windowWidth = window.innerWidth;
+        statusbox();
+    },
+    true
+);
 
-const aboutBox = document.querySelectorAll(".section_about .wrap_box .box");
+function statusbox() {
+    windowWidth = window.innerWidth;
+    const aboutBox = document.querySelectorAll(".section_about .wrap_box .box");
 
-let statusTit = document.querySelector(".section_about .wrap_about .tit");
-let status = document.querySelector(".section_about .wrap_about .status");
+    let statusTit = document.querySelector(".section_about .wrap_about .tit");
+    let status = document.querySelector(".section_about .wrap_about .status");
+    if (window.innerWidth >= 1480) {
+        aboutBox.forEach((aboutBoxes, index) => {
+            aboutBoxes.addEventListener("mouseover", () => {
+                status.classList.add("active");
+                if (index == 0) {
+                    status.innerText = "일할 때";
+                    statusTit.classList.add("left");
+                    statusTit.classList.remove("right");
+                } else {
+                    status.innerText = "평상 시";
+                    statusTit.classList.remove("left");
+                    statusTit.classList.add("right");
+                }
+            });
 
-aboutBox.forEach((aboutBoxes, index) => {
-    aboutBoxes.addEventListener("mouseover", () => {
-        status.classList.add("active");
-        if (index == 0) {
-            status.innerText = "일할 때";
-            statusTit.classList.add("left");
-            statusTit.classList.remove("right");
-        } else {
-            status.innerText = "평상 시";
-            statusTit.classList.remove("left");
-            statusTit.classList.add("right");
-        }
-    });
+            aboutBoxes.addEventListener("mouseleave", () => {
+                status.classList.remove("active");
 
-    aboutBoxes.addEventListener("mouseleave", () => {
-        status.classList.remove("active");
-
-        status.innerText = "?";
-        statusTit.classList.remove("left");
-        statusTit.classList.remove("right");
-    });
-});
-
-// * work
-// 더보기
+                status.innerText = "?";
+                statusTit.classList.remove("left");
+                statusTit.classList.remove("right");
+            });
+        });
+    } else {
+    }
+}

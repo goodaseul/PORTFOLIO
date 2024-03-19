@@ -3,6 +3,9 @@ main {
     z-index: 2;
     background-color: $white-color;
     $area: 20px;
+    $tit: 32px;
+    $mid-tit: 28px;
+    $sub-tit: 24px;
     .tit {
         padding: $area 0;
         font-size: $tit;
@@ -17,21 +20,23 @@ main {
         margin-bottom: 10px;
         font-weight: bold;
     }
-    .btn {
-        padding: 15px $area * 2;
-        margin: $area auto;
-        font-weight: 500;
-        color: $black-color;
-        border: 1px solid $point-color;
-    }
+    // .btn {
+    //     padding: 15px $area * 2;
+    //     margin: $area auto;
+    //     font-weight: 500;
+    //     color: $black-color;
+    //     border: 1px solid $point-color;
+    // }
     .section {
         width: 100%;
-        &:not(.section_intro) {
-            padding: 200px 0;
-        }
+        padding: 200px 0;
+        // &:not(.section_intro) {
+        //     padding: 200px 0;
+        // }
         // intro
         &_intro {
             height: 100vh;
+            padding: 0;
             .inner {
                 height: 100%;
                 display: flex;
@@ -57,11 +62,21 @@ main {
             color: $white-color;
             position: relative;
             overflow: hidden;
-
-            padding: 0 !important;
             height: 100vh;
             display: flex;
             align-items: center;
+
+            &::after {
+                content: "";
+                pointer-events: none;
+                position: absolute;
+                width: calc(100% - 40px);
+                height: calc(100% - 40px);
+                border: 1px solid #fff;
+                left: 20px;
+                top: 20px;
+            }
+
             .marquee {
                 position: absolute;
                 width: 100vw;
@@ -132,45 +147,48 @@ main {
 
                         .box {
                             width: calc((100% - #{$area}) / 2);
-                            padding: 60px 0;
-                            position: relative;
-                            z-index: 1;
-                            overflow: hidden;
-                            background: rgba(255, 255, 255, 0.01);
-                            &::before,
-                            &::after {
-                                content: "";
-
-                                pointer-events: none;
-                                width: 10px;
-                                height: 10px;
-                                border: 1px solid #fff;
-
-                                position: absolute;
-                                z-index: 2;
-
-                                opacity: 0.3;
-                                transition: 0.3s;
+                            > .tit {
+                                display: none;
                             }
-
-                            &::before {
-                                top: 10px;
-                                right: 10px;
-
-                                border-bottom-width: 0;
-                                border-left-width: 0;
-                            }
-
-                            &::after {
-                                bottom: 10px;
-                                left: 10px;
-
-                                border-top-width: 0;
-                                border-right-width: 0;
-                            }
-
                             ul {
+                                padding: 60px 0;
+                                position: relative;
+                                z-index: 1;
+                                overflow: hidden;
+                                background: rgba(255, 255, 255, 0.01);
                                 text-align: center;
+
+                                &::before,
+                                &::after {
+                                    content: "";
+
+                                    pointer-events: none;
+                                    width: 10px;
+                                    height: 10px;
+                                    border: 1px solid #fff;
+
+                                    position: absolute;
+                                    z-index: 2;
+
+                                    opacity: 0.3;
+                                    transition: 0.3s;
+                                }
+
+                                &::before {
+                                    top: 15px;
+                                    right: 15px;
+
+                                    border-bottom-width: 0;
+                                    border-left-width: 0;
+                                }
+
+                                &::after {
+                                    bottom: 15px;
+                                    left: 15px;
+
+                                    border-top-width: 0;
+                                    border-right-width: 0;
+                                }
                                 li {
                                     line-height: 2;
                                     font-weight: 500;
@@ -209,7 +227,7 @@ main {
                             background: #fafafa;
                             position: relative;
                             margin: 0 $area $area 0;
-                            display: none;
+                            // display: none;
 
                             &:nth-of-type(3n + 3) {
                                 margin-right: 0;
@@ -323,12 +341,12 @@ main {
                         .wrap_box {
                             .box {
                                 &:hover {
-                                    &::before,
-                                    &::after {
-                                        width: calc(100% - 21.5px);
-                                        height: calc(100% - 21.5px);
-                                    }
                                     ul {
+                                        &::before,
+                                        &::after {
+                                            width: calc(100% - 30.5px);
+                                            height: calc(100% - 30.5px);
+                                        }
                                         li {
                                             &::before {
                                                 transform: scaleX(1);
@@ -370,6 +388,122 @@ main {
                                             &::before {
                                                 display: none;
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//테블릿 ~ 해상도 1480px ~
+@media screen and (max-width: 1480px) {
+    main {
+        $area: 10px;
+        $tit: 28px;
+        $mid-tit: 24px;
+        $sub-tit: 18px;
+        .tit {
+            padding: $area 0;
+            font-size: $tit;
+            margin-bottom: $area;
+        }
+        .mid_tit {
+            font-size: $mid-tit;
+        }
+        .sub_tit {
+            font-size: $sub-tit;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        // .btn {
+        //     padding: 15px $area * 2;
+        //     margin: $area auto;
+        //     font-weight: 500;
+        //     color: $black-color;
+        //     border: 1px solid $point-color;
+        // }
+        .section {
+            padding: 280px 0;
+            // intro{
+            &_intro {
+                height: auto;
+            }
+            // about
+            &_about {
+                height: auto;
+                &::after {
+                    width: calc(100% - 20px);
+                    height: calc(100% - 20px);
+                    left: 10px;
+                    top: 10px;
+                }
+                .inner {
+                    .wrap_about {
+                        > .tit {
+                            display: none;
+                        }
+                        .wrap_box {
+                            justify-content: space-around;
+                            .box {
+                                > .tit {
+                                    display: block;
+                                    margin-bottom: 20px;
+                                    p {
+                                        position: relative;
+                                        width: 100%;
+                                    }
+                                }
+                                ul {
+                                    li {
+                                        padding: 0 $area;
+                                        &::before {
+                                            transform: scaleX(1) scaleY(0.2);
+                                        }
+                                        + li {
+                                            margin-top: $area;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // work
+            &_work {
+                padding: 200px 0;
+                .inner {
+                    .wrap_work {
+                        .wrap_list {
+                            .list {
+                                .sub_tit {
+                                    text-indent: 25px;
+                                }
+                                width: calc((100% - (#{$area} * 2)) / 2);
+                                margin: 0 $area $area 0;
+                                &:nth-of-type(3n + 3) {
+                                    margin-right: $area;
+                                }
+                                .link_btn {
+                                    color: $black-color !important;
+                                    .wrap_arrow {
+                                        .arrow {
+                                            transform: translate3d(0, 0, 0);
+                                        }
+                                    }
+                                    &::before {
+                                        width: 100%;
+                                    }
+
+                                    &.no_link {
+                                        margin-right: 0;
+                                        &::before {
+                                            display: none;
                                         }
                                     }
                                 }

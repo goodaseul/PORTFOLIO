@@ -23,6 +23,7 @@ body {
 body {
     cursor: none;
     color: $black-color;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;

@@ -12,7 +12,7 @@
 .cursor {
     width: 20px;
     height: 20px;
-    background-color: $gray-color;
+    background-color: $gray-light-color;
     border-radius: 50%;
     position: fixed;
     z-index: 99;
@@ -243,19 +243,32 @@
 }
 
 //테블릿 ~ 해상도 1480px ~
-// @media screen and (max-width: 1480px) {
-//     $inner: auto;
-//     // $inner-space: rem(80px);
-
-//     html {
-//         font-size: 20px;
-//     }
-
-//     .inner {
-//         width: $inner;
-//         padding: 0 $inner-space;
-//     }
-// }
+@media screen and (max-width: 1480px) {
+    .inner {
+        width: 1280px;
+    }
+    //푸터
+    .footer {
+        .inner {
+            .info {
+                dl {
+                    font-size: 26px;
+                    div {
+                        dd {
+                            --_p: 100%;
+                            padding-left: 10px;
+                            .wrap_arrow {
+                                .arrow {
+                                    transform: translate3d(0, 0, 0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 // @media screen and (max-width: 960px) {
 //     html {
