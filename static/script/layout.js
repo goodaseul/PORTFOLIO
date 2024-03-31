@@ -94,7 +94,7 @@ const pTag1 = document.querySelector(".marquee_top .marquee_txt");
 const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
 
 const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
-const textArr2 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
+// const textArr2 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
 
 let count1 = 0;
 let count2 = 0;
@@ -131,7 +131,7 @@ function animate() {
 
 window.onload = function () {
     initTexts(pTag1, textArr1);
-    initTexts(pTag2, textArr2);
+    initTexts(pTag2, textArr1);
     // window.addEventListener("scroll", scrollHandler);
 
     animate();
