@@ -686,7 +686,7 @@ main .section_work .inner .wrap_work .wrap_list {
 main .section_work .inner .wrap_work .wrap_list .list {
   width: 48%;
   height: fit-content;
-  padding: 5%;
+  padding: 8%;
   background: #fff;
   border-radius: 16px;
   box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
