@@ -1,0 +1,111 @@
+//푸터
+.footer {
+    position: sticky;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // color: //$white-color;
+    // background-color: //$black-color-02;
+    padding: 100px 0;
+    .inner {
+        .info {
+            dl {
+                font-size: 32px;
+                div {
+                    display: flex;
+                    align-items: baseline;
+                    width: fit-content;
+                    + div {
+                        margin-top: 30px;
+                    }
+                    dt {
+                        font-weight: bold;
+                    }
+                    dd,
+                    a {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                    }
+                    dd {
+                        -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
+                        color: white;
+                        font-weight: 600;
+                        --s: 0.1em;
+                        --c: #fff;
+                        padding-bottom: var(--s);
+                        background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+                        -webkit-background-clip: text, padding-box;
+                        background-clip: text, padding-box;
+                        transition: 0.5s;
+                        .wrap_arrow {
+                            width: 30px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .copyrights {
+            width: fit-content;
+            margin-left: auto;
+        }
+    }
+}
+
+//pc hover
+@media screen and (min-width: 1480px) {
+    //푸터
+    .footer {
+        .inner {
+            .info {
+                dl {
+                    div {
+                        &:hover {
+                            dd {
+                                --_p: 100%;
+                                padding-left: 10px;
+                                .wrap_arrow {
+                                    .arrow {
+                                        transform: translate3d(0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//테블릿 ~ 해상도 1480px ~
+@media screen and (max-width: 1480px) {
+    .inner {
+        width: 1280px;
+    }
+    //푸터
+    .footer {
+        .inner {
+            .info {
+                dl {
+                    font-size: 26px;
+                    div {
+                        dd {
+                            --_p: 100%;
+                            padding-left: 10px;
+                            .wrap_arrow {
+                                .arrow {
+                                    transform: translate3d(0, 0, 0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

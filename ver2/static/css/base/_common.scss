@@ -1,0 +1,118 @@
+//공통
+html {
+    font-size: 18px;
+}
+body {
+    font-size: 18px;
+    background: $bg;
+}
+.inner {
+    width: 1480px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+// 화살표
+.wrap_arrow {
+    overflow: hidden;
+    position: relative;
+    top: -0.8rem;
+    right: -0.8rem;
+
+    .arrow {
+        transform-style: preserve-3d;
+        transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1);
+    }
+}
+// hover effect
+.hover_effect {
+    position: relative;
+    overflow: hidden;
+    .txt {
+        z-index: 1;
+        text-transform: uppercase;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 0.5s;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        color: $point;
+        &_af {
+            transform: translate3d(300px, 0%, 0px);
+            position: absolute;
+            top: 0%;
+            bottom: auto;
+            left: 0%;
+            right: 0%;
+            color: #fff;
+        }
+    }
+}
+
+.tit {
+    font-size: $tit;
+    font-weight: bold;
+}
+.mid_tit {
+    font-size: $mid-tit;
+    font-weight: bold;
+}
+.sub_tit {
+    font-size: $sub-tit;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.icon {
+    margin-right: 10px;
+    &_notion {
+        width: 36px;
+        height: 36px;
+        background-image: url(#{$url-images}logos/logo_notion.png);
+    }
+}
+.black {
+    filter: invert(0%) sepia(0) saturate(10%) hue-rotate(170deg) brightness(0%) contrast(100%);
+}
+//pc hover
+@media screen and (min-width: 1480px) {
+    // hover effect
+    .hover_effect {
+        &:hover {
+            .txt {
+                transform: translate3d(-300%, 0%, 0);
+                &_af {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+@function rem($size) {
+    @return floor($size / 16px * 1rem / 3 * 1000) / 1000;
+}
+
+@media screen and (max-width: 1280px) {
+    body {
+        font-size: rem(44px);
+    }
+    .inner {
+        width: 100%;
+        padding: 0 rem(80px);
+    }
+}
+@media screen and (max-width: 960px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 395px) {
+    html {
+        font-size: 14px;
+    }
+}
