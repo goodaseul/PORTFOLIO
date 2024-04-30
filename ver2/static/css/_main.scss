@@ -1,8 +1,200 @@
 main {
+    overflow: clip;
     .section {
         width: 100%;
+        padding: 140px 0;
+        position: relative;
+        z-index: 2;
+        &_intro {
+            padding: 0;
+            height: 1040px;
+            background: $bg;
+            z-index: 3;
+            .inner {
+                height: 100%;
+                position: relative;
+                .big_tit {
+                    padding-top: 15%;
+                    color: #fff;
+                }
+                .wrap_myphoto {
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                    right: 0;
+                    bottom: 0;
+                    width: 80%;
+                    height: 61%;
+                    img {
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                .wrap_obj {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    svg {
+                        --width: 200px;
+                        --animation-time: 20s;
+                        position: absolute;
+                        top: calc(50% - var(--width) / 2);
+                        left: calc(50% - var(--width) / 2);
+                        width: var(--width);
+                        overflow: visible;
+                        border-radius: 50%;
+                        transition: all 0.2s ease;
+                        animation: rotate var(--animation-time) linear infinite;
+                        path {
+                            transition: all 0.2s ease;
+                        }
+                    }
+                }
+            }
+        }
+        &_about {
+            background: $bg;
+            .marquee {
+                position: absolute;
+                width: 100vw;
+                display: flex;
+                pointer-events: none;
+                bottom: -8%;
+                p {
+                    display: flex;
+                    font-size: 12rem;
+                    font-weight: bold;
+
+                    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: #fff;
+                    opacity: 0.2;
+                }
+            }
+            .inner {
+                height: 100%;
+                padding-bottom: 25%;
+                color: #fff;
+
+                .wrap_introduce {
+                    width: 60%;
+                    margin-left: auto;
+                    padding: 12% 5%;
+                    // background: $lightgray;
+                    // color: #000;
+                    border-radius: 16px;
+                }
+                .wrap_about {
+                    margin-top: 200px;
+                    padding-left: 10%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .tab {
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-bottom: 20px;
+                        li {
+                            padding: 0 2%;
+                            font-size: 24px;
+                            position: relative;
+                            &::before {
+                                content: "";
+                                transition: all 0.3s;
+                                opacity: 0.5;
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                width: 10%;
+                                height: 2px;
+                                background-color: $lightgray;
+                            }
+                            &.active {
+                                font-weight: bold;
+                                &::before {
+                                    opacity: 1;
+                                    background-color: $point;
+                                }
+                            }
+                        }
+                    }
+                    .tit {
+                        font-size: 40px;
+                        margin-bottom: 20px;
+                        .status {
+                            color: $point;
+                            font-size: 48px;
+                            font-weight: bold;
+                        }
+                    }
+                    .wrap_tab_cont {
+                        position: relative;
+                        height: 40%;
+                        .box {
+                            width: 100%;
+                            opacity: 0;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            transition: all 0.3s;
+                            ul {
+                                li {
+                                    font-size: 26px;
+                                    font-weight: 600;
+                                    position: relative;
+                                    line-height: 2;
+                                    font-weight: 500;
+                                    display: inline-block;
+                                    // width: fit-content;
+                                    padding: 0 1%;
+                                    margin-top: 2%;
+                                    + li {
+                                        margin-left: 5%;
+                                    }
+                                    &::before {
+                                        content: "";
+                                        background: rgba(255, 208, 47, 0.5);
+                                        transform-origin: right;
+                                        inset: 0;
+                                        position: absolute;
+                                        transform: scaleX(0);
+                                        transition: transform 0.5s ease-in-out;
+                                        z-index: -1;
+                                        height: 4px;
+                                        top: 60%;
+                                    }
+                                }
+                            }
+                            &.active {
+                                opacity: 1;
+                                left: 2%;
+                                ul {
+                                    li {
+                                        font-weight: bold;
+                                        &::before {
+                                            transform: scaleX(1);
+                                            transform-origin: left;
+                                            transition-delay: calc(0.2s * var(--i));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @keyframes rotate {
+                to {
+                    transform: rotate(-360deg);
+                }
+            }
+        }
         &_work {
-            padding: 140px 0;
             overflow: clip;
             background: $point;
             border-radius: 30px;
@@ -17,18 +209,23 @@ main {
                         top: 10%;
                         .section_tit {
                             .word {
-                                font-size: 120px;
-                                line-height: 1;
-                                font-weight: 800;
                                 display: block;
-                                &_second {
+                                -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                                color: #000;
+                                --s: 0.1em;
+                                --c: #fff;
+                                background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+                                -webkit-background-clip: text;
+                                background-clip: text;
+                                transition: 0.5s;
+                                &:last-of-type {
                                     text-align: right;
                                 }
                             }
                         }
                         a {
                             margin-top: 50px;
-                            display: flex;
+                            display: inline-flex;
                             flex-wrap: wrap;
                             align-items: center;
                         }
@@ -37,6 +234,7 @@ main {
 
                 .wrap_work {
                     width: 60%;
+
                     .wrap_list {
                         padding-left: 5%;
                         display: flex;
@@ -104,6 +302,7 @@ main {
                                     transform: translateY(-50%);
                                     border-radius: 16px;
                                     background: $lightgray;
+                                    box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
                                 }
                                 .wrap_img {
                                     width: 50%;
@@ -128,6 +327,12 @@ main {
                                 color: $point;
                                 z-index: 1;
                                 font-size: 20px;
+                                &.no_link {
+                                    font-size: 14px;
+                                    padding: 2% 3%;
+                                    height: auto;
+                                    width: fit-content;
+                                }
                                 &::before {
                                     content: "";
                                     position: absolute;

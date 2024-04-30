@@ -21,6 +21,7 @@
                     }
                     dt {
                         font-weight: bold;
+                        color: #fff;
                     }
                     dd,
                     a {
@@ -69,7 +70,7 @@
                                 --_p: 100%;
                                 padding-left: 10px;
                                 .wrap_arrow {
-                                    .arrow {
+                                    i {
                                         transform: translate3d(0, 0, 0);
                                     }
                                 }
