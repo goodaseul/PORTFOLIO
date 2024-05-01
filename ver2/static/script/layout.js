@@ -15,8 +15,6 @@ window.addEventListener("load", function () {
     const controller = new ScrollMagic.Controller({});
 
     const target = document.querySelectorAll(".effect");
-    const targetLeft = document.querySelectorAll(".effect_left");
-    const targetRight = document.querySelectorAll(".effect_right");
 
     target.forEach((item, index) => {
         var tween = TweenMax.from(item, 0.5, {
@@ -25,43 +23,22 @@ window.addEventListener("load", function () {
         });
         var scene = new ScrollMagic.Scene({
             triggerElement: item,
-            offset: "-100%",
-        })
-            .setTween(tween)
-            .addTo(controller)
-            .setClassToggle(item, "active");
-    });
-    targetLeft.forEach((item, index) => {
-        var tween = TweenMax.from(item, 0.5, {
-            opacity: 0,
-            x: "-10",
-        });
-        var scene = new ScrollMagic.Scene({
-            triggerElement: item,
-            offset: "-100%",
-        })
-            .setTween(tween)
-            .addTo(controller)
-            .setClassToggle(item, "active");
-    });
-    targetRight.forEach((item, index) => {
-        var tween = TweenMax.from(item, 0.5, {
-            opacity: 0,
-            x: "10",
-        });
-        var scene = new ScrollMagic.Scene({
-            triggerElement: item,
-            offset: "-100%",
+            offset: "-30%",
         })
             .setTween(tween)
             .addTo(controller)
             .setClassToggle(item, "active");
     });
 
-    initTexts(marquee, textArr);
+    initTexts(pTag1, textArr1);
+    initTexts(pTag2, textArr1);
+    // window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
 
-    marqueeAnimate();
+    maruqueeAnimate();
 });
+
+// 헤더 active
 function ClickContent() {
     navigationLinkA.forEach((item, index) => {
         item.addEventListener("click", function (e) {
@@ -86,6 +63,7 @@ function ActiveMenu() {
     navigationLink[len].classList.add("active");
 }
 
+// 탭
 const wrapTab = document.querySelectorAll(".tab li");
 const wrapCont = document.querySelectorAll(".wrap_tab_cont .box");
 wrapTab.forEach((item, index) => {
@@ -105,10 +83,15 @@ wrapTab.forEach((item, index) => {
     });
 });
 
-const marquee = document.querySelector(".marquee .marquee_txt");
-const textArr = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active,  positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
+// marquee
+const pTag1 = document.querySelector(".marquee_top .marquee_txt");
+const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
 
-let count = 0;
+const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
+// const textArr2 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
+
+let count1 = 0;
+let count2 = 0;
 
 function initTexts(element, textArray) {
     textArray.push(...textArray);
@@ -127,36 +110,98 @@ function marqueeText(count, element, direction) {
     return count;
 }
 
-function marqueeAnimate() {
-    count++;
-    count = marqueeText(count, marquee, -1);
-    window.requestAnimationFrame(marqueeAnimate);
+function maruqueeAnimate() {
+    count1++;
+    count2++;
+    count1 = marqueeText(count1, pTag1, -1);
+    count1 = marqueeText(count2, pTag2, 1);
+    window.requestAnimationFrame(maruqueeAnimate);
 }
-// section work full color
-workTargetScroll();
-window.addEventListener("resize", workTargetScroll);
 
-function workTargetScroll() {
-    const bodyContent = document.querySelector("body");
-    const targetSection = document.querySelector(".l_main .section_work");
-    const targetElement = targetSection.querySelector(".section_tit");
-    const footer = document.querySelector("footer");
+function scrollHandler() {
+    count1 -= 5;
+    count2 += 5;
+}
+// work 차오를 텍스트
+workTargetScroll("web");
+workTargetScroll("promotion");
+currentPer("web");
+currentPer("promotion");
+// window.addEventListener("resize", workTargetScroll);
+window.addEventListener("resize", currentPer);
+
+function workTargetScroll(target) {
+    const targetSection = document.querySelector(`.l_main .section_${target}`);
     window.addEventListener("scroll", function (e) {
         const pos = window.scrollY;
-        let currentPer = ((pos - targetSection.offsetTop) / (targetSection.clientHeight - window.innerHeight)) * 100;
+        let currentPer = Math.floor(((pos - targetSection.offsetTop) / (targetSection.clientHeight - window.innerHeight)) * 100);
+
         if (pos >= targetSection.offsetTop) {
+            targetSection.querySelector(".section_tit").style.setProperty("--_p", `${currentPer}%`);
+        } else {
+            targetSection.querySelector(".section_tit").style.setProperty("--_p", "0%");
+        }
+    });
+}
+
+activeIn();
+window.addEventListener("resize", activeIn);
+
+function activeIn() {
+    const sectionAbout = document.querySelector(".section_about");
+    const sectionWork = document.querySelectorAll(".section_work");
+    const bodyContent = document.querySelector("body");
+    const logo = document.querySelector(".logo");
+    const quick = document.querySelector(".quick");
+
+    window.addEventListener("scroll", function (e) {
+        const pos = window.scrollY;
+        // quick_in
+        if (pos >= sectionAbout.offsetHeight - sectionAbout.offsetTop - headerHeight) {
+            quick.classList.add("on");
+        } else {
+            quick.classList.remove("on");
+        }
+        // yellow_in
+        if (pos >= sectionWork[0].offsetTop - headerHeight) {
+            bodyContent.classList.remove("white_in");
             bodyContent.classList.add("yellow_in");
-            targetElement.style.setProperty("--_p", `${currentPer}%`);
         } else {
             bodyContent.classList.remove("yellow_in");
-            targetElement.style.setProperty("--_p", "0%");
         }
-
-        if (pos - footer.offsetHeight >= footer.offsetHeight + targetSection.clientHeight) {
-            targetElement.style.setProperty("--_p", "100%");
-            document.querySelector(".logo").style.cssText = `opacity: 0; point-event: none;`;
+        // white_in
+        if (pos >= sectionWork[1].offsetTop - headerHeight) {
+            bodyContent.classList.remove("yellow_in");
+            bodyContent.classList.add("white_in");
         } else {
-            document.querySelector(".logo").style.cssText = `opacity: 1; point-event: all; transition: all .3s`;
+            bodyContent.classList.remove("white_in");
+        }
+        // footer_in
+        if (pos + window.innerHeight >= sectionWork[1].offsetTop + sectionWork[1].offsetHeight) {
+            logo.style.cssText = `opacity: 0; point-event: none;`;
+            quick.classList.add("fix");
+        } else {
+            logo.style.cssText = `opacity: 1; point-event: all; transition: all .3s`;
+            quick.classList.remove("fix");
+        }
+    });
+}
+
+function currentPer(target) {
+    let targetTit;
+
+    window.addEventListener("scroll", function (e) {
+        let result, valuePer;
+        if (target == "web") {
+            targetTit = document.querySelector(`.l_main .section_${target} .section_tit`);
+            valuePer = getComputedStyle(targetTit).getPropertyValue("--_p");
+            const value = valuePer.replace("%", "");
+            result = value > 100 ? targetTit.style.setProperty("--_p", "100%") : false;
+        } else if (target == "promotion") {
+            targetTit = document.querySelector(`.l_main .section_${target} .section_tit`);
+            valuePer = getComputedStyle(targetTit).getPropertyValue("--_p");
+            const value = valuePer.replace("%", "");
+            result = value > 100 ? targetTit.style.setProperty("--_p", "100%") : false;
         }
     });
 }

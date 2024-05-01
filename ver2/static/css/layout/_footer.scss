@@ -1,12 +1,91 @@
 //푸터
+$quickSize: 60px;
+@keyframes iconArrow {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: 4%;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+.quick {
+    position: fixed;
+    // right: calc(50% - 780px);
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: 30px;
+    z-index: 12;
+    width: $quickSize;
+    height: $quickSize;
+    transition: all 0.3s;
+    > * {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        border: 1px solid #e1e1e1;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.12);
+        border-radius: 100%;
+        &.induction {
+            z-index: 1;
+            opacity: 1;
+            pointer-events: none;
+        }
+        &.btn_top {
+            z-index: -1;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .icon {
+            width: 100%;
+            height: 100%;
+            background-image: url("#{$url-images}icon_scroll.png");
+            animation: iconArrow infinite 1s ease-in-out;
+        }
+    }
+    &.on {
+        right: 30px;
+        left: auto;
+        transform: none;
+        > * {
+            background: $point;
+            border-color: $point;
+            .icon {
+                transform: rotate(180deg);
+                filter: brightness(0) invert(1);
+            }
+        }
+        .btn_top {
+            z-index: 1;
+            opacity: 1;
+            pointer-events: all;
+        }
+        &.induction {
+            z-index: -1;
+            opacity: 0;
+        }
+    }
+    &.fix {
+        position: absolute;
+        bottom: auto;
+        margin-top: -($quickSize / 2);
+    }
+}
 .footer {
     position: sticky;
     z-index: 1;
     bottom: 0;
     left: 0;
     right: 0;
-    // color: //$white-color;
-    // background-color: //$black-color-02;
+    background: $bg;
     padding: 100px 0;
     .inner {
         .info {

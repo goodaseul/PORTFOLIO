@@ -1,12 +1,23 @@
 main {
     overflow: clip;
     .section {
-        width: 100%;
-        padding: 140px 0;
-        position: relative;
-        z-index: 2;
+        @keyframes rotate {
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+        @keyframes arrowInduce {
+            0% {
+                margin-left: 0;
+            }
+            50% {
+                margin-left: 2%;
+            }
+            100% {
+                margin-left: 0;
+            }
+        }
         &_intro {
-            padding: 0;
             height: 1040px;
             background: $bg;
             z-index: 3;
@@ -34,7 +45,7 @@ main {
                 }
                 .wrap_obj {
                     position: absolute;
-                    right: 0;
+                    right: calc(50% - 740px);
                     bottom: 0;
                     svg {
                         --width: 200px;
@@ -55,13 +66,21 @@ main {
             }
         }
         &_about {
+            padding: 140px 0;
             background: $bg;
             .marquee {
                 position: absolute;
                 width: 100vw;
                 display: flex;
                 pointer-events: none;
-                bottom: -8%;
+                &_top {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &_bottom {
+                    bottom: -5%;
+                    justify-content: flex-end;
+                }
                 p {
                     display: flex;
                     font-size: 12rem;
@@ -70,21 +89,23 @@ main {
                     -webkit-text-fill-color: rgba(255, 255, 255, 0);
                     -webkit-text-stroke-width: 1px;
                     -webkit-text-stroke-color: #fff;
-                    opacity: 0.2;
+                    opacity: 0.5;
                 }
             }
             .inner {
                 height: 100%;
-                padding-bottom: 25%;
+                padding-bottom: 20%;
                 color: #fff;
 
                 .wrap_introduce {
-                    width: 60%;
-                    margin-left: auto;
+                    transition: all 0.3s;
+
+                    width: 80%;
                     padding: 12% 5%;
-                    // background: $lightgray;
-                    // color: #000;
                     border-radius: 16px;
+                    .tit {
+                        margin-bottom: 10%;
+                    }
                 }
                 .wrap_about {
                     margin-top: 200px;
@@ -96,7 +117,8 @@ main {
                     .tab {
                         display: flex;
                         flex-wrap: wrap;
-                        margin-bottom: 20px;
+                        justify-content: flex-end;
+                        margin-bottom: 10%;
                         li {
                             padding: 0 2%;
                             font-size: 24px;
@@ -152,6 +174,8 @@ main {
                                     // width: fit-content;
                                     padding: 0 1%;
                                     margin-top: 2%;
+                                    opacity: 0;
+                                    transition: 0.5s ease-in-out;
                                     + li {
                                         margin-left: 5%;
                                     }
@@ -174,11 +198,13 @@ main {
                                 left: 2%;
                                 ul {
                                     li {
+                                        opacity: 1;
+                                        transition-delay: calc(0.5s * var(--i));
                                         font-weight: bold;
                                         &::before {
                                             transform: scaleX(1);
                                             transform-origin: left;
-                                            transition-delay: calc(0.2s * var(--i));
+                                            transition-delay: calc(0.5s * var(--i));
                                         }
                                     }
                                 }
@@ -187,22 +213,14 @@ main {
                     }
                 }
             }
-
-            @keyframes rotate {
-                to {
-                    transform: rotate(-360deg);
-                }
-            }
         }
         &_work {
             overflow: clip;
-            background: $point;
-            border-radius: 30px;
+            padding: 140px 0;
             .inner {
                 display: flex;
                 flex-wrap: wrap;
                 .wrap_tit {
-                    width: 40%;
                     > div {
                         position: sticky;
                         left: 0;
@@ -210,13 +228,6 @@ main {
                         .section_tit {
                             .word {
                                 display: block;
-                                -webkit-text-fill-color: rgba(255, 255, 255, 0);
-                                color: #000;
-                                --s: 0.1em;
-                                --c: #fff;
-                                background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
-                                -webkit-background-clip: text;
-                                background-clip: text;
                                 transition: 0.5s;
                                 &:last-of-type {
                                     text-align: right;
@@ -233,8 +244,6 @@ main {
                 }
 
                 .wrap_work {
-                    width: 60%;
-
                     .wrap_list {
                         padding-left: 5%;
                         display: flex;
@@ -243,8 +252,7 @@ main {
                         .list {
                             width: 48%;
                             height: fit-content;
-                            padding: 8%;
-                            background: #fff;
+                            padding: 6% 8% 6% 6%;
                             border-radius: 16px;
                             box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
                             position: relative;
@@ -255,21 +263,23 @@ main {
                             &:nth-of-type(2n + 3) {
                                 margin-top: 0;
                             }
-                            .mid_tit {
+                            h3 {
                                 position: relative;
                                 z-index: 1;
                                 transition: all 0.3s;
-                                &::before {
-                                    transition: all 0.3s;
-                                    content: "";
-                                    position: absolute;
-                                    opacity: 0;
-                                    left: -6%;
-                                    top: 24%;
-                                    width: 5px;
-                                    height: 5px;
-                                    border-radius: 100%;
-                                    background: $point;
+                                .mid_tit {
+                                    position: relative;
+                                    &::before {
+                                        transition: all 0.3s;
+                                        content: "";
+                                        position: absolute;
+                                        opacity: 0;
+                                        left: -6%;
+                                        top: 24%;
+                                        width: 5px;
+                                        height: 5px;
+                                        border-radius: 100%;
+                                    }
                                 }
                                 .info {
                                     display: block;
@@ -280,37 +290,38 @@ main {
                                 position: absolute;
                                 z-index: 1;
                                 right: 5%;
-                                bottom: 0;
+                                bottom: 2%;
                                 font-size: 14px;
                             }
-                            .wrap_box {
+                            &::before,
+                            &::after {
+                                content: "";
+                                position: absolute;
+                            }
+                            &::before {
                                 width: 100%;
                                 height: 100%;
                                 position: absolute;
                                 right: 0;
                                 top: 0;
                                 pointer-events: none;
-
-                                &::before {
-                                    content: "";
-                                    position: absolute;
-                                    transition: all 0.3s;
-                                    right: 5%;
-                                    top: 50%;
-                                    width: 50%;
-                                    height: 80%;
-                                    transform: translateY(-50%);
-                                    border-radius: 16px;
-                                    background: $lightgray;
-                                    box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
-                                }
-                                .wrap_img {
-                                    width: 50%;
-                                    position: absolute;
-                                    right: -5%;
-                                    bottom: 20%;
-                                    transition: all 0.3s;
-                                }
+                                background: #fff;
+                            }
+                            &::after {
+                                transition: all 0.3s;
+                                bottom: 10%;
+                                width: 50%;
+                                height: 40%;
+                                border-radius: 16px;
+                                box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
+                            }
+                            .wrap_img {
+                                width: 50%;
+                                position: absolute;
+                                right: -5%;
+                                bottom: 20%;
+                                transition: all 0.3s;
+                                z-index: 2;
                             }
                             .link_btn {
                                 position: relative;
@@ -320,14 +331,25 @@ main {
                                 font-weight: bold;
                                 width: 30px;
                                 height: 30px;
-                                border: 1px solid rgba(255, 255, 255, 0);
-                                border-bottom-color: $point;
+
                                 text-align: center;
-                                background: #fff;
-                                color: $point;
                                 z-index: 1;
                                 font-size: 20px;
+                                &.link_long {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 140px;
+                                    height: 40px;
+                                    i {
+                                        margin-left: 10%;
+                                    }
+                                    + .link_long {
+                                        margin-top: 4%;
+                                    }
+                                }
                                 &.no_link {
+                                    pointer-events: none;
                                     font-size: 14px;
                                     padding: 2% 3%;
                                     height: auto;
@@ -340,35 +362,161 @@ main {
                                     left: 0;
                                     width: 100%;
                                     height: 0;
-                                    background-color: $point;
                                     transition: height 0.5s;
                                     z-index: -1;
                                 }
                             }
-                            // &.active {
-                            //     .mid_tit {
-                            //         transform: translateX(2%);
-                            //         &::before {
-                            //             opacity: 1;
-                            //             left: -3%;
-                            //         }
-                            //     }
-                            //     .wrap_box {
-                            //         &::before {
-                            //             transform: scale(1.5, 2.5);
-                            //         }
-                            //         .wrap_img {
-                            //             right: 5%;
-                            //         }
-                            //     }
-                            //     .link_btn {
-                            //         border-color: $point;
-                            //         color: #fff;
-                            //         &::before {
-                            //             height: 100%;
-                            //         }
-                            //     }
-                            // }
+                            &.active {
+                                h3 {
+                                    transform: translateX(2%);
+                                    .mid_tit {
+                                        &::before {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+                                &::after {
+                                    transform: scale(3, 4);
+                                }
+                                .link_btn {
+                                    &::before {
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //web
+            &.section_web {
+                position: relative;
+                background-image: linear-gradient(180deg, #000 0 20%, #fff 20% 100%);
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    background: $point;
+                    border-radius: 30px;
+                }
+                .inner {
+                    .wrap_tit {
+                        width: 40%;
+                        > div {
+                            left: 0;
+                            .section_tit {
+                                padding-right: 15%;
+                                .word {
+                                    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                                    color: #000;
+                                    --s: 0.1em;
+                                    --c: #fff;
+                                    background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                }
+                            }
+                        }
+                    }
+                    .wrap_work {
+                        width: 60%;
+                        .wrap_list {
+                            .list {
+                                &::before {
+                                    background: rgba(255, 208, 47, 0.8);
+                                }
+                                &::after {
+                                    right: 5%;
+                                    background: #fff;
+                                }
+                                h3 {
+                                    .mid_tit {
+                                        &::before {
+                                            background: $point;
+                                        }
+                                    }
+                                }
+                                .link_btn {
+                                    background: #fff;
+                                    color: $point;
+                                    &::before {
+                                        background-color: $point;
+                                    }
+                                }
+                                &.active {
+                                    .link_btn {
+                                        color: #fff;
+                                    }
+                                    .wrap_img {
+                                        right: 5%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //promotion
+            &.section_promotion {
+                background: #fff;
+                .inner {
+                    flex-direction: row-reverse;
+                    .wrap_tit {
+                        width: 50%;
+                        > div {
+                            right: 0;
+                            .section_tit {
+                                padding-left: 15%;
+                                .word {
+                                    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+                                    color: $point;
+                                    --s: 0.1em;
+                                    --c: #000;
+                                    background: linear-gradient(90deg, var(--c) 50%, $point 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                }
+                            }
+                            a {
+                                padding-left: 15%;
+                            }
+                        }
+                    }
+                    .wrap_work {
+                        width: 50%;
+                        .wrap_list {
+                            .list {
+                                &::before {
+                                    background: #fff;
+                                }
+                                &::after {
+                                    left: 5%;
+                                    background: $point;
+                                }
+                                h3 {
+                                    .mid_tit {
+                                        &::before {
+                                            background: #000;
+                                        }
+                                    }
+                                }
+                                .link_btn {
+                                    background: #fff;
+                                    color: $point;
+                                    &::before {
+                                        background-color: #fff;
+                                    }
+                                }
+
+                                &.active {
+                                    .link_btn {
+                                        color: $point;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -383,30 +531,23 @@ main {
         .section {
             &_work {
                 .inner {
+                    .wrap_tit {
+                        > div {
+                            a {
+                                &:hover {
+                                    animation: arrowInduce 0.6s forwards ease-out;
+                                }
+                            }
+                        }
+                    }
                     .wrap_work {
                         .wrap_list {
                             .list {
                                 &:hover {
-                                    .mid_tit {
-                                        transform: translateX(2%);
-                                        &::before {
-                                            opacity: 1;
-                                            left: -3%;
-                                        }
-                                    }
-                                    .wrap_box {
-                                        &::before {
-                                            transform: scale(1.5, 2.5);
-                                        }
-                                        .wrap_img {
-                                            right: 5%;
-                                        }
-                                    }
                                     .link_btn {
-                                        border-color: $point;
-                                        color: #fff;
-                                        &::before {
-                                            height: 100%;
+                                        animation: arrowInduce infinite 0.6s ease-out;
+                                        &.no_link {
+                                            animation: none;
                                         }
                                     }
                                 }
