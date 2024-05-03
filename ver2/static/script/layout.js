@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
 
     initTexts(pTag1, textArr1);
     initTexts(pTag2, textArr1);
-    window.addEventListener("scroll", scrollHandler);
+    // window.addEventListener("scroll", scrollHandler);
 
     maruqueeAnimate();
 
@@ -135,14 +135,14 @@ function maruqueeAnimate() {
     count1++;
     count2++;
     count1 = marqueeText(count1, pTag1, -1);
-    count1 = marqueeText(count2, pTag2, 1);
+    count2 = marqueeText(count2, pTag2, 1);
     window.requestAnimationFrame(maruqueeAnimate);
 }
 
-function scrollHandler() {
-    count1 -= 5;
-    count2 += 5;
-}
+// function scrollHandler() {
+//     count1 -= 5;
+//     count2 += 5;
+// }
 
 // work
 workTargetScroll("web");
