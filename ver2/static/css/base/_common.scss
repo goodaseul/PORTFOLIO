@@ -123,18 +123,19 @@ main {
     font-weight: 800;
 }
 .tit {
-    font-size: $tit;
+    font-size: 32px;
     font-weight: bold;
 }
 .mid_tit {
-    font-size: $mid-tit;
+    font-size: 28px;
     font-weight: bold;
 }
 .sub_tit {
-    font-size: $sub-tit;
+    font-size: 24px;
     margin-bottom: 10px;
     font-weight: bold;
 }
+
 .icon {
     margin-right: 10px;
     &_notion {
@@ -165,18 +166,42 @@ main {
     @return floor($size / 16px * 1rem / 3 * 1000) / 1000;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1480px) {
+    .inner {
+        width: 100%;
+        padding: 0 40px;
+    }
+    .big_tit {
+        font-size: 100px;
+    }
+    .tit {
+        font-size: 28px;
+    }
+    .mid_tit {
+        font-size: 24px;
+    }
+    .sub_tit {
+        font-size: 20px;
+    }
+}
+@media screen and( max-width: 1080px) {
     body {
         font-size: rem(44px);
     }
     .inner {
-        width: 100%;
         padding: 0 rem(80px);
     }
-}
-@media screen and (max-width: 960px) {
-    html {
-        font-size: 18px;
+    .big_tit {
+        font-size: rem(100px);
+    }
+    .tit {
+        font-size: rem(64px);
+    }
+    .mid_tit {
+        font-size: rem(56px);
+    }
+    .sub_tit {
+        font-size: rem(48px);
     }
 }
 

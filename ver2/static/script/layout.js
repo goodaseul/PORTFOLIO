@@ -32,10 +32,11 @@ window.addEventListener("load", function () {
 
     initTexts(pTag1, textArr1);
     initTexts(pTag2, textArr1);
-    // window.addEventListener("scroll", scrollHandler);
     window.addEventListener("scroll", scrollHandler);
 
     maruqueeAnimate();
+
+    imgChange();
 });
 
 // 헤더 active
@@ -63,6 +64,27 @@ function ActiveMenu() {
     navigationLink[len].classList.add("active");
 }
 
+// img change
+function imgChange() {
+    let roll = 1;
+    const myphotoImg = document.querySelectorAll(".section_intro .wrap_img img");
+    const imgNum = myphotoImg.length;
+    setInterval(function () {
+        if (roll < imgNum) {
+            roll++;
+        } else {
+            roll = 1;
+        }
+
+        myphotoImg.forEach((item, index) => {
+            myphotoImg.forEach((myphoto) => {
+                item.classList.remove("active");
+            });
+            myphotoImg[roll - 1].classList.add("active");
+        });
+    }, 3000);
+}
+
 // 탭
 const wrapTab = document.querySelectorAll(".tab li");
 const wrapCont = document.querySelectorAll(".wrap_tab_cont .box");
@@ -88,7 +110,6 @@ const pTag1 = document.querySelector(".marquee_top .marquee_txt");
 const pTag2 = document.querySelector(".marquee_bottom .marquee_txt");
 
 const textArr1 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
-// const textArr2 = "positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, positive, punctuality, newness, lively, harmony, meticulous, laugh, be active, ".split(" ");
 
 let count1 = 0;
 let count2 = 0;
@@ -122,12 +143,12 @@ function scrollHandler() {
     count1 -= 5;
     count2 += 5;
 }
-// work 차오를 텍스트
+
+// work
 workTargetScroll("web");
 workTargetScroll("promotion");
 currentPer("web");
 currentPer("promotion");
-// window.addEventListener("resize", workTargetScroll);
 window.addEventListener("resize", currentPer);
 
 function workTargetScroll(target) {
@@ -135,7 +156,6 @@ function workTargetScroll(target) {
     window.addEventListener("scroll", function (e) {
         const pos = window.scrollY;
         let currentPer = Math.floor(((pos - targetSection.offsetTop) / (targetSection.clientHeight - window.innerHeight)) * 100);
-
         if (pos >= targetSection.offsetTop) {
             targetSection.querySelector(".section_tit").style.setProperty("--_p", `${currentPer}%`);
         } else {
@@ -157,7 +177,7 @@ function activeIn() {
     window.addEventListener("scroll", function (e) {
         const pos = window.scrollY;
         // quick_in
-        if (pos >= sectionAbout.offsetHeight - sectionAbout.offsetTop - headerHeight) {
+        if (pos - headerHeight >= sectionAbout.previousElementSibling.offsetHeight - sectionAbout.offsetTop) {
             quick.classList.add("on");
         } else {
             quick.classList.remove("on");

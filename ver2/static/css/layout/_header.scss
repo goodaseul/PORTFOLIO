@@ -1,5 +1,4 @@
 // 헤더
-
 .header {
     position: fixed;
     left: 0;
@@ -85,6 +84,46 @@
                     }
                 }
             }
+        }
+    }
+}
+
+//테블릿 ~ 해상도 1480px ~
+@media screen and (max-width: 1480px) {
+    .header {
+        .inner {
+            .gnb {
+                li {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .logo {
+        left: -50px;
+    }
+}
+//테블릿 ~ 해상도 1080px ~
+@media screen and (max-width: 1080px) {
+    // 헤더
+    .header {
+        padding: rem(60px) 0;
+        .inner {
+            .gnb {
+                li {
+                    a {
+                        .roundball {
+                            width: rem(12px);
+                            height: rem(12px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .logo {
+        a {
+            padding: 0 rem(80px);
         }
     }
 }
