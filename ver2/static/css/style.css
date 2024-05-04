@@ -529,6 +529,7 @@ main section {
   z-index: 9;
   width: 100%;
   padding: 30px 0;
+  background: #000;
 }
 .header .inner {
   height: 100%;
@@ -804,9 +805,6 @@ main section {
   .footer {
     padding: 5.208rem 0;
   }
-  .footer .inner .info dl {
-    font-size: 1.083rem;
-  }
   .footer .inner .info dl div + div {
     margin-top: 1.041rem;
   }
@@ -846,23 +844,25 @@ main section {
   right: 10%;
   top: 5%;
   text-decoration: none;
+  width: 30px;
+  height: 30px;
 }
 .popup_layer .popup_btn::before, .popup_layer .popup_btn::after {
   content: "";
   display: block;
   position: absolute;
-  top: 0x;
-  right: 0;
+  top: 0px;
+  left: 50%;
   width: 1px;
   height: 30px;
   background: #fff;
 }
 .popup_layer .popup_btn::before {
-  -moz-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg) translateX(-50%);
+  -webkit-transform: rotate(-45deg) translateX(-50%);
+  -ms-transform: rotate(-45deg) translateX(-50%);
+  -o-transform: rotate(-45deg) translateX(-50%);
+  transform: rotate(-45deg) translateX(-50%);
 }
 .popup_layer .popup_btn::after {
   -moz-transform: rotate(45deg);
@@ -882,6 +882,21 @@ main section {
   background: rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 640px) {
+  .popup_layer > div {
+    padding: 20% 5% 5%;
+  }
+  .popup_layer > div img {
+    max-width: 100%;
+  }
+  .popup_layer .popup_btn {
+    width: 1.666rem;
+    height: 1.666rem;
+  }
+  .popup_layer .popup_btn::before, .popup_layer .popup_btn::after {
+    height: 1.666rem;
+  }
+}
 main {
   overflow: clip;
 }
@@ -1639,6 +1654,9 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
   main .section_work.section_promotion .inner .wrap_tit > div a {
     padding-left: 0;
   }
+  main .section_work.section_promotion .inner .wrap_work {
+    padding-right: 0;
+  }
 }
 @media screen and (max-width: 640px) {
   main .section_work .inner .wrap_tit {
@@ -1653,9 +1671,11 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
     letter-spacing: -0.06em;
   }
   main .section_work .inner .wrap_tit > div a {
-    text-indent: -9999%;
     flex-direction: row-reverse;
     justify-content: end;
+  }
+  main .section_work .inner .wrap_tit > div a span {
+    text-indent: -9999%;
   }
   main .section_work .inner .wrap_tit > div a .icon {
     margin-right: 0;

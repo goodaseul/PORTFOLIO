@@ -23,23 +23,25 @@
         right: 10%;
         top: 5%;
         text-decoration: none;
+        width: 30px;
+        height: 30px;
         &::before,
         &::after {
             content: "";
             display: block;
             position: absolute;
-            top: 0x;
-            right: 0;
+            top: 0px;
+            left: 50%;
             width: 1px;
             height: 30px;
             background: #fff;
         }
         &::before {
-            -moz-transform: rotate(-45deg);
-            -webkit-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg) translateX(-50%);
+            -webkit-transform: rotate(-45deg) translateX(-50%);
+            -ms-transform: rotate(-45deg) translateX(-50%);
+            -o-transform: rotate(-45deg) translateX(-50%);
+            transform: rotate(-45deg) translateX(-50%);
         }
         &::after {
             -moz-transform: rotate(45deg);
@@ -58,4 +60,23 @@
     bottom: 0;
     z-index: 1001;
     background: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 640px) {
+    .popup_layer {
+        > div {
+            padding: 20% 5% 5%;
+            img {
+                max-width: 100%;
+            }
+        }
+        .popup_btn {
+            width: rem(80px);
+            height: rem(80px);
+            &::before,
+            &::after {
+                height: rem(80px);
+            }
+        }
+    }
 }

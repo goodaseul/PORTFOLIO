@@ -198,7 +198,7 @@ $quickSize: 60px;
             right: rem(80px);
         }
         &.fix {
-            margin-top: -($quickSize / 2);
+            margin-top: (-$quickSize / 2);
         }
     }
     .footer {
@@ -233,7 +233,6 @@ $quickSize: 60px;
         .inner {
             .info {
                 dl {
-                    font-size: rem(52px);
                     div {
                         + div {
                             margin-top: rem(50px);

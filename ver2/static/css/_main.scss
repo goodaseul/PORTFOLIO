@@ -926,6 +926,9 @@ main {
                                 }
                             }
                         }
+                        .wrap_work {
+                            padding-right: 0;
+                        }
                     }
                 }
             }
@@ -952,9 +955,11 @@ main {
                                 }
                             }
                             a {
-                                text-indent: -9999%;
                                 flex-direction: row-reverse;
                                 justify-content: end;
+                                span {
+                                    text-indent: -9999%;
+                                }
                                 .icon {
                                     margin-right: 0;
                                 }
