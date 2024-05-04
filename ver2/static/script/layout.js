@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
 
     initTexts(pTag1, textArr1);
     initTexts(pTag2, textArr1);
-    // window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
 
     maruqueeAnimate();
 
@@ -139,10 +139,10 @@ function maruqueeAnimate() {
     window.requestAnimationFrame(maruqueeAnimate);
 }
 
-// function scrollHandler() {
-//     count1 -= 5;
-//     count2 += 5;
-// }
+function scrollHandler() {
+    count1 += 5;
+    count2 += 5;
+}
 
 // work
 workTargetScroll("web");
@@ -157,9 +157,9 @@ function workTargetScroll(target) {
         const pos = window.scrollY;
         let currentPer = Math.floor(((pos - targetSection.offsetTop) / (targetSection.clientHeight - window.innerHeight)) * 100);
         if (pos >= targetSection.offsetTop) {
-            targetSection.querySelector(".section_tit").style.setProperty("--_p", `${currentPer}%`);
+            targetSection.querySelector(".section_tit > p").style.setProperty("--_p", `${currentPer}%`);
         } else {
-            targetSection.querySelector(".section_tit").style.setProperty("--_p", "0%");
+            targetSection.querySelector(".section_tit  > p").style.setProperty("--_p", "0%");
         }
     });
 }
@@ -213,12 +213,12 @@ function currentPer(target) {
     window.addEventListener("scroll", function (e) {
         let result, valuePer;
         if (target == "web") {
-            targetTit = document.querySelector(`.l_main .section_${target} .section_tit`);
+            targetTit = document.querySelector(`.l_main .section_${target} .section_tit > p`);
             valuePer = getComputedStyle(targetTit).getPropertyValue("--_p");
             const value = valuePer.replace("%", "");
             result = value > 100 ? targetTit.style.setProperty("--_p", "100%") : false;
         } else if (target == "promotion") {
-            targetTit = document.querySelector(`.l_main .section_${target} .section_tit`);
+            targetTit = document.querySelector(`.l_main .section_${target} .section_tit  > p`);
             valuePer = getComputedStyle(targetTit).getPropertyValue("--_p");
             const value = valuePer.replace("%", "");
             result = value > 100 ? targetTit.style.setProperty("--_p", "100%") : false;
