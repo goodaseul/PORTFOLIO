@@ -584,7 +584,7 @@ main section {
   color: #ffd02f;
   transform: rotate(90deg);
 }
-.logo a {
+.logo p {
   letter-spacing: 0.1em;
   font-weight: bold;
   padding: 0 5px;
@@ -618,7 +618,7 @@ main section {
   .logo {
     left: -3.959rem;
   }
-  .logo a {
+  .logo p {
     padding: 0 0.833rem;
   }
 }
@@ -682,11 +682,12 @@ main section {
   transform: none;
 }
 .quick.on > * {
-  background: #ffd02f;
-  border-color: #ffd02f;
+  background: #fff;
+  border-color: #fff;
 }
 .quick.on > * .icon {
   transform: rotate(180deg);
+  filter: brightness(0);
 }
 .quick.on .btn_top {
   z-index: 1;
@@ -949,6 +950,9 @@ main .section_intro .inner .wrap_myphoto img {
 main .section_intro .inner .wrap_myphoto img.active {
   opacity: 1;
 }
+main .section_intro .inner .wrap_myphoto img:nth-of-type(2) {
+  top: 25%;
+}
 main .section_intro .inner .wrap_obj {
   position: absolute;
   right: calc(50% - 740px);
@@ -980,7 +984,7 @@ main .section_about .marquee {
   pointer-events: none;
 }
 main .section_about .marquee_top {
-  top: 50%;
+  top: 46%;
   transform: translateY(-50%);
 }
 main .section_about .marquee_bottom {
@@ -1002,8 +1006,8 @@ main .section_about .inner {
 }
 main .section_about .inner .wrap_introduce {
   transition: all 0.3s;
-  width: 80%;
-  padding: 100px 50px 390px;
+  width: 72%;
+  padding: 100px 50px 460px;
 }
 main .section_about .inner .wrap_introduce .tit {
   margin-bottom: 10%;
@@ -1019,6 +1023,7 @@ main .section_about .inner .wrap_about .tab {
   flex-wrap: wrap;
   justify-content: flex-end;
   margin-bottom: 5%;
+  padding-right: 3%;
 }
 main .section_about .inner .wrap_about .tab li {
   padding: 0 2%;
@@ -1039,14 +1044,16 @@ main .section_about .inner .wrap_about .tab li::before {
 }
 main .section_about .inner .wrap_about .tab li.active {
   font-weight: bold;
+  color: #ffd02f;
 }
 main .section_about .inner .wrap_about .tab li.active::before {
   opacity: 1;
-  background-color: #ffd02f;
+  background-color: #fff;
 }
 main .section_about .inner .wrap_about .tit {
   font-size: 40px;
   margin-bottom: 20px;
+  padding-right: 3%;
 }
 main .section_about .inner .wrap_about .tit .status {
   font-size: inherit;
@@ -1150,7 +1157,7 @@ main .section_work .inner .wrap_work .wrap_list {
 main .section_work .inner .wrap_work .wrap_list .list {
   width: 48%;
   height: fit-content;
-  padding: 6% 8% 6% 6%;
+  padding: 6% 8% 11% 6%;
   border-radius: 16px;
   box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.12);
   position: relative;
@@ -1190,7 +1197,7 @@ main .section_work .inner .wrap_work .wrap_list .list .date {
   position: absolute;
   z-index: 1;
   right: 5%;
-  bottom: 2%;
+  bottom: 5%;
   font-size: 14px;
 }
 main .section_work .inner .wrap_work .wrap_list .list::before, main .section_work .inner .wrap_work .wrap_list .list::after {
@@ -1404,7 +1411,7 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
     font-size: 8rem;
   }
   main .section_about .inner .wrap_introduce {
-    width: 90%;
+    width: 80%;
     padding: 150px 0 400px 50px;
   }
   main .section_about .inner .wrap_about .tab li {
@@ -1439,7 +1446,7 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
   }
   main .section_work .inner .wrap_work .wrap_list .list {
     width: 100%;
-    padding: 10% 5%;
+    padding: 10% 5% 12%;
   }
   main .section_work .inner .wrap_work .wrap_list .list + .list {
     margin-top: 15%;
@@ -1483,6 +1490,9 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
   main .section_about {
     padding: 6.25rem 0 0;
   }
+  main .section_about .marquee_top {
+    top: 50%;
+  }
   main .section_about .marquee_bottom {
     bottom: -3%;
   }
@@ -1492,7 +1502,13 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
   main .section_about .inner .wrap_introduce {
     width: 100%;
     padding: 0;
-    padding-bottom: 8.333rem;
+    padding-bottom: 12.5rem;
+  }
+  main .section_about .inner .wrap_about {
+    padding-bottom: 10%;
+  }
+  main .section_about .inner .wrap_about .tab {
+    padding-right: 0;
   }
   main .section_about .inner .wrap_about .tab li {
     padding-left: 0.625rem;
@@ -1500,6 +1516,7 @@ main .section_work.section_promotion .inner .wrap_work .wrap_list .list.active .
     position: relative;
   }
   main .section_about .inner .wrap_about .tit {
+    padding-right: 0;
     font-size: 1.25rem;
     margin-bottom: 0.625rem;
   }
