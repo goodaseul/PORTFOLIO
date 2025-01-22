@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Project from "./pages/Project";
-
+//
 const App: React.FC = () => {
     const [scrollDown, setScrollDown] = useState(false);
     const headerRef = useRef<HTMLDivElement | null>(null);
