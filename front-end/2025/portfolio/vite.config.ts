@@ -4,11 +4,7 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react()],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `@import "./src/styles/style.scss";`,
-            },
-        },
+    define: {
+        "process.env": process.env, // 환경 변수 직접 로드
     },
 });

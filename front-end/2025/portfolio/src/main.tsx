@@ -1,13 +1,18 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-import "./styles/style.css";
+import { ThemeProvider } from "styled-components";
+import { darkTheme } from "./styles/theme.ts";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={darkTheme}>
+                <App />
+            </ThemeProvider>
+        </QueryClientProvider>
     </StrictMode>
 );
