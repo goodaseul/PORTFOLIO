@@ -143,7 +143,7 @@ function updateScrollEffects() {
     }
 
     if (window.scrollY >= sectionWork[0].offsetTop - headerHeight) {
-        body.classList.replace("white_in", "yellow_in");
+        body.classList.add("yellow_in");
     } else {
         body.classList.remove("yellow_in");
     }
