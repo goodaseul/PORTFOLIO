@@ -15,17 +15,17 @@ const Header = () => {
         <>
             <HeaderSection>
                 <Container>
-                    <Wrap>
+                    <NavWrap>
                         {navLinks.map((navLink, index) => (
-                            <li key={index} className={location.pathname === navLink.path ? "active" : ""}>
+                            <NavList key={index} className={location.pathname === navLink.path ? "active" : ""}>
                                 <Link to={navLink.path}>{navLink.label}</Link>
-                            </li>
+                            </NavList>
                         ))}
-                    </Wrap>
+                    </NavWrap>
 
                     <TxtEffectWrap>
                         <TxtDesc>JeongDaseul</TxtDesc>
-                        <TxtAfDesc className="txt_af">JeongDaseul</TxtAfDesc>
+                        <TxtAfDesc>JeongDaseul</TxtAfDesc>
                     </TxtEffectWrap>
                 </Container>
             </HeaderSection>
@@ -46,34 +46,46 @@ const HeaderSection = styled.header`
     }
 `;
 
-const Wrap = styled.ul`
+const NavWrap = styled.ul`
     ${WrapStyles}
     flex-wrap: nowrap;
     height: 100%;
-    li {
-        width: 100%;
-        transform: translateX(0);
-        transition: all 0.3s;
-        text-align: right;
+`;
+
+const NavList = styled.li`
+    width: 100%;
+    transform: translateX(0);
+    transition: all 0.3s;
+    text-align: right;
+    a {
+        position: relative;
+        display: inline-block;
+        font-weight: 500;
+        &::after {
+            content: "";
+            position: absolute;
+            background: ${(props) => props.theme.accentColor};
+            transition: all 0.3s;
+            opacity: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            left: 30%;
+            transform: translateX(-50%);
+            bottom: -50%;
+        }
+    }
+    &.active {
+        transform: translateX(2%);
         a {
-            position: relative;
-            display: inline-block;
-            font-weight: 500;
             &::after {
-                content: "";
-                position: absolute;
-                background: ${(props) => props.theme.accentColor};
-                transition: all 0.3s;
-                opacity: 0;
-                width: 6px;
-                height: 6px;
-                border-radius: 100%;
-                left: 30%;
-                transform: translateX(-50%);
-                bottom: -50%;
+                opacity: 1;
+                left: 50%;
             }
         }
-        &.active {
+    }
+    @media ${media.desktop_hover} {
+        &:hover {
             transform: translateX(2%);
             a {
                 &::after {
@@ -82,27 +94,16 @@ const Wrap = styled.ul`
                 }
             }
         }
-        @media ${media.desktop_hover} {
-            &:hover {
-                transform: translateX(2%);
-                a {
-                    &::after {
-                        opacity: 1;
-                        left: 50%;
-                    }
-                }
-            }
-        }
-        @media ${media.tablet} {
-            text-align: center;
-        }
+    }
+    @media ${media.tablet} {
+        text-align: center;
+    }
 
-        @media ${media.mobile} {
-            a {
-                &::after {
-                    width: ${rem(12)};
-                    height: ${rem(12)};
-                }
+    @media ${media.mobile} {
+        a {
+            &::after {
+                width: ${rem(12)};
+                height: ${rem(12)};
             }
         }
     }
@@ -133,7 +134,7 @@ const TxtEffectWrap = styled.div`
         &:hover {
             p {
                 transform: translate3d(-300%, 0%, 0);
-                &.txt_af {
+                &:nth-child(2) {
                     transform: translate3d(0, 0, 0);
                 }
             }

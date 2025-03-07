@@ -16,6 +16,70 @@ export const Container = styled.div`
         padding: 0 ${rem(80)};
     }
 `;
+export const Section = styled.section`
+    width: 100%;
+    position: relative;
+    z-index: 2;
+`;
+export const BigTit = styled.h2`
+    font-size: 120px;
+    line-height: 1;
+    font-weight: 800;
+    @media ${media.desktop} {
+        font-size: 100px;
+    }
+    @media ${media.tablet} {
+        font-size: ${rem(100)};
+    }
+`;
+export const Tit = styled.p`
+    font-size: 32px;
+    font-weight: bold;
+    @media ${media.desktop} {
+        font-size: 28px;
+    }
+    @media ${media.tablet} {
+        font-size: ${rem(64)};
+    }
+`;
+export const MidTit = styled.p`
+    font-size: 28px;
+    font-weight: bold;
+    @media ${media.desktop} {
+        font-size: 24px;
+    }
+    @media ${media.tablet} {
+        font-size: ${rem(56)};
+    }
+`;
+export const SubTit = styled.p`
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    @media ${media.desktop} {
+        font-size: 20px;
+    }
+    @media ${media.tablet} {
+        font-size: ${rem(48)};
+    }
+`;
+
+export const Icon = styled.i`
+    margin-right: 10px;
+
+    &.icon_notion {
+        width: 36px;
+        height: 36px;
+        background-image: url(#{$url-images}logos/logo_notion.png);
+    }
+    @media ${media.tablet} {
+        margin-right: rem(30px);
+        &.icon_notion {
+            width: rem(80px);
+            height: rem(80px);
+        }
+    }
+`;
 
 export const TxtEffect = css`
     position: relative;

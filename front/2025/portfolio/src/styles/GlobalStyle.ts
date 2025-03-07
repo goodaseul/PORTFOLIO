@@ -172,13 +172,22 @@ button{
     display: block;
     color: inherit;
 }
+mark {
+    padding: 0 5px;
+    background-color: ${(props) => props.theme.accentColor};
+    color: #fff;
+    font-weight: bold;
+}
 
 input{
     &:focus-visible{
         outline: none;
     }
 }
-
+img{
+    max-width: 100%;
+    vertical-align: middle;
+}
 .btn{
     border-radius: 0;
     box-shadow: none;
