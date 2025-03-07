@@ -148,5 +148,5 @@ export const Arrow = css`
 `;
 
 export const ArrowHover = css`
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(-90deg) !important;
 `;

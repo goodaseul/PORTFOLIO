@@ -71,16 +71,21 @@ export const InfoValue = styled.dd`
     @media ${media.desktop_hover} {
         &:hover {
             ${TxtFillHover}
-            svg {
-                ${ArrowHover}
-            }
         }
+    }
+    @media ${media.tablet} {
+        ${TxtFillHover}
     }
 `;
 
 export const ArrowIcon = styled.div`
     ${Arrow}
-    width: 30px;
+    svg {
+        width: 30px;
+        @media ${media.tablet} {
+            ${ArrowHover}
+        }
+    }
 `;
 
 export const TxtDesc = styled.p`
