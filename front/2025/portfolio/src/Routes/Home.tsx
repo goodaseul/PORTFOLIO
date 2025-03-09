@@ -2,9 +2,13 @@ import styled from "styled-components";
 import Intro from "../Components/Intro";
 import About from "../Components/About";
 
-const Home = () => {
+interface HomeProps {
+    sectionRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const Home = ({ sectionRef }: HomeProps) => {
     return (
-        <Main>
+        <Main ref={sectionRef}>
             <Intro />
             <About />
         </Main>

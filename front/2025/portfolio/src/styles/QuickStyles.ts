@@ -10,7 +10,6 @@ export const iconArrow = keyframes`
 
 export const quickSize = `60px`;
 
-// 색상 변수화
 const colors = {
     primary: "#000",
     secondary: "#fff",
@@ -97,10 +96,11 @@ export const BtnTop = styled.button`
     opacity: 0;
     pointer-events: none;
 `;
-export const Icon = styled.i`
+export const QuickIcon = styled.i`
+    display: block;
     width: 100%;
     height: 100%;
-    background-image: url("/images/icon_scroll.png"); // 이미지 경로 수정
+    background-image: url("./images/icon_scroll.png"); // 이미지 경로 수정
     animation: ${iconArrow} infinite 1s ease-in-out;
     filter: brightness(0) invert(1);
 `;

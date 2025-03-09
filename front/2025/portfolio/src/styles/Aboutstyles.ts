@@ -190,6 +190,7 @@ export const Box = styled(motion.div)`
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: center;
+                text-align: center;
             }
         }
     }
@@ -221,7 +222,6 @@ export const Box = styled(motion.div)`
                 p {
                     span {
                         display: inline;
-                        text-align: center;
                     }
                 }
             }

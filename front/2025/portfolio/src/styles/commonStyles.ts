@@ -76,10 +76,10 @@ export const Icon = styled.i`
         background-image: url(#{$url-images}logos/logo_notion.png);
     }
     @media ${media.tablet} {
-        margin-right: rem(30px);
+        margin-right: ${rem(30)};
         &.icon_notion {
-            width: rem(80px);
-            height: rem(80px);
+            width: ${rem(80)};
+            height: ${rem(80)};
         }
     }
 `;

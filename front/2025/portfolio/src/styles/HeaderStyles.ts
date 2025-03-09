@@ -95,6 +95,7 @@ export const TxtEffectWrap = styled.div`
     bottom: 10%;
     color: ${(props) => props.theme.accentColor};
     transform: rotate(90deg);
+    transition: opacity 0.2s;
     p {
         letter-spacing: 0.1em;
         font-weight: bold;

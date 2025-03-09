@@ -6,9 +6,12 @@ const navLinks = [
     { path: "/", label: "About" },
     { path: "/work", label: "Work" },
 ];
-
-const Header = () => {
+interface HeaderProps {
+    isSectionVisible: boolean;
+}
+const Header = ({ isSectionVisible }: HeaderProps) => {
     const location = useLocation();
+    console.log(isSectionVisible);
     return (
         <>
             <HeaderSection>
@@ -21,7 +24,12 @@ const Header = () => {
                         ))}
                     </NavWrap>
 
-                    <TxtEffectWrap>
+                    <TxtEffectWrap
+                        id="topTxtEffect"
+                        style={{
+                            opacity: isSectionVisible ? 0 : 1,
+                        }}
+                    >
                         <TxtDesc>JeongDaseul</TxtDesc>
                         <TxtAfDesc>JeongDaseul</TxtAfDesc>
                     </TxtEffectWrap>
