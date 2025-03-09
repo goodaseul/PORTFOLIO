@@ -35,6 +35,9 @@ export const BigTit = styled.h2`
 export const Tit = styled.p`
     font-size: 32px;
     font-weight: bold;
+    * {
+        font: inherit;
+    }
     @media ${media.desktop} {
         font-size: 28px;
     }
@@ -132,21 +135,4 @@ export const TxtFill = css`
 export const TxtFillHover = css`
     --_p: 100%;
     padding-left: 10px;
-`;
-
-export const Arrow = css`
-    overflow: hidden;
-    position: relative;
-    top: -0.8rem;
-    right: -0.8rem;
-
-    svg {
-        transition: all 0.3s;
-        transform-style: preserve-3d;
-        transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1) skew(-90deg);
-    }
-`;
-
-export const ArrowHover = css`
-    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(-90deg) !important;
 `;

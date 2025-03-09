@@ -89,11 +89,20 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 main, menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  /* font-size: 100%; */
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* font-size: 100%; */
+    vertical-align: baseline;
+    background: transparent;
+    font-size: 100%;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.5;
+    font-style: normal;
+    font-family: "Pretendard", sans-serif;
+    word-break: keep-all;
+    word-wrap: break-word;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -112,7 +121,7 @@ footer, header, hgroup, main, menu, nav, section {
 
     ::selection {
         background-color: ${(props) => props.theme.accentColor};
-        color: ${(props) => props.theme.textColor};
+        color: ${(props) => props.theme.bgColor};
     }
 }
 
@@ -130,7 +139,6 @@ html {
 
   body {
     font-size: 1rem; 
-    line-height: 1.5;
     font-family: "Pretendard", sans-serif;
     background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.textColor};
@@ -177,6 +185,7 @@ mark {
     background-color: ${(props) => props.theme.accentColor};
     color: #fff;
     font-weight: bold;
+  
 }
 
 input{

@@ -20,7 +20,7 @@ const Intro = () => {
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path id="circlePath" fill="none" d="M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
                         <text style={{ fontWeight: "bold", fill: "#fff" }}>
-                            <textPath href="#circlePath">I'm &nbsp; Web &nbsp; Publisher &nbsp; Daseul.</textPath>
+                            <textPath href="#circlePath">I'm &nbsp; Web &nbsp; Front-end &nbsp; Daseul.</textPath>
                         </text>
                     </svg>
                 </WrapObj>

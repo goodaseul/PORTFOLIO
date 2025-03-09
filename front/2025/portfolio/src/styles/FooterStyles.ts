@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../utils/media";
 import { rem } from "../utils/rem";
-import { Arrow, ArrowHover, Container, Txt, TxtAf, TxtEffect, TxtFill, TxtFillHover } from "../styles/commonStyles";
+import { Container, Txt, TxtAf, TxtEffect, TxtFill, TxtFillHover } from "../styles/commonStyles";
 
 export const FooterSection = styled.footer`
     position: sticky;
@@ -45,9 +45,47 @@ export const InfoItem = styled.div`
     &:first-child {
         margin-top: 0;
     }
+    dd {
+        ${TxtFill}
+        a {
+            i {
+                display: block;
+                overflow: hidden;
+                position: relative;
+                top: -0.8rem;
+                right: -0.8rem;
+            }
+            svg {
+                transition: all 0.3s;
+                transform-style: preserve-3d;
+                transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1) skew(-90deg);
+            }
+        }
+    }
+    @media ${media.desktop_hover} {
+        &:hover {
+            dd {
+                ${TxtFillHover}
+                a {
+                    svg {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
 
     @media ${media.tablet} {
         margin-top: ${rem(50)};
+
+        dd {
+            ${TxtFillHover}
+            a {
+                svg {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        }
     }
 `;
 
@@ -59,32 +97,12 @@ export const InfoTitle = styled.dt`
 export const InfoValue = styled.dd`
     display: flex;
     align-items: center;
-    ${TxtFill}
 
     a {
         text-decoration: none;
         color: inherit;
         display: flex;
         align-items: center;
-    }
-
-    @media ${media.desktop_hover} {
-        &:hover {
-            ${TxtFillHover}
-        }
-    }
-    @media ${media.tablet} {
-        ${TxtFillHover}
-    }
-`;
-
-export const ArrowIcon = styled.div`
-    ${Arrow}
-    svg {
-        width: 30px;
-        @media ${media.tablet} {
-            ${ArrowHover}
-        }
     }
 `;
 

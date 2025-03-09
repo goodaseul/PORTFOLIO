@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { ArrowIcon, FooterContainer, FooterSection, InfoItem, InfoList, InfoTitle, InfoValue, TxtAfDesc, TxtDesc, TxtEffectWrap } from "../styles/FooterStyles";
+import { FooterContainer, FooterSection, InfoItem, InfoList, InfoTitle, InfoValue, TxtAfDesc, TxtDesc, TxtEffectWrap } from "../styles/FooterStyles";
+import { useState } from "react";
 
 const infoList = [
     { title: "NAME", value: "JEONG DASEUL" },
@@ -11,6 +12,8 @@ const infoList = [
 ];
 
 const Footer = () => {
+    const [nowYear] = useState(new Date().getFullYear());
+
     return (
         <FooterSection>
             <FooterContainer>
@@ -18,21 +21,23 @@ const Footer = () => {
                     {infoList.map(({ title, value, link }, index) => (
                         <InfoItem key={index}>
                             <InfoTitle>{title} ,</InfoTitle>
-                            <InfoValue as={link ? "a" : "span"} href={link} target="_blank" rel="noopener noreferrer">
-                                {value}
-                                {link && (
-                                    <ArrowIcon>
-                                        <FontAwesomeIcon icon={faArrowRight} />
-                                    </ArrowIcon>
-                                )}
-                            </InfoValue>
+                            <dd>
+                                <InfoValue as={link ? "a" : "span"} href={link} target="_blank" rel="noopener noreferrer">
+                                    {value}
+                                    {link && (
+                                        <i>
+                                            <FontAwesomeIcon icon={faArrowRight} />
+                                        </i>
+                                    )}
+                                </InfoValue>
+                            </dd>
                         </InfoItem>
                     ))}
                 </InfoList>
 
                 <TxtEffectWrap>
-                    <TxtDesc>© 2024 JEONGDASEUL PORTFOLIO</TxtDesc>
-                    <TxtAfDesc>© 2024 JEONGDASEUL PORTFOLIO</TxtAfDesc>
+                    <TxtDesc>© {nowYear} JEONGDASEUL PORTFOLIO</TxtDesc>
+                    <TxtAfDesc>© {nowYear} JEONGDASEUL PORTFOLIO</TxtAfDesc>
                 </TxtEffectWrap>
             </FooterContainer>
         </FooterSection>
