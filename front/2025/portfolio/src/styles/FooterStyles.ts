@@ -8,7 +8,7 @@ export const FooterSection = styled.footer`
     z-index: 1;
     bottom: 0;
     width: 100%;
-    background: ${({ theme }) => theme.bgColor};
+    background: #000;
     padding: 100px 0;
 
     @media ${media.tablet} {
@@ -56,6 +56,7 @@ export const InfoItem = styled.div`
                 right: -0.8rem;
             }
             svg {
+                color: #fff;
                 transition: all 0.3s;
                 transform-style: preserve-3d;
                 transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1) skew(-90deg);

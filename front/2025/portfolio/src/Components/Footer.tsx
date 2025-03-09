@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FooterContainer, FooterSection, InfoItem, InfoList, InfoTitle, InfoValue, TxtAfDesc, TxtDesc, TxtEffectWrap } from "../styles/FooterStyles";
 import { useState } from "react";
-
+import { MdArrowOutward } from "react-icons/md";
 const infoList = [
     { title: "NAME", value: "JEONG DASEUL" },
     { title: "깃허브", value: "바로가기", link: "https://github.com/goodaseul" },
@@ -26,7 +24,7 @@ const Footer = () => {
                                     {value}
                                     {link && (
                                         <i>
-                                            <FontAwesomeIcon icon={faArrowRight} />
+                                            <MdArrowOutward />
                                         </i>
                                     )}
                                 </InfoValue>

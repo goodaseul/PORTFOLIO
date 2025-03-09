@@ -4,6 +4,7 @@ import { media } from "../utils/media";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { rem } from "../utils/rem";
+import { lightTheme } from "./theme";
 export const AboutSection = styled(Section)`
     padding: 300px 0;
     position: relative;
@@ -37,7 +38,7 @@ export const MarqueeTxt = styled.p`
     font-weight: bold;
     -webkit-text-fill-color: rgba(255, 255, 255, 0);
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-color: ${(props) => props.theme.textColor};
     opacity: 0.5;
     white-space: nowrap;
 `;
@@ -87,7 +88,7 @@ export const TabList = styled.li`
         transform: translateY(-50%);
         width: 18px;
         height: 3px;
-        background: #fff;
+        background: ${(props) => props.theme.textColor};
     }
     &.active {
         font-weight: bold;
@@ -134,7 +135,6 @@ export const Hidden = styled.span`
 export const TitShow = styled.span`
     font-size: 24px;
     font-weight: bold;
-    transition: all 0.2s;
     display: block;
 
     position: relative;
@@ -179,8 +179,7 @@ export const Box = styled(motion.div)`
             width: 100%;
             height: 100%;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-
+            background: ${(props) => (props.theme === lightTheme ? "rgba(0, 0, 0, 0.1);" : "rgba(255, 255, 255, 0.1);")};
             display: flex;
             flex-wrap: wrap;
             align-items: center;

@@ -3,6 +3,15 @@ import styled from "styled-components";
 import { media } from "../utils/media";
 import { rem } from "../utils/rem";
 
+export const ToggleDark = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 1%;
+`;
+
 export const HeaderSection = styled.header`
     position: fixed;
     left: 0;
@@ -10,7 +19,7 @@ export const HeaderSection = styled.header`
     z-index: 9;
     width: 100%;
     padding: 30px 0;
-    background: #000;
+    background: ${(props) => props.theme.bgColor};
     @media ${media.tablet} {
         padding: ${rem(60)} 0;
     }
@@ -90,7 +99,10 @@ export const TxtAfDesc = styled.p`
 export const TxtEffectWrap = styled.div`
     ${TxtEffect}
     position: fixed;
-    left: 0;
+    /* left: 0; */
+    /* left: calc(-2.5% - 0.5rem);
+     */
+    left: -30px;
     z-index: 9;
     bottom: 10%;
     color: ${(props) => props.theme.accentColor};
@@ -102,6 +114,8 @@ export const TxtEffectWrap = styled.div`
         padding: 0 5px;
     }
     @media ${media.desktop_hover} {
+        left: -38px;
+
         &:hover {
             p {
                 transform: translate3d(-300%, 0%, 0);
@@ -113,9 +127,13 @@ export const TxtEffectWrap = styled.div`
     }
 
     @media ${media.tablet} {
-        left: ${rem(-130)};
+        left: ${rem(-120)};
         p {
             padding: 0 ${rem(40)};
         }
+    }
+
+    @media ${media.mobile} {
+        left: ${rem(-130)};
     }
 `;

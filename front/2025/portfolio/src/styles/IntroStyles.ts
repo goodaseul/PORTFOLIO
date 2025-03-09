@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { BigTit, Container, Section } from "../styles/commonStyles";
 import { media } from "../utils/media";
 import { rem } from "../utils/rem";
+import { lightTheme } from "./theme";
 export const rotate = keyframes`
   to {
     transform: rotate(-360deg);
@@ -9,6 +10,7 @@ export const rotate = keyframes`
 `;
 export const IntroSection = styled(Section)`
     background: ${(props) => props.theme.bgColor};
+
     z-index: 3;
 `;
 export const WrapMyPhoto = styled.div`
@@ -52,6 +54,10 @@ export const WrapObj = styled.div`
         path {
             transition: all 0.2s ease;
         }
+        text {
+            font-weight: bold;
+            fill: ${(props) => (props.theme === lightTheme ? props.theme.accentColor : props.theme.textColor)};
+        }
     }
     @media ${media.desktop} {
         right: 0;
@@ -78,7 +84,7 @@ export const ContainerPart = styled(Container)`
 export const BigTitPart = styled(BigTit)`
     position: relative;
     top: 200px;
-    color: #fff;
+
     @media ${media.tablet} {
         top: ${rem(400)};
     }

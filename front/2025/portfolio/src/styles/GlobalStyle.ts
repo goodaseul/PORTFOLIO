@@ -103,6 +103,8 @@ time, mark, audio, video {
     font-family: "Pretendard", sans-serif;
     word-break: keep-all;
     word-wrap: break-word;
+
+    color: ${(props) => props.theme.textColor};
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -141,7 +143,6 @@ html {
     font-size: 1rem; 
     font-family: "Pretendard", sans-serif;
     background-color: ${(props) => props.theme.bgColor};
-    color: ${(props) => props.theme.textColor};
     overflow-x: hidden;
   }
 

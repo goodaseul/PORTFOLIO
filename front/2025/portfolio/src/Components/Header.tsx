@@ -1,6 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container } from "../styles/commonStyles";
-import { HeaderSection, NavList, NavWrap, TxtAfDesc, TxtDesc, TxtEffectWrap } from "../styles/HeaderStyles";
+import { ToggleDark, HeaderSection, NavList, NavWrap, TxtAfDesc, TxtDesc, TxtEffectWrap } from "../styles/HeaderStyles";
+
+import { useRecoilState } from "recoil";
+import { isDarkAtom } from "../recoil/atoms";
+import { IoMdSunny } from "react-icons/io";
+import { MdDarkMode } from "react-icons/md";
 
 const navLinks = [
     { path: "/", label: "About" },
@@ -10,11 +15,14 @@ interface HeaderProps {
     isSectionVisible: boolean;
 }
 const Header = ({ isSectionVisible }: HeaderProps) => {
+    const [isDark, setIsDark] = useRecoilState(isDarkAtom);
+
     const location = useLocation();
-    console.log(isSectionVisible);
     return (
         <>
             <HeaderSection>
+                <ToggleDark onClick={() => setIsDark((prev) => !prev)}>{isDark ? <IoMdSunny /> : <MdDarkMode />}</ToggleDark>
+
                 <Container>
                     <NavWrap>
                         {navLinks.map((navLink, index) => (

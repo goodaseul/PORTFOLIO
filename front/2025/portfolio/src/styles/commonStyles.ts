@@ -25,6 +25,7 @@ export const BigTit = styled.h2`
     font-size: 120px;
     line-height: 1;
     font-weight: 800;
+    color: ${(props) => props.theme.textColor};
     @media ${media.desktop} {
         font-size: 100px;
     }

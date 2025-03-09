@@ -36,14 +36,16 @@ const Quick = ({ sectionRef, isSectionVisible }: QuickProps) => {
     }
 
     return (
-        <QuickPart className={quickClassName}>
-            <Induction className="induction">
-                <QuickIcon className="icon">스크롤 유도 버튼</QuickIcon>
-            </Induction>
-            <BtnTop className="btn_top" onClick={onTop}>
-                <QuickIcon className="icon">상단으로 올라가기</QuickIcon>
-            </BtnTop>
-        </QuickPart>
+        <>
+            <QuickPart className={quickClassName}>
+                <Induction className="induction">
+                    <QuickIcon className="icon">스크롤 유도 버튼</QuickIcon>
+                </Induction>
+                <BtnTop className="btn_top" onClick={onTop}>
+                    <QuickIcon className="icon">상단으로 올라가기</QuickIcon>
+                </BtnTop>
+            </QuickPart>
+        </>
     );
 };
 
