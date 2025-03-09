@@ -2,6 +2,7 @@ import { Txt, TxtAf, TxtEffect, WrapStyles } from "../styles/commonStyles";
 import styled from "styled-components";
 import { media } from "../utils/media";
 import { rem } from "../utils/rem";
+import { lightTheme } from "./theme";
 
 export const ToggleDark = styled.button`
     display: flex;
@@ -94,14 +95,12 @@ export const TxtDesc = styled.p`
 
 export const TxtAfDesc = styled.p`
     ${TxtAf}
+    color: ${(props) => props.theme === lightTheme && props.theme.textColor};
 `;
 
 export const TxtEffectWrap = styled.div`
     ${TxtEffect}
     position: fixed;
-    /* left: 0; */
-    /* left: calc(-2.5% - 0.5rem);
-     */
     left: -30px;
     z-index: 9;
     bottom: 10%;
