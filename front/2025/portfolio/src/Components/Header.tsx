@@ -16,7 +16,6 @@ interface HeaderProps {
 }
 const Header = ({ isSectionVisible }: HeaderProps) => {
     const [isDark, setIsDark] = useRecoilState(isDarkAtom);
-
     const location = useLocation();
     return (
         <>

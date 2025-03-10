@@ -9,7 +9,7 @@ export const AboutSection = styled(Section)`
     padding: 300px 0;
     position: relative;
     background: ${(props) => props.theme.bgColor};
-
+    z-index: 3;
     @media ${media.tablet} {
         padding: ${rem(500)} 0;
     }
@@ -26,11 +26,11 @@ export const MarqueeTop = styled(Marquee)`
 
 export const MarqueeBottom = styled(Marquee)`
     position: absolute;
-    bottom: -7%;
+    bottom: -10%;
     pointer-events: none;
 
     @media ${media.tablet} {
-        bottom: -3%;
+        bottom: -5%;
     }
 `;
 export const MarqueeTxt = styled.p`
@@ -80,6 +80,8 @@ export const TabList = styled.li`
     cursor: pointer;
     position: relative;
     padding-left: 50px;
+    font-weight: bold;
+
     &::before {
         content: "";
         position: absolute;
@@ -91,7 +93,6 @@ export const TabList = styled.li`
         background: ${(props) => props.theme.textColor};
     }
     &.active {
-        font-weight: bold;
         color: ${(props) => props.theme.accentColor};
         &:before {
             background: ${(props) => props.theme.accentColor};

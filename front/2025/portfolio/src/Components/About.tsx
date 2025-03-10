@@ -95,8 +95,8 @@ const About = () => {
                                         data-id={`data-${index}`}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{
-                                            opacity: isInView ? 1 : 0,
-                                            y: isInView ? 0 : 20,
+                                            opacity: isInView && activeTab ? 1 : 0,
+                                            y: isInView && activeTab ? 0 : 20,
                                         }}
                                         transition={{
                                             delay: index * 0.1,
@@ -123,8 +123,8 @@ const About = () => {
                                         key={index}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{
-                                            opacity: activeTab === 1 ? 1 : 0,
-                                            y: activeTab === 1 ? 0 : 20,
+                                            opacity: isInView && activeTab === 1 ? 1 : 0,
+                                            y: isInView && activeTab === 1 ? 0 : 20,
                                         }}
                                         transition={{
                                             delay: index * 0.1,

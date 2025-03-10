@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Intro from "../Components/Intro";
 import About from "../Components/About";
+import Skills from "../Components/Skills";
 
 interface HomeProps {
     sectionRef: React.RefObject<HTMLDivElement | null>;
@@ -11,6 +12,7 @@ const Home = ({ sectionRef }: HomeProps) => {
         <Main ref={sectionRef}>
             <Intro />
             <About />
+            <Skills />
         </Main>
     );
 };

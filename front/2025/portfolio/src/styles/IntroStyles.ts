@@ -11,7 +11,7 @@ export const rotate = keyframes`
 export const IntroSection = styled(Section)`
     background: ${(props) => props.theme.bgColor};
 
-    z-index: 3;
+    z-index: 4;
 `;
 export const WrapMyPhoto = styled.div`
     overflow: hidden;
