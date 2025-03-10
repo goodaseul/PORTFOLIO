@@ -4,6 +4,7 @@ import { rem } from "../utils/rem";
 import { Container, Txt, TxtAf, TxtEffect, TxtFill, TxtFillHover } from "../styles/commonStyles";
 
 export const FooterSection = styled.footer`
+    border-top: 5px solid ${(props) => props.theme.accentColor};
     position: sticky;
     z-index: 1;
     bottom: 0;
