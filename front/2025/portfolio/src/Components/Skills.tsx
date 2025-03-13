@@ -111,10 +111,6 @@ const Skills = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [isInView, setIsInView] = useState(false);
 
-    // const onClick = (index: number) => {
-    //     setActiveTab(index);
-    // };
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
