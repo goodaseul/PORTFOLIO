@@ -15,10 +15,26 @@ export const BoxBig = styled(Box)`
         ${TitShow} {
             transition: all 0.1s;
         }
+        i {
+            line-height: normal;
+            display: none;
+            svg {
+                vertical-align: text-top;
+            }
+        }
         &:hover {
             ${TitShow} {
                 font-size: 30px;
             }
+            i {
+                display: block;
+            }
         }
+    }
+`;
+
+export const Skill = styled.p`
+    ${TitShow} {
+        margin-left: 5px;
     }
 `;

@@ -1,18 +1,119 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ContainerPart, TabCont, TabConts, TabList, TitShow } from "../styles/Aboutstyles";
-import { BoxBig, SkillPart, SkillSection, TabsStart } from "../styles/SkillStyles";
+import { BoxBig, Skill, SkillPart, SkillSection, TabsStart } from "../styles/SkillStyles";
+import { FaGithub, FaHtml5, FaReact } from "react-icons/fa";
+import { SiAdobephotoshop, SiCsswizardry, SiFilezilla, SiNextdotjs, SiNotion, SiTypescript } from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io";
+import { BsBootstrapFill, BsFiletypeScss } from "react-icons/bs";
+import { TbBrandCss3 } from "react-icons/tb";
+import { DiJqueryLogo } from "react-icons/di";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { PiFigmaLogoBold } from "react-icons/pi";
+import { MdOutlineCreditCard } from "react-icons/md";
+import { VscCode } from "react-icons/vsc";
 
-const front = ["HTML", "CSS", "SCSS", "Javascript", "jQuery", "Bootstrap", "TypeScript", "React", "Next.js"];
-const tool = ["GitHub", "Figma", "Adobe Photoshop", "Notion", "EditPlus", "FileZilla", "VS code"];
+const front = [
+    {
+        icon: <FaHtml5 />,
+        skill: "HTML",
+    },
+
+    {
+        icon: <SiCsswizardry />,
+        skill: "CSS",
+    },
+    {
+        icon: <TbBrandCss3 />,
+        skill: "CSS3",
+    },
+
+    {
+        icon: <BsFiletypeScss />,
+        skill: "SCSS",
+    },
+
+    {
+        icon: <IoLogoJavascript />,
+        skill: "Javascript",
+    },
+
+    {
+        icon: <DiJqueryLogo />,
+        skill: "jQuery",
+    },
+
+    {
+        icon: <BsBootstrapFill />,
+        skill: "Bootstrap",
+    },
+
+    {
+        icon: <SiTypescript />,
+        skill: "TypeScript",
+    },
+
+    {
+        icon: <RiTailwindCssFill />,
+        skill: "tailwindcss",
+    },
+    {
+        icon: <FaReact />,
+        skill: "React",
+    },
+    {
+        icon: <SiNextdotjs />,
+        skill: "Next.js",
+    },
+];
+const tool = [
+    {
+        icon: <FaGithub />,
+        skill: "GitHub",
+    },
+    {
+        icon: <PiFigmaLogoBold />,
+        skill: "Figma",
+    },
+    {
+        icon: <SiAdobephotoshop />,
+        skill: "Adobe Photoshop",
+    },
+    {
+        icon: <SiNotion />,
+        skill: "Notion",
+    },
+
+    {
+        icon: <MdOutlineCreditCard />,
+        skill: "EditPlus",
+    },
+
+    {
+        icon: <SiFilezilla />,
+        skill: "FileZilla",
+    },
+
+    {
+        icon: <VscCode />,
+        skill: "VS code",
+    },
+];
 const all = [...front, ...tool];
+
+const tabData = [
+    { id: 0, name: "all", data: all },
+    { id: 1, name: "front", data: front },
+    { id: 2, name: "tool", data: tool },
+];
 
 const Skills = () => {
     const [activeTab, setActiveTab] = useState(0);
-    const onClick = (index: number) => {
-        setActiveTab(index);
-    };
     const [isInView, setIsInView] = useState(false);
+
+    // const onClick = (index: number) => {
+    //     setActiveTab(index);
+    // };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -40,95 +141,41 @@ const Skills = () => {
             <ContainerPart>
                 <SkillPart>
                     <TabsStart>
-                        <TabList className={activeTab === 0 ? "active" : ""} onClick={() => onClick(0)}>
-                            ALL
-                        </TabList>
-                        <TabList className={activeTab === 1 ? "active" : ""} onClick={() => onClick(1)}>
-                            Front-end
-                        </TabList>
-
-                        <TabList className={activeTab === 2 ? "active" : ""} onClick={() => onClick(2)}>
-                            Tools
-                        </TabList>
+                        {tabData.map(({ id, name }) => (
+                            <TabList key={id} className={activeTab === id ? "active" : ""} onClick={() => setActiveTab(id)}>
+                                {name}
+                            </TabList>
+                        ))}
                     </TabsStart>
                     <TabConts>
-                        <TabCont className={activeTab === 0 ? "active" : ""}>
-                            {all.map((skill, index) => (
-                                <BoxBig key={index}>
-                                    <motion.div
-                                        data-id={`skill-${index}`}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{
-                                            opacity: isInView && activeTab ? 1 : 0,
-                                            y: isInView && activeTab ? 0 : 20,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.1,
-                                            duration: 0.5,
-                                        }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                    >
-                                        <div>
-                                            <p>
-                                                <TitShow>{skill}</TitShow>
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </BoxBig>
-                            ))}
-                        </TabCont>
-
-                        <TabCont className={activeTab === 1 ? "active" : ""}>
-                            {front.map((skill, index) => (
-                                <BoxBig key={index}>
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{
-                                            opacity: isInView && activeTab === 1 ? 1 : 0,
-                                            y: isInView && activeTab === 1 ? 0 : 20,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.1,
-                                            duration: 0.5,
-                                        }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                    >
-                                        <div>
-                                            <p>
-                                                <TitShow>{skill}</TitShow>
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </BoxBig>
-                            ))}
-                        </TabCont>
-
-                        <TabCont className={activeTab === 2 ? "active" : ""}>
-                            {tool.map((skill, index) => (
-                                <BoxBig key={index}>
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{
-                                            opacity: isInView && activeTab === 2 ? 1 : 0,
-                                            y: isInView && activeTab === 2 ? 0 : 20,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.1,
-                                            duration: 0.5,
-                                        }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                    >
-                                        <div>
-                                            <p>
-                                                <TitShow>{skill}</TitShow>
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </BoxBig>
-                            ))}
-                        </TabCont>
+                        {tabData.map(({ id, data }) => (
+                            <TabCont key={id} className={activeTab === id ? "active" : ""}>
+                                {data.map((skill, index) => (
+                                    <BoxBig key={index}>
+                                        <motion.div
+                                            data-id={`skill-${id}-${index}`}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{
+                                                opacity: isInView && activeTab === id ? 1 : 0,
+                                                y: isInView && activeTab === id ? 0 : 20,
+                                            }}
+                                            transition={{
+                                                delay: index * 0.1,
+                                                duration: 0.5,
+                                            }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                        >
+                                            <div>
+                                                <Skill>
+                                                    <i> {skill.icon}</i>
+                                                    <TitShow>{skill.skill}</TitShow>
+                                                </Skill>
+                                            </div>
+                                        </motion.div>
+                                    </BoxBig>
+                                ))}
+                            </TabCont>
+                        ))}
                     </TabConts>
                 </SkillPart>
             </ContainerPart>

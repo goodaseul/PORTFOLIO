@@ -175,7 +175,7 @@ export const Box = styled(motion.div)`
         width: 100%;
         height: 100%;
         > div {
-            padding: 0 20px;
+            padding: 0 15px;
 
             width: 100%;
             height: 100%;
