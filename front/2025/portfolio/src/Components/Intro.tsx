@@ -23,9 +23,9 @@ const Intro = () => {
                 </BigTitPart>
 
                 <WrapMyPhoto>
-                    <Img className={IsActiveImg === 0 ? "active" : ""} src={images[0]} alt="Me 1" />
-                    <Img className={IsActiveImg === 1 ? "active" : ""} src={images[1]} alt="Me 2" />
-                    <Img className={IsActiveImg === 2 ? "active" : ""} src={images[2]} alt="Me 3" />
+                    {images.map((image, index) => (
+                        <Img key={index} className={IsActiveImg === index ? "active" : ""} src={image} alt={`Me ${index + 1}`} />
+                    ))}
                 </WrapMyPhoto>
 
                 <WrapObj>
