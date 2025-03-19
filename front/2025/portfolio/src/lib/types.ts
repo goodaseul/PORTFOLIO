@@ -7,4 +7,5 @@ export interface IProject {
     link: string;
     logo: string;
     date: string;
+    filter: string;
 }
