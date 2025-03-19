@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { projectSelector } from "../lib/api";
 import { useRecoilValueLoadable } from "recoil";
 import { BigTit, Container } from "../styles/commonStyles";
-import { ImgWrap, MotionDiv, Project, TopTitle, WorkSection, WrapInfo, Wrapper } from "../styles/WorkStyles";
+import { ImgWrap, MotionDiv, Name, Project, Tag, TagWrap, TopTitle, WorkSection, WrapInfo, Wrapper } from "../styles/WorkStyles";
 
 const Work = () => {
     const projectLoadable = useRecoilValueLoadable(projectSelector);
@@ -21,21 +21,27 @@ const Work = () => {
                     <Wrapper>
                         {projectLoadable.contents?.map((project, index) => {
                             return (
-                                <MotionDiv key={project.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: index * 0.05 }} viewport={{ once: false, amount: 0.3 }}>
+                                <MotionDiv key={project.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }} viewport={{ once: false, amount: 0.1 }}>
                                     <Project>
-                                        <p>{project.name}</p>
+                                        <Name>{project.name}</Name>
                                         <WrapInfo>
-                                            <p>{project?.multilingual}</p>
+                                            {project?.multilingual && <p>{project?.multilingual}</p>}
+
                                             <p>{project.contribution}</p>
                                             <p>{project.way}</p>
                                         </WrapInfo>
                                         <p>
                                             <Link to={project?.link} />
                                         </p>
-                                        {project?.logo && (
+
+                                        {project?.logo ? (
                                             <ImgWrap>
-                                                <img src={`./images/logos/${project?.logo}`} alt={`${project.name} 이미지`} />
+                                                <img src={`./images/logos/${project?.logo}`} alt={`${project.name} 이미지`} />{" "}
                                             </ImgWrap>
+                                        ) : (
+                                            <TagWrap>
+                                                <Tag>{project?.filter}</Tag>
+                                            </TagWrap>
                                         )}
 
                                         <Date>{project.date}</Date>
