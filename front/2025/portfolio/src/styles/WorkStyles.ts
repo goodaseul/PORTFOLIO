@@ -4,6 +4,7 @@ import { media } from "../utils/media";
 import { rem } from "../utils/rem";
 import { motion } from "framer-motion";
 import { lightTheme } from "./theme";
+import { Link } from "react-router-dom";
 
 export const WorkSection = styled(Section)`
     padding: 300px 0;
@@ -60,14 +61,13 @@ export const MotionDiv = styled(motion.div)`
     }
 `;
 export const Project = styled.div`
-    background: ${(props) => props.theme.textColor};
-    /* background-color: rgba(255, 255, 255, 0.2); */
+    background-color: #fff;
     border-radius: 10px;
     padding: 7%;
     position: relative;
     min-height: 230px;
     p {
-        color: ${(props) => props.theme.bgColor};
+        color: #000;
     }
 `;
 export const Name = styled.p`
@@ -109,13 +109,12 @@ export const WrapInfo = styled.div`
         }
     }
 `;
-
 export const positionStyles = css`
     position: absolute;
     left: 55%;
     transform: translateX(-50%);
     bottom: 5%;
-    /* pointer-events: none; */
+    pointer-events: none;
     width: 300px;
 `;
 export const ImgWrap = styled.div`
@@ -124,24 +123,37 @@ export const ImgWrap = styled.div`
 export const TagWrap = styled.div`
     ${positionStyles}
 `;
-export const Date = styled.span`
-    background: ${(props) => props.theme.bgColor};
-    padding: 1%;
-    font-size: 16px;
+export const DateTxt = styled.p`
+    font-size: 13px;
     position: absolute;
-    color: ${(props) => props.theme.textColor};
     right: 5%;
     top: 5%;
 `;
-
 export const Tag = styled.span`
-    display: block;
     width: fit-content;
     background: ${(props) => props.theme.accentColor};
-    padding: 1% 3%;
+    padding: 0 3%;
+    height: 30px;
     border-radius: 5px;
     font-size: 16px;
     position: absolute;
     right: 0;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+`;
+export const StyledLink = styled(Link)`
+    position: absolute;
+    right: 3%;
+    bottom: 5%;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    padding: 0% 1.5%;
+    height: 30px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-self: center;
 `;

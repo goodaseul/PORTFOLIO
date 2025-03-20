@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { projectSelector } from "../lib/api";
 import { useRecoilValueLoadable } from "recoil";
 import { BigTit, Container } from "../styles/commonStyles";
-import { ImgWrap, MotionDiv, Name, Project, Tag, TagWrap, TopTitle, WorkSection, WrapInfo, Wrapper } from "../styles/WorkStyles";
+import { DateTxt, ImgWrap, MotionDiv, Name, Project, StyledLink, Tag, TagWrap, TopTitle, WorkSection, WrapInfo, Wrapper } from "../styles/WorkStyles";
+import { MdArrowOutward } from "react-icons/md";
+import { CgImage } from "react-icons/cg";
 
 const Work = () => {
     const projectLoadable = useRecoilValueLoadable(projectSelector);
@@ -16,7 +18,7 @@ const Work = () => {
                 <Container>
                     <TopTitle>
                         <BigTit>WEB SITE.</BigTit>
-                        <Link to="https://www.notion.so/655ebd86a2e540a698d2595cb39e81d5"></Link>
+                        <Link target="_blank" to="https://www.notion.so/655ebd86a2e540a698d2595cb39e81d5"></Link>
                     </TopTitle>
                     <Wrapper>
                         {projectLoadable.contents?.map((project, index) => {
@@ -30,9 +32,15 @@ const Work = () => {
                                             <p>{project.contribution}</p>
                                             <p>{project.way}</p>
                                         </WrapInfo>
-                                        <p>
-                                            <Link to={project?.link} />
-                                        </p>
+                                        {project?.filter?.includes("프로모션") ? (
+                                            <StyledLink to={""}>
+                                                <CgImage />
+                                            </StyledLink>
+                                        ) : (
+                                            <StyledLink target="_blank" to={project?.link}>
+                                                <MdArrowOutward />
+                                            </StyledLink>
+                                        )}
 
                                         {project?.logo ? (
                                             <ImgWrap>
@@ -44,7 +52,7 @@ const Work = () => {
                                             </TagWrap>
                                         )}
 
-                                        <Date>{project.date}</Date>
+                                        <DateTxt>{project.date}</DateTxt>
                                     </Project>
                                 </MotionDiv>
                             );
