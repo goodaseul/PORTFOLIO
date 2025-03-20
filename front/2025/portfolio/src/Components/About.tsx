@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { AboutPart, AboutSection, Box, ContainerPart, Desc, Hidden, IntroducePart, MarqueeBottom, MarqueeTop, MarqueeTxt, TabCont, TabConts, TabList, Tabs, TitShow } from "../styles/Aboutstyles";
 import { Tit } from "../styles/commonStyles";
@@ -28,29 +28,9 @@ const About = () => {
     const onClick = (index: number) => {
         setActiveTab(index);
     };
-    const [isInView, setIsInView] = useState(false);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    setIsInView(entry.isIntersecting);
-                });
-            },
-            { threshold: 0.5 }
-        );
-
-        const elements = document.querySelectorAll('[data-id^="data-"]');
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-
-        return () => {
-            elements.forEach((element) => {
-                observer.unobserve(element);
-            });
-        };
-    }, []);
+    const tabs = ["일할 때", "평상 시"];
+    const tabContents = [descriptions, descriptionsMe];
 
     return (
         <AboutSection>
@@ -80,69 +60,30 @@ const About = () => {
 
                 <AboutPart>
                     <Tabs>
-                        <TabList className={activeTab === 0 ? "active" : ""} onClick={() => onClick(0)}>
-                            일할 때
-                        </TabList>
-                        <TabList className={activeTab === 1 ? "active" : ""} onClick={() => onClick(1)}>
-                            평상 시
-                        </TabList>
+                        {tabs.map((tab, index) => (
+                            <TabList key={index} className={activeTab === index ? "active" : ""} onClick={() => onClick(index)}>
+                                {tab}
+                            </TabList>
+                        ))}
                     </Tabs>
                     <TabConts>
-                        <TabCont className={activeTab === 0 ? "active" : ""}>
-                            {descriptions.map(({ title, text, textInfront }, index) => (
-                                <Box key={index}>
-                                    <motion.div
-                                        data-id={`data-${index}`}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{
-                                            opacity: isInView && activeTab ? 1 : 0,
-                                            y: isInView && activeTab ? 0 : 20,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.1,
-                                            duration: 0.5,
-                                        }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                    >
-                                        <div>
-                                            <p>
-                                                {textInfront && <Hidden>{textInfront}</Hidden>}
-                                                &nbsp; {title && <TitShow>{title}</TitShow>}&nbsp;
-                                                {text && <Hidden>{text}</Hidden>}
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </Box>
-                            ))}
-                        </TabCont>
-
-                        <TabCont className={activeTab === 1 ? "active" : ""}>
-                            {descriptionsMe.map(({ title, text, textInfront }, index) => (
-                                <Box key={index}>
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{
-                                            opacity: isInView && activeTab === 1 ? 1 : 0,
-                                            y: isInView && activeTab === 1 ? 0 : 20,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.1,
-                                            duration: 0.5,
-                                        }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                    >
-                                        <div>
-                                            <p>
-                                                {textInfront && <Hidden>{textInfront}</Hidden>}
-                                                &nbsp;{title && <TitShow>{title}</TitShow>}&nbsp;
-                                                {text && <Hidden>{text}</Hidden>}
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </Box>
-                            ))}
-                        </TabCont>
+                        {tabContents.map((content, tabIndex) => (
+                            <TabCont key={tabIndex} className={activeTab === tabIndex ? "active" : ""}>
+                                {content.map(({ title, text, textInfront }, index) => (
+                                    <Box key={index}>
+                                        <motion.div whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.3, delay: index * 0.1, ease: "easeOut" }} viewport={{ once: false, amount: 0.1 }}>
+                                            <div>
+                                                <p>
+                                                    {textInfront && <Hidden>{textInfront}</Hidden>}
+                                                    &nbsp;{title && <TitShow>{title}</TitShow>}&nbsp;
+                                                    {text && <Hidden>{text}</Hidden>}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    </Box>
+                                ))}
+                            </TabCont>
+                        ))}
                     </TabConts>
                 </AboutPart>
             </ContainerPart>

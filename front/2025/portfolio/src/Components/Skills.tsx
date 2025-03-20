@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ContainerPart, TabCont, TabConts, TabList, TitShow } from "../styles/Aboutstyles";
 import { BoxBig, Skill, SkillPart, SkillSection, TabsStart } from "../styles/SkillStyles";
@@ -109,29 +109,6 @@ const tabData = [
 
 const Skills = () => {
     const [activeTab, setActiveTab] = useState(0);
-    const [isInView, setIsInView] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    setIsInView(entry.isIntersecting);
-                });
-            },
-            { threshold: 0.5 }
-        );
-
-        const elements = document.querySelectorAll('[data-id^="skill-"]');
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-
-        return () => {
-            elements.forEach((element) => {
-                observer.unobserve(element);
-            });
-        };
-    }, []);
     return (
         <SkillSection>
             <ContainerPart>
@@ -148,19 +125,7 @@ const Skills = () => {
                             <TabCont key={id} className={activeTab === id ? "active" : ""}>
                                 {data.map((skill, index) => (
                                     <BoxBig key={index}>
-                                        <motion.div
-                                            data-id={`skill-${id}-${index}`}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{
-                                                opacity: isInView && activeTab === id ? 1 : 0,
-                                                y: isInView && activeTab === id ? 0 : 20,
-                                            }}
-                                            transition={{
-                                                delay: index * 0.1,
-                                                duration: 0.5,
-                                            }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                        >
+                                        <motion.div whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.3, delay: index * 0.1, ease: "easeOut" }} viewport={{ once: false, amount: 0.1 }}>
                                             <div>
                                                 <Skill>
                                                     <i> {skill.icon}</i>
