@@ -1,11 +1,8 @@
-import styled from "styled-components";
 import Intro from "../Components/Intro";
 import About from "../Components/About";
 import Skills from "../Components/Skills";
-
-interface HomeProps {
-    sectionRef: React.RefObject<HTMLDivElement | null>;
-}
+import { HomeProps } from "../lib/types";
+import { Main } from "../styles/commonStyles";
 
 const Home = ({ sectionRef }: HomeProps) => {
     return (
@@ -16,8 +13,5 @@ const Home = ({ sectionRef }: HomeProps) => {
         </Main>
     );
 };
-const Main = styled.main`
-    overflow: clip;
-`;
 
 export default Home;

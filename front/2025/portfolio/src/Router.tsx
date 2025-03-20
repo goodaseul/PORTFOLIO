@@ -9,7 +9,7 @@ interface RouterProps {
 const Router = ({ sectionRef }: RouterProps) => {
     return (
         <Routes>
-            <Route path="/work" element={<Work />}></Route>
+            <Route path="/work" element={<Work sectionRef={sectionRef} />}></Route>
             <Route path="/" element={<Home sectionRef={sectionRef} />}></Route>
         </Routes>
     );

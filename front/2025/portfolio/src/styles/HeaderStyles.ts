@@ -8,7 +8,6 @@ export const ToggleDark = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-
     position: absolute;
     left: 1%;
 `;
@@ -17,7 +16,7 @@ export const HeaderSection = styled.header`
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 9;
+    z-index: 10;
     width: 100%;
     padding: 30px 0;
     background: ${(props) => props.theme.bgColor};

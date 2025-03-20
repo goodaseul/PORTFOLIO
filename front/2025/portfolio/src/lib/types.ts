@@ -1,3 +1,7 @@
+export interface HomeProps {
+    sectionRef: React.RefObject<HTMLDivElement | null>;
+}
+
 export interface IProject {
     id: number;
     name: string;

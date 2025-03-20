@@ -3,6 +3,13 @@ import { media } from "../utils/media";
 
 import styled, { css } from "styled-components";
 
+export const Main = styled.main`
+    position: relative;
+    z-index: 9;
+    overflow: clip;
+    border-bottom: 5px solid ${(props) => props.theme.accentColor};
+`;
+
 export const Container = styled.div`
     width: 1480px;
     padding: 0 20px;
