@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { AboutPart, AboutSection, Box, ContainerPart, Desc, Hidden, IntroducePart, MarqueeBottom, MarqueeTop, MarqueeTxt, TabCont, TabConts, TabList, Tabs, TitShow } from "../styles/Aboutstyles";
+import { AboutPart, AboutSection, Box, ContainerPart, Desc, Hidden, IntroducePart, MarqueeBottom, MarqueeTop, MarqueeTxt, TabCont, TabConts, TabList, Tabs, TitShow } from "../styles/AboutStyles";
 import { Tit } from "../styles/commonStyles";
 const descriptions = [
     { title: "긍정", text: "적인 방향으로 프로젝트를 완수합니다." },

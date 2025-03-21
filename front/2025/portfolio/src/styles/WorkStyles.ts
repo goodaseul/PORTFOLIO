@@ -37,7 +37,6 @@ export const TopTitle = styled.div`
         top: 5.2rem;
     }
 `;
-
 export const Wrapper = styled.div`
     ${WrapStyles}
     width: 100%;
@@ -94,6 +93,7 @@ export const Project = styled.div`
 `;
 export const Name = styled.p`
     font-weight: bold;
+
     position: relative;
     padding-left: 3%;
     font-size: 24px;
@@ -139,7 +139,6 @@ export const WrapInfo = styled.div`
         }
     }
 `;
-
 export const WrapBottom = styled.div`
     display: flex;
     align-items: flex-end;

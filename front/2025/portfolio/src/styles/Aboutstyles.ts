@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container, Section } from "../styles/commonStyles";
+import { Container, Section } from "./commonStyles";
 import { media } from "../utils/media";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";

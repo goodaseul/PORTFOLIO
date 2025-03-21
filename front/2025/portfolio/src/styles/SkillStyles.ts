@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AboutSection, Box, Tabs, TitShow } from "./Aboutstyles";
+import { AboutSection, Box, Tabs, TitShow } from "./AboutStyles";
 import { media } from "../utils/media";
 
 export const SkillSection = styled(AboutSection)`

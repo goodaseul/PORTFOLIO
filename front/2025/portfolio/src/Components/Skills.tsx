@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ContainerPart, TabCont, TabConts, TabList, TitShow } from "../styles/Aboutstyles";
+import { ContainerPart, TabCont, TabConts, TabList, TitShow } from "../styles/AboutStyles";
 import { BoxBig, Skill, SkillPart, SkillSection, TabsStart } from "../styles/SkillStyles";
 import { FaGithub, FaHtml5, FaReact } from "react-icons/fa";
 import { SiAdobephotoshop, SiCsswizardry, SiFilezilla, SiNextdotjs, SiNotion, SiTypescript } from "react-icons/si";
