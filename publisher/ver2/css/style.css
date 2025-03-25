@@ -1228,7 +1228,7 @@ main .section_work .inner .wrap_work .wrap_list .list .wrap_img {
   right: -5%;
   bottom: 23%;
   transition: all 0.3s;
-  z-index: 2;
+  z-index: 1;
   text-align: right;
 }
 main .section_work .inner .wrap_work .wrap_list .list .wrap_btn {
