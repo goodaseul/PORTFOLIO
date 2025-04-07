@@ -10,7 +10,7 @@
 웹 퍼블리셔로 제작한 다양한 사이트들을 모아둔 포트폴리오입니다.  
 HTML, CSS, JavaScript 기반의 정적인 사이트부터 반응형 웹까지 다양하게 구성되어 있습니다.
 
-🔗 <a href="https://portfolio-publisher.vercel.app/" target="_blank">퍼블리싱 포트폴리오 바로가기</a>
+- 🔗 <a href="https://portfolio-publisher.vercel.app/" target="_blank">퍼블리싱 포트폴리오 바로가기</a>
 ---
 
 ## ⚛️ React 포트폴리오 01 - 퍼블리싱 사이트 리스트 웹앱
