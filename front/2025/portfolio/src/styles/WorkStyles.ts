@@ -9,7 +9,14 @@ import { Link } from "react-router-dom";
 export const WorkSection = styled(Section)`
     padding: 300px 0;
     position: relative;
-    background: ${(props) => props.theme.bgColor};
+
+    ${(props) =>
+        props.theme === lightTheme
+            ? `
+            background : #F5F6F7; 
+        `
+            : `  ${props.theme.bgColor}`};
+
     z-index: 3;
     @media ${media.desktop} {
         padding: 150px 0;

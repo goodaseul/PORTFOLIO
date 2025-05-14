@@ -19,7 +19,7 @@ const Header = ({ isSectionVisible }: HeaderProps) => {
     const location = useLocation();
     return (
         <>
-            <HeaderSection>
+            <HeaderSection className={!isDark && location.pathname === "/work" ? "workLight" : ""}>
                 <ToggleDark onClick={() => setIsDark((prev) => !prev)}>{isDark ? <IoMdSunny /> : <MdDarkMode />}</ToggleDark>
 
                 <Container>

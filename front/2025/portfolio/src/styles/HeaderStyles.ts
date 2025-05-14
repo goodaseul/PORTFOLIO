@@ -23,6 +23,9 @@ export const HeaderSection = styled.header`
     @media ${media.tablet} {
         padding: ${rem(60)} 0;
     }
+    &.workLight {
+        background: #f5f6f7;
+    }
 `;
 
 export const NavWrap = styled.ul`
