@@ -32,12 +32,21 @@ export const BigTit = styled.h2`
     font-size: 120px;
     line-height: 1;
     font-weight: 800;
-    color: ${(props) => props.theme.textColor};
+
     @media ${media.desktop} {
         font-size: 100px;
     }
     @media ${media.tablet} {
         font-size: ${rem(100)};
+    }
+    &.text {
+        background-clip: text !important;
+        display: inline-block;
+        transition: background 0.3s ease-in;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        color: #fff;
+        background: linear-gradient(-90deg, var(--c_w) 50%, #ffd02f 0) calc(100% - var(--_p_w)) / 200% 100%, linear-gradient(var(--c_w) 0 0) 0% 100% / var(--_p_w) var(--s_w) no-repeat;
     }
 `;
 export const Tit = styled.p`

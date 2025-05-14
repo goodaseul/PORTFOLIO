@@ -25,12 +25,18 @@ export const TopTitle = styled.div`
     top: 85px;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
-    background: rgba(0, 0, 0, 0.1);
 
-    ${(props) => (props.theme === lightTheme ? props.theme.accentColor : props.theme.textColor)};
+    ${(props) => (props.theme === lightTheme ? props.theme.textColor : props.theme.textColor)};
 
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    ${(props) =>
+        props.theme === lightTheme
+            ? `
+            background : ${props.theme.accentColor}; 
+        `
+            : `  background: rgba(0, 0, 0, 0.1)`};
     margin-bottom: 10%;
 
     @media ${media.tablet} {
@@ -86,7 +92,9 @@ export const Project = styled.div`
     border-radius: 10px;
     padding: 7%;
     position: relative;
-    min-height: 230px;
+    min-height: 280px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
     p {
         color: #000;
     }
@@ -95,10 +103,10 @@ export const Name = styled.p`
     font-weight: bold;
 
     position: relative;
-    padding-left: 3%;
+    /* padding-left: 3%; */
     font-size: 24px;
-    margin-bottom: 5%;
-    &::before {
+    margin-bottom: 3%;
+    /* &::before {
         content: "";
         position: absolute;
         left: 0;
@@ -107,7 +115,7 @@ export const Name = styled.p`
         height: 5px;
         border-radius: 100%;
         background: ${(props) => props.theme.accentColor};
-    }
+    } */
     @media ${media.tablet} {
         font-size: ${rem(52)};
         margin-top: ${rem(32)};
@@ -143,15 +151,15 @@ export const WrapBottom = styled.div`
     display: flex;
     align-items: flex-end;
     position: absolute;
-    right: 2%;
-    bottom: 5%;
+    right: 7%;
+    bottom: 12%;
 
     width: -webkit-fill-available;
     justify-content: flex-end;
 `;
 export const ImgWrap = styled.div`
     width: 300px;
-    margin-right: 2%;
+    margin-right: 3%;
     img {
         display: block;
     }
@@ -165,8 +173,8 @@ export const TagWrap = styled.div`
 export const DateTxt = styled.p`
     font-size: 13px;
     position: absolute;
-    right: 5%;
-    top: 5%;
+    left: 7%;
+    bottom: 10%;
     @media ${media.tablet} {
         font-size: ${rem(28)};
     }
@@ -191,7 +199,7 @@ export const StyledLink = styled(Link)`
     border-radius: 5px;
     padding: 0% 1.5%;
     height: 30px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1); */
     display: flex;
     align-items: center;
     justify-self: center;

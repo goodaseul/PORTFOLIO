@@ -81,7 +81,7 @@ export const TabList = styled.li`
     position: relative;
     padding-left: 50px;
     font-weight: bold;
-
+    transition: all 0.2s;
     &::before {
         content: "";
         position: absolute;
@@ -167,6 +167,9 @@ export const Box = styled(motion.div)`
     height: 150px;
     margin-right: 1%;
     margin-top: 3%;
+    position: relative;
+    top: 0;
+    transition: all 0.2s;
 
     &:nth-of-type(4n + 4) {
         margin-right: 0;
@@ -197,6 +200,7 @@ export const Box = styled(motion.div)`
 
     @media ${media.desktop_hover} {
         &:hover {
+            top: -10px;
             ${Hidden} {
                 display: block;
             }
