@@ -47,20 +47,19 @@ const Work = ({ sectionRef }: HomeProps) => {
         };
     }, []);
 
-    // ✅ theme 변경 시에도 동기화 (스크롤 퍼센트와 항상 연동)
     useEffect(() => {
         updateCssVariables(scrollPercentage);
 
         if (bigTitRef.current) {
-            // isDarkMode가 boolean 타입으로 처리된 후 스타일을 업데이트
             bigTitRef.current.style.background = `linear-gradient(-90deg, var(--c_w) 50%, ${isDarkMode ? "#ffd02f" : "#000"} 0) calc(100% - var(--_p_w)) / 200% 100%,
             linear-gradient(var(--c_w) 0 0) 0% 100% / var(--_p_w) var(--s_w) no-repeat`;
         }
-    }, [scrollPercentage, isDarkMode]); // isDarkMode와 scrollPercentage가 변경될 때마다 업데이트
+    }, [scrollPercentage, isDarkMode]);
 
     const projectLoadable = useRecoilValueLoadable(projectSelector);
 
-    if (projectLoadable.state === "hasError") return <div>Error loading products</div>;
+    if (projectLoadable.state === "hasError") return <div>Error loading projects</div>;
+    if (projectLoadable.state === "loading") return <Loader />;
 
     const openPopup = (id: number) => {
         setImgIndex(id);
@@ -75,65 +74,59 @@ const Work = ({ sectionRef }: HomeProps) => {
 
     return (
         <>
-            {projectLoadable.state === "loading" ? (
-                <Loader />
-            ) : (
-                <>
-                    <Main ref={sectionRef}>
-                        <WorkSection id="work">
-                            <TopTitle>
-                                <Container>
-                                    <BigTit className="text" ref={bigTitRef}>
-                                        WEB SITE.
-                                    </BigTit>
-                                    <Link target="_blank" to="https://www.notion.so/655ebd86a2e540a698d2595cb39e81d5"></Link>
-                                </Container>
-                            </TopTitle>
-                            <Container>
-                                <Wrapper>
-                                    {projectLoadable.contents?.map((project, index) => (
-                                        <MotionDiv key={project.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }} viewport={{ once: false, amount: 0.1 }}>
-                                            <Project>
-                                                <Name>{project.name}</Name>
-                                                <WrapInfo>
-                                                    {project?.multilingual && <p>{project?.multilingual}</p>}
-                                                    <p>{project.contribution}</p>
-                                                    <p>{project.way}</p>
-                                                </WrapInfo>
-                                                <WrapBottom>
-                                                    {project?.logo ? (
-                                                        <ImgWrap>
-                                                            <img src={`./images/logos/${project?.logo}`} alt={`${project.name} 이미지`} />
-                                                        </ImgWrap>
-                                                    ) : (
-                                                        <TagWrap>
-                                                            <Tag>{project?.filter}</Tag>
-                                                        </TagWrap>
-                                                    )}
-                                                    {project?.filter?.includes("프로모션") ? (
-                                                        <StyledLink to="#" onClick={() => openPopup(project?.id)}>
-                                                            <CgImage />
-                                                        </StyledLink>
-                                                    ) : !project?.link ? (
-                                                        <StyledLink to={""} style={{ pointerEvents: "none", cursor: "default" }}>
-                                                            <MdBlock style={{ color: "red" }} />
-                                                        </StyledLink>
-                                                    ) : (
-                                                        <StyledLink target="_blank" to={project?.link}>
-                                                            <MdArrowOutward />
-                                                        </StyledLink>
-                                                    )}
-                                                </WrapBottom>
-                                                <DateTxt>{project.date}</DateTxt>
-                                            </Project>
-                                        </MotionDiv>
-                                    ))}
-                                </Wrapper>
-                            </Container>
-                        </WorkSection>
-                    </Main>
-                </>
-            )}
+            <Main ref={sectionRef}>
+                <WorkSection id="work">
+                    <TopTitle>
+                        <Container>
+                            <BigTit className="text" ref={bigTitRef}>
+                                WEB SITE.
+                            </BigTit>
+                            <Link target="_blank" to="https://www.notion.so/655ebd86a2e540a698d2595cb39e81d5"></Link>
+                        </Container>
+                    </TopTitle>
+                    <Container>
+                        <Wrapper>
+                            {projectLoadable.contents?.map((project, index) => (
+                                <MotionDiv key={project.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }} transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }} viewport={{ once: false, amount: 0.1 }}>
+                                    <Project>
+                                        <Name>{project.name}</Name>
+                                        <WrapInfo>
+                                            {project?.multilingual && <p>{project?.multilingual}</p>}
+                                            <p>{project.contribution}</p>
+                                            <p>{project.way}</p>
+                                        </WrapInfo>
+                                        <WrapBottom>
+                                            {project?.logo ? (
+                                                <ImgWrap>
+                                                    <img src={`/images/logos/${project?.logo}`} alt={`${project.name} 이미지`} />
+                                                </ImgWrap>
+                                            ) : (
+                                                <TagWrap>
+                                                    <Tag>{project?.filter}</Tag>
+                                                </TagWrap>
+                                            )}
+                                            {project?.filter?.includes("프로모션") ? (
+                                                <StyledLink to="#" onClick={() => openPopup(project?.id)}>
+                                                    <CgImage />
+                                                </StyledLink>
+                                            ) : !project?.link ? (
+                                                <StyledLink to={""} style={{ pointerEvents: "none", cursor: "default" }}>
+                                                    <MdBlock style={{ color: "red" }} />
+                                                </StyledLink>
+                                            ) : (
+                                                <StyledLink target="_blank" to={project?.link || "#"}>
+                                                    <MdArrowOutward />
+                                                </StyledLink>
+                                            )}
+                                        </WrapBottom>
+                                        <DateTxt>{project.date}</DateTxt>
+                                    </Project>
+                                </MotionDiv>
+                            ))}
+                        </Wrapper>
+                    </Container>
+                </WorkSection>
+            </Main>
 
             {isPopupOpen && (
                 <Popup ref={popupRef}>
