@@ -167,9 +167,6 @@ export const Box = styled(motion.div)`
     height: 150px;
     margin-right: 1%;
     margin-top: 3%;
-    position: relative;
-    top: 0;
-    transition: all 0.2s;
 
     &:nth-of-type(4n + 4) {
         margin-right: 0;
@@ -177,13 +174,16 @@ export const Box = styled(motion.div)`
     > div {
         width: 100%;
         height: 100%;
+        position: relative;
+        top: 0;
+        transition: all 0.2s;
         > div {
             padding: 0 15px;
 
             width: 100%;
             height: 100%;
             border-radius: 15px;
-            background: ${(props) => (props.theme === lightTheme ? "rgba(0, 0, 0, 0.1);" : "rgba(255, 255, 255, 0.1);")};
+            background: ${(props) => (props.theme === lightTheme ? "#F0F2F5" : "rgba(255, 255, 255, 0.1);")};
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -200,7 +200,9 @@ export const Box = styled(motion.div)`
 
     @media ${media.desktop_hover} {
         &:hover {
-            top: -10px;
+            > div {
+                top: -10px;
+            }
             ${Hidden} {
                 display: block;
             }
