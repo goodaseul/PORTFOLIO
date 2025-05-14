@@ -19,7 +19,7 @@ const descriptionsMe = [
     { textInfront: "활발하며", title: "대화", text: "하는 것을 좋아합니다." },
     { textInfront: "동료들과", title: "화합과 융화", text: "를 합니다." },
     { title: "체계적", text: "이며 정돈된 스타일입니다." },
-    { title: "웃음", text: "이 많아요." },
+    { title: "웃음", text: "이 많습니다." },
     { title: "활동", text: "적인 것을 좋아합니다." },
 ];
 

@@ -15,7 +15,7 @@ export const WorkSection = styled(Section)`
             ? `
             background : #F5F6F7; 
         `
-            : `  ${props.theme.bgColor}`};
+            : ` background:  #000`};
 
     z-index: 3;
     @media ${media.desktop} {
