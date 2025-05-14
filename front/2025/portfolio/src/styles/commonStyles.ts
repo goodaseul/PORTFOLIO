@@ -2,6 +2,7 @@ import { rem } from "./../utils/rem";
 import { media } from "../utils/media";
 
 import styled, { css } from "styled-components";
+import { lightTheme } from "./theme";
 
 export const Main = styled.main`
     position: relative;
@@ -124,7 +125,7 @@ export const TxtAf = css`
     bottom: auto;
     left: 0%;
     right: 0%;
-    color: #fff;
+    color: ${(props) => props.theme.textColor};
 `;
 
 export const WrapStyles = css`
@@ -135,13 +136,13 @@ export const WrapStyles = css`
 `;
 
 export const TxtFill = css`
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-text-fill-color: ${(props) => (props.theme === lightTheme ? "rgba(0,0,0,0)" : "rgba(255,255,255,0)")};
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #fff;
-    color: white;
+    -webkit-text-stroke-color: ${(props) => (props.theme === lightTheme ? "rgba(255,208,47,0)" : "rgba(255,255,255,0)")};
+    color: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
     font-weight: 600;
     --s: 0.1em;
-    --c: #fff;
+    --c: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
     padding-bottom: var(--s);
     background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
     -webkit-background-clip: text, padding-box;

@@ -139,7 +139,7 @@ export const TitShow = styled.span`
     display: block;
 
     position: relative;
-
+    z-index: 2;
     &::before {
         content: "";
         background: ${(props) => props.theme.accentColor};

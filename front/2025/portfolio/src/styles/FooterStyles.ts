@@ -2,13 +2,16 @@ import styled from "styled-components";
 import { media } from "../utils/media";
 import { rem } from "../utils/rem";
 import { Container, Txt, TxtAf, TxtEffect, TxtFill, TxtFillHover } from "../styles/commonStyles";
+import { lightTheme } from "./theme";
 
 export const FooterSection = styled.footer`
     position: sticky;
     z-index: 1;
     bottom: 0;
     width: 100%;
-    background: #000;
+    /* background: #000; */
+
+    background: ${(props) => props.theme.bgColor};
     padding: 100px 0;
 
     @media ${media.tablet} {
@@ -16,6 +19,9 @@ export const FooterSection = styled.footer`
     }
     @media ${media.mobile} {
         padding: ${rem(250)} 0;
+    }
+    &.workLight {
+        background: #f5f6f7;
     }
 `;
 
@@ -56,7 +62,8 @@ export const InfoItem = styled.div`
                 right: -0.8rem;
             }
             svg {
-                color: #fff;
+                /* color: #fff; */
+                color: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
                 transition: all 0.3s;
                 transform-style: preserve-3d;
                 transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1) skew(-90deg);
@@ -92,7 +99,8 @@ export const InfoItem = styled.div`
 
 export const InfoTitle = styled.dt`
     font-weight: bold;
-    color: #fff;
+    /* color: #fff; */
+    color: ${(props) => props.theme.textColor};
 `;
 
 export const InfoValue = styled.dd`
