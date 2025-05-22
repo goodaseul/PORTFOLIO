@@ -63,7 +63,7 @@ export const InfoItem = styled.div`
             }
             svg {
                 /* color: #fff; */
-                color: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
+                color: ${(props) => (props.theme === lightTheme ? "#000" : "#fff")};
                 transition: all 0.3s;
                 transform-style: preserve-3d;
                 transform: translate3d(-100%, 100%, 0px) scale3d(1, 1, 1) skew(-90deg);

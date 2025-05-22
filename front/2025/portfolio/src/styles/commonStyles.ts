@@ -134,17 +134,20 @@ export const WrapStyles = css`
     align-items: center;
     justify-content: space-between;
 `;
-
 export const TxtFill = css`
-    -webkit-text-fill-color: ${(props) => (props.theme === lightTheme ? "rgba(0,0,0,0)" : "rgba(255,255,255,0)")};
+    color: transparent;
+    -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: ${(props) => (props.theme === lightTheme ? "rgba(255,208,47,0)" : "rgba(255,255,255,0)")};
-    color: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
+    -webkit-text-stroke-color: ${(props) => (props.theme === lightTheme ? "#000" : "#fff")};
     font-weight: 600;
+
     --s: 0.1em;
-    --c: ${(props) => (props.theme === lightTheme ? "#ffd02f" : "#fff")};
+    --c: ${(props) => (props.theme === lightTheme ? "#000" : "#fff")}; // hover 시 채울 색
+    --b: transparent;
+
     padding-bottom: var(--s);
-    background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+    background: linear-gradient(90deg, var(--c) 50%, var(--b) 0) calc(100% - var(--_p, 0%)) / 200% 100%, linear-gradient(var(--c) 0 0) 0% 100% / var(--_p, 0%) var(--s) no-repeat;
+
     -webkit-background-clip: text, padding-box;
     background-clip: text, padding-box;
     transition: 0.5s;
@@ -152,5 +155,7 @@ export const TxtFill = css`
 
 export const TxtFillHover = css`
     --_p: 100%;
+    -webkit-text-fill-color: var(--c);
+    color: var(--c);
     padding-left: 10px;
 `;
