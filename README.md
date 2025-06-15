@@ -5,21 +5,22 @@
 
 ---
 
-## ✨ 퍼블리싱 포트폴리오
+## ✨ 퍼블리싱 포트를폴리오
 
-웹 퍼블리셔로 제작한 다양한 사이트들을 모아둔 포트폴리오입니다.  
+웹 퍼블리셔로 제작한 다양한 사이트들을 모아둔 포트를폴리오입니다.  
 HTML, CSS, JavaScript 기반의 정적인 사이트부터 반응형 웹까지 다양하게 구성되어 있습니다.
 
-- 🔗 [퍼블리싱 포트폴리오 링크](https://portfolio-publisher.vercel.app/)
+- 🔗 [퍼블리싱 포트폴리오 링크](https://portfolio-publisher.vercel.app/)  
+
 ---
 
-## ⚛️ React 포트폴리오 01 - 퍼블리싱 사이트 리스트 웹앱
+## ⚛️ React 포트를폴리오 01 - 퍼블리싱 사이트 리스트 웹앱
 
 Supabase의 데이터베이스에서 퍼블리싱한 사이트 목록을 불러와 카드 형식으로 보여주는 웹앱입니다.  
-React, Recoil를 사용하여 API 연동, 컴포넌트화된 UI 구성으로 작업했습니다.
-Recoil를 이용하여 dark mode 를 구현하였습니다.
+React, Recoil를 사용하여 API 연동, 컴포넌트를 통한 UI 구성으로 작업했습니다.  
+Recoil를 이용하여 dark mode를 구현하였습니다.
 
-- 🔗 [리액트 포트폴리오 링크](https://portfolio-publisher.vercel.app/)
+- 🔗 [리액트 포트폴리오 링크](https://portfolio-goodaseuls-projects.vercel.app/)  
 - 🛠 **Stack**: React, TypeScript, Supabase, Axios, styled-components, framer-motion
 
 ---
