@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.header > div {
+  padding: 2.5rem;
+}
+.header > div ul li {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header > div ul li + li {
+  margin-left: 1.25rem;
+}
+.header.on {
+  filter: blur(0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.header.on > div {
+  padding: 1.25rem;
+}
