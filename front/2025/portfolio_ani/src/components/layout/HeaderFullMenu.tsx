@@ -13,7 +13,7 @@ const HeaderFullMenu = ({ isVisible }: IHeaderFullMenu) => {
     const router = usePathname();
     return (
         <div
-            className={`${styles.fullHeader}`}
+            className={`${styles.fullHeader}  bg-light  dark:bg-dark `}
             style={{
                 zIndex: isVisible ? 8 : "auto",
             }}
