@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { navList } from "@/store/store";
@@ -9,26 +9,42 @@ import { motion, useAnimation } from "framer-motion";
 const Footer = () => {
     const router = usePathname();
     const controls = useAnimation();
+    const [repeatCount, setRepeatCount] = useState(10);
+    const tickerRef = useRef<HTMLDivElement>(null);
+    const sampleTextRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
+        const handleResize = () => {
+            if (!sampleTextRef.current) return;
+            const screenWidth = window.innerWidth;
+            const textWidth = sampleTextRef.current.offsetWidth;
+            const count = Math.ceil(screenWidth / textWidth) + 4;
+            setRepeatCount(count);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
+        if (!tickerRef.current) return;
+
+        const el = tickerRef.current;
+        const fullWidth = el.scrollWidth;
+
         controls.start({
-            x: ["0%", "-50%"],
-            scale: 1,
-            color: "#b99dcf",
-            letterSpacing: "0.05em",
+            x: [0, -fullWidth],
             transition: {
                 x: {
                     repeat: Infinity,
                     repeatType: "loop",
-                    duration: 30,
+                    duration: fullWidth / 100,
                     ease: "linear",
                 },
-                scale: { duration: 0.3 },
-                color: { duration: 0.3 },
-                letterSpacing: { duration: 0.3 },
             },
         });
-    }, [controls]);
+    }, [controls, repeatCount]);
 
     return (
         <footer className="">
@@ -43,14 +59,16 @@ const Footer = () => {
             </div>
 
             <div className="overflow-hidden whitespace-nowrap dark:bg-gray-900 py-2">
-                <motion.div animate={controls} className={`inline-flex select-none ${styles.ticker}`} style={{ whiteSpace: "nowrap", fontSize: "1.25rem", fontWeight: 600 }}>
-                    {Array(6)
-                        .fill(null)
-                        .map((_, i) => (
-                            <span key={i} className="mx-8 italic transition-all">
-                                ©2025 Ahram Kim. All rights reserved.
-                            </span>
-                        ))}
+                <span ref={sampleTextRef} className="sr-only font-semibold text-base italic">
+                    ©2025 Ahram Kim. All rights reserved.
+                </span>
+
+                <motion.div animate={controls} ref={tickerRef} className={`inline-flex select-none ${styles.ticker}`} style={{ whiteSpace: "nowrap", fontSize: "1.25rem", fontWeight: 600 }}>
+                    {Array.from({ length: repeatCount }).map((_, i) => (
+                        <span key={i} className="mx-8 italic transition-all text-point">
+                            ©2025 Ahram Kim. All rights reserved.
+                        </span>
+                    ))}
                 </motion.div>
             </div>
         </footer>
