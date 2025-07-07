@@ -38,9 +38,7 @@ export default function RootLayout({
                 <ThemeProvider>
                     <HeaderMade />
                     <main id="main" className="relative w-full max-w-full h-full min-h-[100vh]">
-                        <div className="h-full min-h-[100vh]"></div>
-                        <div className="h-full min-h-[100vh]"></div>
-                        {/* {children} */}
+                        {children}
                     </main>
                     <Footer />
                 </ThemeProvider>

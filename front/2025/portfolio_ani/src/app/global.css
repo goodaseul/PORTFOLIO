@@ -71,3 +71,7 @@
 .fillText.active {
   font-style: italic;
 }
+
+#main {
+  overflow-x: clip;
+}
