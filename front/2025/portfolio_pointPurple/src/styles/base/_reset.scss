@@ -1,0 +1,47 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &::selection {
+        background-color: $pointColor;
+        color: #fff;
+    }
+}
+
+body {
+    line-height: 1.5;
+    font-family: "Montserrat", "Pretendard", serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    width: 100%;
+
+    background-color: $bgColor;
+    color: $txtColor;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+input,
+textarea,
+button {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+}

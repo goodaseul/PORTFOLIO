@@ -1,0 +1,105 @@
+@import "../base/variable";
+
+.project {
+    padding-bottom: 3%;
+    .full_inner {
+        display: flex;
+        flex-wrap: wrap;
+        .list_grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30%, 1fr)); /* 반응형 열 */
+            gap: 0 20px; /* 카드 간격 */
+            .list {
+                overflow: hidden;
+
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.2s ease;
+                .wrap_content {
+                    width: 100%;
+                    height: 259px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    border-radius: 10px;
+                    span {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        background: #000;
+                        width: 50px;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 0 20% 0 0;
+
+                        transform: scale(0);
+                        transition: all 0.3s;
+                        transform-origin: left bottom;
+                    }
+                }
+                > p {
+                    padding: 3% 5%;
+                }
+            }
+        }
+    }
+}
+
+// pc
+@media screen and (min-width: 1280px) {
+    .project {
+        .full_inner {
+            .list_grid {
+                .list {
+                    &:hover {
+                        .wrap_content {
+                            span {
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .project {
+        padding-bottom: 3%;
+        .full_inner {
+            .list_grid {
+                grid-template-columns: repeat(2, minmax(30%, 1fr));
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .project {
+        padding-bottom: 7%;
+        .full_inner {
+            .list_grid {
+                padding: 0 2%;
+                gap: 0;
+                grid-template-columns: repeat(1, minmax(40%, 1fr));
+                .list {
+                    + .list {
+                        margin-top: 10% !important;
+                    }
+                    .wrap_content {
+                        height: rem(500px);
+                        span {
+                            transform: scale(1);
+                            width: rem(100px);
+                            height: rem(100px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

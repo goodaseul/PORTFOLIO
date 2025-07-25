@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 스크롤바 커스터마이징 (light) */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #121619;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+/* 스크롤바 커스터마이징 (dark) */
+.dark ::-webkit-scrollbar {
+    width: 5px;
+}
+.dark ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #575757;
+    border-radius: 10px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #888888;
+}
+
+.inner {
+    padding: 2.5rem;
+    @media (max-width: 1280px) {
+        padding: 1.25rem;
+    }
+}
+
+.fillText {
+    position: relative;
+    display: inline-block;
+
+    color: transparent;
+    -webkit-text-stroke: 1px #b99dcf;
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        color: #b99dcf; // 포인트 색상
+        transition: width 0.4s ease;
+        z-index: 1;
+    }
+
+    &:hover::after,
+    &.active::after {
+        width: 105%;
+    }
+    &.active {
+        font-style: italic;
+    }
+}
+
+#main {
+    overflow-x: clip;
+}

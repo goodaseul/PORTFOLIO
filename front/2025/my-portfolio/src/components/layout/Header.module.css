@@ -1,0 +1,46 @@
+.header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 11;
+}
+.header > div .logoStyle {
+  -webkit-text-stroke-width: thin;
+}
+.header > div ul li {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header > div ul li + li {
+  margin-left: 1.25rem;
+}
+@media (max-width: 1280px) {
+  .header > div ul li + li {
+    margin-left: 0.6rem;
+  }
+}
+.header.on {
+  filter: blur(0.5);
+}
+.header.on > div {
+  padding: 1.25rem;
+}
+
+.fullHeader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.fullHeader .box {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}

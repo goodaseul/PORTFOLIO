@@ -1,0 +1,231 @@
+body {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  html {
+    font-size: 28px;
+  }
+  body {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 395px) {
+  html {
+    font-size: 16px;
+  }
+}
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::selection {
+  background-color: #b99dcf;
+  color: #fff;
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Montserrat", "Pretendard", serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  width: 100%;
+  background-color: #000;
+  color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container .full_inner {
+  width: 100%;
+  padding: 3%;
+}
+.container .inner {
+  margin: 0 auto;
+  width: 1280px;
+  padding: 0 40px;
+}
+.container main {
+  padding-top: 260px;
+  overflow: clip;
+}
+.container .menus li a {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.container .menus li a::before {
+  content: attr(data-text);
+  position: absolute;
+  overflow: hidden;
+  max-width: 100%;
+  max-width: var(--max-width, 0);
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.container .menus li.active {
+  transform: skewX(-12deg);
+}
+.container .menus li.active a::before {
+  --max-width: 100%;
+  color: #b99dcf;
+}
+
+@media screen and (min-width: 1280px) {
+  .container .menus li {
+    color: #fff;
+  }
+  .container .menus li:hover a::before {
+    --max-width: 100%;
+    color: #b99dcf;
+  }
+}
+@media screen and (max-width: 960px) {
+  .container .full_inner {
+    width: 100%;
+    padding: 3%;
+  }
+  .container .inner {
+    width: auto;
+    padding: 0 40px;
+  }
+  .container main {
+    padding-top: 6.25rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .container .menus li {
+    font-size: 0.75rem;
+  }
+}
+header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transition: all 0.7s;
+  z-index: 9;
+}
+header .full_inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  transition: margin 0.7s;
+}
+header .full_inner h1 {
+  color: #b99dcf;
+  font-size: 48px;
+  font-style: italic;
+}
+header .full_inner nav {
+  padding: 0.5%;
+}
+header .full_inner nav .menus li {
+  padding: 2%;
+}
+header .full_inner nav .menus li a {
+  color: #eee;
+}
+header .full_inner nav .menus li + li {
+  margin-top: 3%;
+}
+header.scroll .full_inner {
+  margin-top: -100%;
+}
+
+@media screen and (max-width: 1440px) {
+  header .full_inner {
+    background: #000;
+  }
+  header .full_inner h1 {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 960px) {
+  header .full_inner h1 {
+    font-size: 1.333rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  header .full_inner nav .menus li a {
+    text-align: center;
+  }
+}
+.container footer .full_inner {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: 3px double #eee;
+}
+.container footer .full_inner .menus {
+  display: flex;
+}
+.container footer .full_inner .menus li + li {
+  margin-left: 5%;
+}
+.container footer .full_inner .menus_info {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 5%;
+}
+.container footer .full_inner .menus_info li + li {
+  margin-left: 3%;
+}
+.container footer .full_inner .wrap_menu {
+  color: #000;
+  background: #fff;
+  border-radius: 30px 30px 0 0;
+  padding: 2% 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.container footer .full_inner .wrap_menu .menus li a {
+  color: #000;
+}
+
+@media screen and (max-width: 960px) {
+  .container footer .full_inner .wrap_menu {
+    display: block;
+    border-radius: 0.833rem 0.833rem 0 0;
+  }
+  .container footer .full_inner .wrap_menu p {
+    margin-top: 3%;
+    font-size: 0.625rem;
+  }
+}
