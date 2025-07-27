@@ -1,9 +1,10 @@
 // [Home] Gallery List
 export const galleryList = [
-  { id: 1, src: "/images/home/mongol.jpg", alt: "몽골" },
-  { id: 2, src: "/images/home/spring.jpg", alt: "영종도" },
-  { id: 3, src: "/images/home/hongkong2.jpg", alt: "홍콩 " },
-  { id: 4, src: "/images/home/mongol2.jpg", alt: "몽골" },
-  { id: 5, src: "/images/home/jeju.jpg", alt: "한라산" },
-  { id: 6, src: "/images/home/lv.jpg", alt: "라스베가스 그랜드캐년" },
+    { id: 1, src: "/images/home/me_1.jpg", alt: "Paris / 파리" },
+    { id: 2, src: "/images/home/me_2.jpg", alt: "snowboarding / 스노우보드" },
+    { id: 3, src: "/images/home/me_3.jpg", alt: "hiking / 등산" },
+    { id: 4, src: "/images/home/me_4.jpg", alt: "swimming / 수영" },
+    { id: 5, src: "/images/home/me_5.jpg", alt: "desert / 사막" },
+    { id: 6, src: "/images/home/me_6.jpg", alt: "Vietnam / 베트남" },
+    { id: 7, src: "/images/home/me_7.jpg", alt: "Jeju / 제주도" },
 ];

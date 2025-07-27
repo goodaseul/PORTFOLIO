@@ -4,20 +4,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import { motion, useAnimation } from "framer-motion";
+import { MenuItem } from "@/types/menuType";
 
-
-interface MenuItem {
-  id: string;
-  name: string; // title의 plain_text
-  num: number;  // number 필드
-  path: string; // url 필드
-}
 interface FooterProps {
-  menus: MenuItem[];
+    menus: MenuItem[];
 }
-
 const Footer: React.FC<FooterProps> = ({ menus }) => {
-
     const router = usePathname();
     const controls = useAnimation();
     const [repeatCount, setRepeatCount] = useState(10);
@@ -59,20 +51,16 @@ const Footer: React.FC<FooterProps> = ({ menus }) => {
     return (
         <footer className="">
             <div className="inner">
-                 <div className={`${styles.menus}`}>
-                  {menus.map((menu) => {
-                    const name = menu.name; // ✅ 그냥 string
-                    const path = menu.path; // ✅ 그냥 string
+                <div className={`${styles.menus}`}>
+                    {menus.map((menu) => {
+                        const name = menu.name;
+                        const path = menu.path;
 
-                    return (
-                        <Link
-                        key={menu.id}
-                        href={path}
-                     className={`${styles.menu} text-2xl leading-normal md:text-3xl lg:text-6xl lg:leading-normal 2xl:text-8xl 2xl:leading-normal relative ${router === path ? "font-extrabold" : "font-medium"} fillText ${router === path ? "active" : ""}`} data-text={name}
-                        >
-                        {name}
-                        </Link>
-                    );
+                        return (
+                            <Link key={menu.id} href={path} className={`${styles.menu} text-2xl leading-normal md:text-3xl lg:text-6xl lg:leading-normal 2xl:text-8xl 2xl:leading-normal relative ${router === path ? "font-extrabold" : "font-medium"} fillText ${router === path ? "active" : ""}`} data-text={name}>
+                                {name}
+                            </Link>
+                        );
                     })}
                 </div>
             </div>

@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MenuItem } from "@/types/menuType";
 import HeaderLayout from "./HeaderLayout";
 import HeaderFullMenu from "./HeaderFullMenu";
-const HeaderMade: React.FC = () => {
+
+interface HeaderProps {
+    menus: MenuItem[];
+}
+const HeaderMade: React.FC<HeaderProps> = ({ menus }) => {
     const [isOn, setIsOn] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
@@ -52,7 +57,7 @@ const HeaderMade: React.FC = () => {
             {/* 헤더 레이아웃 컴포넌트 */}
             <HeaderLayout isOn={isOn} isVisible={isVisible} setIsVisible={setIsVisible} />
             {/* 햄버거 메뉴 컴포넌트 */}
-            <HeaderFullMenu isVisible={isVisible} />
+            <HeaderFullMenu menus={menus} isVisible={isVisible} />
         </>
     );
 };

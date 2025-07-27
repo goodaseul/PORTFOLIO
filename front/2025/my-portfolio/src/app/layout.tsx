@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Gowun_Batang } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/provider/ThemeProvider";
-import HeaderMade from "@/components/layout/Header";
 import { getMenu } from "@/lib/apiList";
 
 const gowunBatang = Gowun_Batang({
@@ -34,11 +34,11 @@ export default async function RootLayout({
             <head></head>
             <body className={`relative w-full max-w-full h-full min-h-[100vh] text-dark bg-light dark:text-light dark:bg-dark ${gowunBatang.className} antialiased`}>
                 <ThemeProvider>
-                    <HeaderMade />
+                    <Header menus={menus} />
                     <main id="main" className="relative w-full max-w-full h-full min-h-[100vh]">
                         {children}
                     </main>
-                     <Footer menus={menus} />
+                    <Footer menus={menus} />
                 </ThemeProvider>
             </body>
         </html>

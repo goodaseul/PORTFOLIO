@@ -2,6 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*::selection {
+  background: #b99dcf;
+  color: #121619;
+}
+
 /* 스크롤바 커스터마이징 (light) */
 ::-webkit-scrollbar {
   width: 5px;
