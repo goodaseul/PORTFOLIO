@@ -10,7 +10,7 @@ export default function Home() {
 
     return (
         <main className="relative w-full min-h-screen bg-gray-100 dark:bg-black" ref={containerRef}>
-            <Bio styles={styles} />
+            <Bio containerRef={containerRef} styles={styles} />
             <BioImg styles={styles} />
         </main>
     );

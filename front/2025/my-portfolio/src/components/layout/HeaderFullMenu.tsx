@@ -4,13 +4,12 @@ import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { MenuItem } from "@/types/menuType";
+import { menuHoverImg } from "@/store/store";
 
 interface IHeaderFullMenu {
     isVisible: boolean;
     menus: MenuItem[];
 }
-
-const menuHoverImg: string[] = ["/images/home/me_1.jpg", "/images/home/me_2.jpg", "/images/home/me_3.jpg"];
 
 const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
     const router = usePathname();
@@ -53,9 +52,9 @@ const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
 
                                     {/* hover 시 나올 이미지 */}
                                     <motion.img
-                                        src={imageSrc}
+                                        src={imageSrc.src}
                                         alt={name}
-                                        className={`pointer-events-none absolute top-1/2  w-100 object-cover  shadow-2xl`}
+                                        className={`pointer-events-none absolute top-1/2  w-100 object-cover  shadow-2xl filter grayscale`}
                                         style={{
                                             ...positionStyle,
                                             x: mouse.x * 0.1,

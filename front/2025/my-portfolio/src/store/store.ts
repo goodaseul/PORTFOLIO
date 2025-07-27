@@ -8,3 +8,10 @@ export const galleryList = [
     { id: 6, src: "/images/home/me_6.jpg", alt: "Vietnam / 베트남" },
     { id: 7, src: "/images/home/me_7.jpg", alt: "Jeju / 제주도" },
 ];
+
+// [Header] Menu Hover Images
+export const menuHoverImg = [
+    { id: 1, src: "/images/common/home.jpg", alt: "Home Menu" },
+    { id: 2, src: "/images/common/about.jpg", alt: "About Menu" },
+    { id: 3, src: "/images/common/project.jpg", alt: "Project Menu" },
+];
