@@ -7,8 +7,8 @@ export default function Bio({ containerRef }: any) {
     const [globalProgress, setGlobalProgress] = useState(0);
 
     const smoothRatio = (ratio: number) => {
-        if (ratio <= 0.1) return 0;
-        return (ratio - 0.1) / 0.9;
+        if (ratio <= 0.07) return 0;
+        return (ratio - 0.07) / 0.9;
     };
 
     useEffect(() => {
