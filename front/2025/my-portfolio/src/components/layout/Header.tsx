@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { MenuItem } from "@/types/menuType";
-import HeaderLayout from "./HeaderLayout";
 import HeaderFullMenu from "./HeaderFullMenu";
+import HeaderLayout from "./HeaderLayout";
 
 interface HeaderProps {
     menus: MenuItem[];
 }
-const HeaderMade: React.FC<HeaderProps> = ({ menus }) => {
+const Header: React.FC<HeaderProps> = ({ menus }) => {
     const [isOn, setIsOn] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+
     useEffect(() => {
         if (isVisible) {
             document.body.style.overflow = "hidden";
@@ -52,13 +53,14 @@ const HeaderMade: React.FC<HeaderProps> = ({ menus }) => {
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
+
     return (
         <>
             {/* 헤더 레이아웃 컴포넌트 */}
             <HeaderLayout isOn={isOn} isVisible={isVisible} setIsVisible={setIsVisible} />
             {/* 햄버거 메뉴 컴포넌트 */}
-            <HeaderFullMenu menus={menus} isVisible={isVisible} />
+            <HeaderFullMenu menus={menus} isVisible={isVisible} setIsVisible={setIsVisible} />
         </>
     );
 };
-export default HeaderMade;
+export default Header;

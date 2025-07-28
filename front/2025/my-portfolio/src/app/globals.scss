@@ -35,6 +35,10 @@
     background: #888888;
 }
 
+#main {
+    overflow-x: clip;
+}
+
 .inner {
     padding: 2.5rem;
     @media (max-width: 1280px) {
@@ -68,8 +72,4 @@
     &.active {
         font-style: italic;
     }
-}
-
-#main {
-    overflow-x: clip;
 }

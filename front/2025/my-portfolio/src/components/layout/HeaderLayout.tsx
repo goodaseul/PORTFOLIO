@@ -5,13 +5,8 @@ import { MdOutlineMenu, MdOutlineClose } from "react-icons/md";
 import styles from "./Header.module.scss";
 
 import { motion } from "framer-motion";
-import { Estonia } from "next/font/google";
+import { estonia } from "@/store/store";
 
-const estonia = Estonia({
-    weight: "400",
-    subsets: ["latin"],
-    display: "swap",
-});
 interface IHeaderLayout {
     isOn: boolean;
     isVisible: boolean;

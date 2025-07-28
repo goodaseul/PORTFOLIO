@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { animate, AnimatePresence, motion } from "framer-motion";
 import { MenuItem } from "@/types/menuType";
 import { menuHoverImg } from "@/store/store";
+import { NULL } from "sass";
 
 interface IHeaderFullMenu {
     isVisible: boolean;
     menus: MenuItem[];
+    setIsVisible: (value: boolean) => void;
 }
 
-const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
+const HeaderFullMenu = ({ isVisible, menus, setIsVisible }: IHeaderFullMenu) => {
     const router = usePathname();
 
     const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -34,7 +36,14 @@ const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
         >
             <AnimatePresence initial={false}>
                 {isVisible && (
-                    <motion.div key="box" initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} className="overflow-y-hidden inner flex flex-col items-center justify-center w-full max-w-full h-full min-h-[100vh]">
+                    <motion.div
+                        key="box"
+                        initial={{ opacity: 0.5, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0.5, scale: 0.95 }}
+                        // transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="overflow-y-hidden inner flex flex-col items-center justify-center w-full max-w-full h-full min-h-[100vh]"
+                    >
                         {menus.map((menu, index) => {
                             const name = menu.name;
                             const path = menu.path;
@@ -46,7 +55,7 @@ const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
                             return (
                                 <motion.div key={path} className="relative my-8 group" whileHover="hover" initial="initial">
                                     {/* 링크 텍스트 */}
-                                    <Link href={path} className={`text-5xl leading-normal lg:text-6xl lg:leading-normal 2xl:text-8xl 2xl:leading-normal relative z-10 ${router === path ? "font-extrabold active" : "font-medium"} fillText`} data-text={name}>
+                                    <Link href={path} onClick={() => setIsVisible(!isVisible)} className={`text-5xl leading-normal lg:text-6xl lg:leading-normal 2xl:text-8xl 2xl:leading-normal relative z-10 ${router === path ? "font-extrabold active" : "font-medium"} fillText`} data-text={name}>
                                         {name}
                                     </Link>
 

@@ -9,9 +9,9 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <main className="relative w-full min-h-screen bg-gray-100 dark:bg-black" ref={containerRef}>
+        <div className="relative w-full min-h-screen bg-gray-100 dark:bg-black" ref={containerRef}>
             <Bio containerRef={containerRef} styles={styles} />
             <BioImg styles={styles} />
-        </main>
+        </div>
     );
 }
