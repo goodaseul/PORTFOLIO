@@ -27,7 +27,7 @@ const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
     return (
         <div
             onMouseMove={handleMouseMove}
-            className={`${styles.fullHeader}   bg-light  dark:bg-dark `}
+            className={`${styles.fullHeader} bg-light  dark:bg-dark `}
             style={{
                 zIndex: isVisible ? 8 : "auto",
             }}
@@ -54,15 +54,15 @@ const HeaderFullMenu = ({ isVisible, menus }: IHeaderFullMenu) => {
                                     <motion.img
                                         src={imageSrc.src}
                                         alt={name}
-                                        className={`pointer-events-none absolute top-1/2  w-100 object-cover  shadow-2xl filter grayscale`}
+                                        className={`pointer-events-none absolute top-1/2  w-100 object-cover shadow-2xl filter grayscale`}
                                         style={{
                                             ...positionStyle,
                                             x: mouse.x * 0.1,
                                             y: mouse.y * 0.1,
                                         }}
                                         variants={{
-                                            initial: { opacity: 0, scale: 0.8 },
-                                            hover: { opacity: 1, scale: 1 },
+                                            initial: { opacity: 0, scale: 1.5 },
+                                            hover: { opacity: 1, scale: 2 },
                                         }}
                                         transition={{ duration: 0.4, ease: "easeOut" }}
                                     />
