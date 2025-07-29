@@ -6,9 +6,12 @@ const About = () => {
         <div className="relative w-full bg-gray-100 dark:bg-black">
             <div className="flex items-center justify-end min-h-screen inner">
                 <div className="text-right">
-                    <h2 className={`${estonia.className}  text-6xl`}>About Me</h2>
+                    <div className="top">
+                        <img src="./images/common/about.jpg" className="absolute w-[80%]" alt="" />
+                        <h2 className={` text-6xl`}>저는요</h2>
+                    </div>
                     <p className="mt-10 text-[1.4rem] leading-10 desc">
-                        저는 2020년 08월에 웹퍼블리셔로 취직하여, 다양한 웹사이트를 제작하였습니다. <br />
+                        2020년 08월에 웹퍼블리셔로 취직하여, 다양한 웹사이트를 제작하였습니다. <br />
                         저의 프로젝트가 궁금하시다면,&nbsp;
                         <Link target="_blank" className="pl-1 pr-1 font-bold bg-white text-point" href="https://portfolio-publisher.vercel.app/">
                             퍼블리싱 포트폴리오

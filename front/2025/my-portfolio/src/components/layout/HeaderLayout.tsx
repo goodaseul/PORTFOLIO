@@ -25,12 +25,13 @@ const HeaderLayout = ({ isOn, isVisible, setIsVisible }: IHeaderLayout) => {
                 <h1 className={`logo ${isVisible ? "opacity-0 pointer-events-none" : "opacity-1 pointer-events-auto"}`}>
                     <Link
                         href={"/"}
-                        className={`${estonia.className} ${styles.logoStyle}
+                        className={` ${styles.logoStyle}
+                        
                         tracking-wide text-point
                         transition-font-size duration-300 ease-in-out
                         ${isOn ? "text-4xl md:text-5xl" : "text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl"}`}
                     >
-                        JDaseul
+                        鄭다슬
                     </Link>
                 </h1>
 
