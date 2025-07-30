@@ -26,12 +26,13 @@ const HeaderLayout = ({ isOn, isVisible, setIsVisible }: IHeaderLayout) => {
                     <Link
                         href={"/"}
                         className={` ${styles.logoStyle}
-                        
                         tracking-wide text-point
                         transition-font-size duration-300 ease-in-out
-                        ${isOn ? "text-4xl md:text-5xl" : "text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl"}`}
+                        text-2xl md:text-3xl
+                        // ${isOn ? "text-2xl md:text-3xl" : ""}
+                        `}
                     >
-                        鄭다슬
+                        JDaseul
                     </Link>
                 </h1>
 

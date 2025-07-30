@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ menus }) => {
     }, [controls, repeatCount]);
 
     return (
-        <footer className="">
+        <footer className="pt-5 pb-5 md:pt-10 md:pb-10">
             <div className="inner">
                 <div className={`${styles.menus}`}>
                     {menus.map((menu) => {
@@ -70,9 +70,9 @@ const Footer: React.FC<FooterProps> = ({ menus }) => {
                     ©2025 Daseul Jeong. All rights reserved.
                 </span>
 
-                <motion.div animate={controls} ref={tickerRef} className={`inline-flex select-none ${styles.ticker}`} style={{ whiteSpace: "nowrap", fontSize: "1.25rem", fontWeight: 600 }}>
+                <motion.div animate={controls} ref={tickerRef} className={`inline-flex select-none ${styles.ticker} text-1xl md:text-2xl`} style={{ whiteSpace: "nowrap", fontWeight: 600 }}>
                     {Array.from({ length: repeatCount }).map((_, i) => (
-                        <span key={i} className="mx-8 italic transition-all text-point">
+                        <span key={i} className="mx-4 italic transition-all md:mx-8 text-point">
                             ©2025 Daseul Jeong. All rights reserved.
                         </span>
                     ))}
