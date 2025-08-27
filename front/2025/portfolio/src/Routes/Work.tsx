@@ -12,6 +12,8 @@ import { IoMdClose } from "react-icons/io";
 import { Loader } from "../Components/Loader";
 import { useTheme } from "styled-components";
 
+import { supabase } from "../lib/supabase";
+
 const Work = ({ sectionRef }: HomeProps) => {
     const theme = useTheme();
     const isDarkMode = theme.mode === "dark";
@@ -55,9 +57,27 @@ const Work = ({ sectionRef }: HomeProps) => {
             linear-gradient(var(--c_w) 0 0) 0% 100% / var(--_p_w) var(--s_w) no-repeat`;
         }
     }, [scrollPercentage, isDarkMode]);
+    useEffect(() => {
+        const checkSupabase = async () => {
+            console.log("환경변수 확인:");
+            console.log("SUPABASE_URL:", import.meta.env.VITE_SUPABASE_URL);
+            console.log("SUPABASE_ANON_KEY:", import.meta.env.VITE_SUPABASE_ANON_KEY);
 
+            const { data, error } = await supabase.from("테이블명").select("*");
+            console.log("Supabase data:", data);
+            console.log("Supabase error:", error);
+
+            if (!data || data.length === 0) {
+                console.log("⚠️ 데이터가 없거나, RLS 정책으로 접근이 막혔을 수 있음");
+            } else {
+                console.log("✅ 데이터 정상 조회됨");
+            }
+        };
+
+        checkSupabase();
+    }, []);
     const projectLoadable = useRecoilValueLoadable(projectSelector);
-
+    console.log(projectSelector);
     if (projectLoadable.state === "hasError") return <div>Error loading projects</div>;
     if (projectLoadable.state === "loading") return <Loader />;
 
