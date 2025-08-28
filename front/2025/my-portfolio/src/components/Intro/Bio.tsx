@@ -4,10 +4,27 @@ import styles from "./Bio.module.scss";
 import { IntroTexts } from "@/store/store";
 export default function Bio({ containerRef }: any) {
     const [globalProgress, setGlobalProgress] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     const smoothRatio = (ratio: number) => {
-        if (ratio <= 0.1) return 0;
-        return (ratio - 0.1) / 0.9;
+        if (isMobile) {
+            // 모바일 계산법
+            if (ratio <= 0.2) return 0;
+            return (ratio - 0.2) / 0.8;
+        } else {
+            // 데스크탑 계산법
+            if (ratio <= 0.1) return 0;
+            return (ratio - 0.1) / 0.9;
+        }
     };
 
     useEffect(() => {
@@ -33,7 +50,7 @@ export default function Bio({ containerRef }: any) {
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleScroll);
         };
-    }, [containerRef]);
+    }, [containerRef, isMobile]);
 
     return (
         <div className={`${styles.intro} inner sticky left-0 top-0 flex items-center text-center z-[2] min-h-[100vh]`}>

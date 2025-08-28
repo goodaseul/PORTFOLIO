@@ -34,7 +34,7 @@ const BioImg = ({ styles }: any) => {
     }, []);
 
     return (
-        <div className="relative gallery z-1">
+        <div className="relative gallery zIndex">
             {galleryList.map((item, i) => (
                 <div className={`${styles.galleryimg} overflow-hidden`} key={i}>
                     <img src={item.src} alt={item.alt} className="block filter grayscale" />
