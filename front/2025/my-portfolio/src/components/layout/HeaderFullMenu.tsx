@@ -3,9 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { animate, AnimatePresence, motion } from "framer-motion";
-import { MenuItem } from "@/types/menuType";
+import { MenuItem } from "@/types/apiType";
 import { menuHoverImg } from "@/store/store";
-import { NULL } from "sass";
 
 interface IHeaderFullMenu {
     isVisible: boolean;

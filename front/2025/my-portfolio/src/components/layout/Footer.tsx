@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import { motion, useAnimation } from "framer-motion";
-import { MenuItem } from "@/types/menuType";
+import { MenuItem } from "@/types/apiType";
 
 interface FooterProps {
     menus: MenuItem[];

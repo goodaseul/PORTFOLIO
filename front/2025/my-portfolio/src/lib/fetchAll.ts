@@ -1,6 +1,7 @@
-import { getMenu, getAbout } from "@/lib/apiList";
-
+import { getMenu } from "@/lib/apiList";
 export async function getInitialData() {
-  const [menus, abouts] = await Promise.all([getMenu(), getAbout()]);
-  return { menus, abouts };
+    // 페이지 마다 말고 동시에 여러 API 호출 (Promise.all)
+
+    const [menus] = await Promise.all([getMenu()]);
+    return { menus };
 }

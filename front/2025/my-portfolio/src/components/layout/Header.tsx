@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MenuItem } from "@/types/menuType";
+import { MenuItem } from "@/types/apiType";
 import HeaderFullMenu from "./HeaderFullMenu";
 import HeaderLayout from "./HeaderLayout";
 
