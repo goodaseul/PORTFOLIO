@@ -1,9 +1,8 @@
-// src/lib/apiList.ts
-import { WorkItem, MenuItem } from "@/types/apiType";
+import { AboutItem, MenuItem } from "@/types/apiType";
 import notionClient from "./notion";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-/** 메뉴 데이터 가져오기 */
+// Common Menu 데이터 가져오기
 export async function getMenu(): Promise<MenuItem[]> {
     const response = await notionClient.databases.query({
         database_id: process.env.NOTION_DATABASE_MENU_ID!,
@@ -23,30 +22,52 @@ export async function getMenu(): Promise<MenuItem[]> {
     });
 }
 
-/** Work / 경험 데이터 가져오기 */
-export async function getWork(): Promise<WorkItem[]> {
+// Work 데이터 가져오기
+export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> => {
     try {
-        const response = await notionClient.databases.query({
-            database_id: process.env.NOTION_DATABASE_WORK_ID!,
-            sorts: [{ property: "date", direction: "ascending" }],
-        });
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-        console.log("Notion Response:", response.results); // <- 여기 확인
+        const response = await fetch(`${baseUrl}/api/work`, { method: "GET" });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-        const pages = response.results.filter((item): item is PageObjectResponse => item.object === "page");
-        return pages.map((page) => {
-            const props = page.properties as any;
-            console.log(page);
+        const data: AboutItem[] = await response.json();
 
-            return {
-                title: props.title?.title?.[0]?.plain_text ?? "",
-                date: Number(props.date?.number ?? 0),
-                located: props.located?.rich_text?.[0]?.plain_text ?? "",
-                description: props.description?.rich_text?.[0]?.plain_text ?? "",
-            };
-        });
-    } catch (err) {
-        console.error("getWork error:", err);
-        throw err; // <- catch 블록에서 다시 throw 해서 route.ts까지 전파
+        const works = data.map((item, index) => ({
+            id: index, // 필요하면 index → uuid로 교체 가능
+            ...item, // title, date, located, description 그대로 유지
+        }));
+
+        return works;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw new Error("Failed to fetch data. Please try again later.");
     }
-}
+};
+
+// Cerification 데이터 가져오기
+export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> => {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+        const response = await fetch(`${baseUrl}/api/certification`, { method: "GET" });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data: AboutItem[] = await response.json();
+
+        console.log("certification data:", data);
+
+        const certifications = data.map((item, index) => ({
+            id: index, // 필요하면 index → uuid로 교체 가능
+            ...item, // title, date, located, description 그대로 유지
+        }));
+
+        return certifications;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw new Error("Failed to fetch data. Please try again later.");
+    }
+};

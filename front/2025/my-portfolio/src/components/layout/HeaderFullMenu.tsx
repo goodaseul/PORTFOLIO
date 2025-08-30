@@ -41,7 +41,7 @@ const HeaderFullMenu = ({ isVisible, menus, setIsVisible }: IHeaderFullMenu) => 
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0.5, scale: 0.95 }}
                         // transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="overflow-y-hidden inner flex flex-col items-center justify-center w-full max-w-full h-full min-h-[100vh]"
+                        className="overflow-hidden inner flex flex-col items-center justify-center w-full max-w-full h-full min-h-[100vh]"
                     >
                         {menus.map((menu, index) => {
                             const name = menu.name;

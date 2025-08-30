@@ -5,7 +5,7 @@ export interface MenuItem {
     path: string;
 }
 
-export interface WorkItem {
+export interface AboutItem {
     title: string;
     date: number;
     located: string;

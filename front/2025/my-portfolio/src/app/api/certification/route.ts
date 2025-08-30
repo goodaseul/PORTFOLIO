@@ -5,18 +5,17 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 
 export async function GET() {
     try {
-        // Notion DB에서 work 데이터 가져오기
+        // Notion DB에서 Certification 데이터 가져오기
         const response = await notionClient.databases.query({
-            database_id: process.env.NOTION_DATABASE_WORK_ID!, // 👉 .env.local에 넣어둔 Work DB id
-            sorts: [{ property: "date", direction: "descending" }], // date 기준 정렬 (옵션)
+            database_id: process.env.NOTION_DATABASE_CERTI_ID!,
+            sorts: [{ property: "date", direction: "descending" }],
         });
 
-        // page 타입만 필터링
         const pages = response.results.filter((item): item is PageObjectResponse => item.object === "page");
 
-        // Notion 속성 → AboutItem 으로 변환
-        const works: AboutItem[] = pages.map((page) => {
+        const certications: AboutItem[] = pages.map((page) => {
             const props = page.properties as any;
+            console.log(props);
             return {
                 title: props.title?.title?.[0]?.plain_text ?? "",
                 date: props.date?.rich_text?.[0]?.plain_text ?? 0,
@@ -25,7 +24,7 @@ export async function GET() {
             };
         });
 
-        return NextResponse.json(works);
+        return NextResponse.json(certications);
     } catch (error) {
         console.error("Error fetching Notion work data:", error);
         return NextResponse.json({ error: "Failed to fetch work data" }, { status: 500 });
