@@ -11,3 +11,9 @@ export interface AboutItem {
     located: string;
     description: string;
 }
+
+export interface SkillItem {
+    title: string;
+    classification: string;
+    icon: string;
+}

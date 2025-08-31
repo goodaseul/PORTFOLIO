@@ -13,7 +13,7 @@ export async function GET() {
 
         const pages = response.results.filter((item): item is PageObjectResponse => item.object === "page");
 
-        const certications: AboutItem[] = pages.map((page) => {
+        const certifications: AboutItem[] = pages.map((page) => {
             const props = page.properties as any;
             console.log(props);
             return {
@@ -24,7 +24,7 @@ export async function GET() {
             };
         });
 
-        return NextResponse.json(certications);
+        return NextResponse.json(certifications);
     } catch (error) {
         console.error("Error fetching Notion work data:", error);
         return NextResponse.json({ error: "Failed to fetch work data" }, { status: 500 });
