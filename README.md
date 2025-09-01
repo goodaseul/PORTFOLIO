@@ -16,9 +16,10 @@ HTML, CSS, JavaScript 기반의 정적인 사이트부터 반응형 웹까지 �
 
 ## ⚛️ React 포트폴리오 01 - 퍼블리싱 사이트 리스트 웹앱
 
-Supabase의 데이터베이스에서 퍼블리싱한 사이트 목록을 불러와 카드 형식으로 보여주는 웹앱입니다.  
-React, Recoil를 사용하여 API 연동, 컴포넌트를 통한 UI 구성으로 작업했습니다.  
-Recoil를 이용하여 dark mode를 구현하였습니다.
+React를 이용하여 만든 포트폴리오입니다.
+Supabase의 데이터베이스에서 퍼블리셔로 일하면서 만들었던 사이트 목록을 불러와 카드 형식으로 구성한 포트폴리오 사이트입니다.
+Recoil를 사용하여 API 연동 및 dark mode 를 구현하였습니다.
+
 
 - 🔗 [리액트 포트폴리오 링크](https://portfolio-goodaseuls-projects.vercel.app/)  
 - 🛠 **Stack**: React, TypeScript, Supabase, Axios, styled-components, framer-motion
@@ -27,7 +28,7 @@ Recoil를 이용하여 dark mode를 구현하였습니다.
 
 ## 📌 기술 스택 요약
 
-- **Frontend**: React, TypeScript, styled-components, Tailwind CSS, framer-motion
+- **Frontend**: React, Next.js, TypeScript, styled-components, Tailwind CSS, framer-motion
 - **State Management**: Recoil  
 - **API / Database**: Supabase  
 - **기타**: 반응형 웹, Semantic HTML, 웹 접근성 고려
@@ -36,7 +37,7 @@ Recoil를 이용하여 dark mode를 구현하였습니다.
 
 ## 🙋‍♀️ About Me
 
-- 2020년 8월부터 25년도 5월까지 웹 퍼블리셔로 근무하였습니다. 
+- 2020년 8월부터 2025년 5월까지 웹 퍼블리셔로 근무하였습니다. 
 - 퍼블리싱뿐만 아니라 React/Next.js 기반의 프론트엔드 개발로 확장 중 입니다.
 - UI/UX 개선, 컴포넌트 설계에 관심이 많습니다.
 
