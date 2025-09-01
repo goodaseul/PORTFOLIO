@@ -10,11 +10,11 @@ const Info = async () => {
                     다양한 웹사이트를 제작하였습니다. <br />
                     저의 프로젝트가 궁금하시다면,&nbsp;
                     <br className="visible md:hidden" />
-                    <Link target="_blank" className="font-bold border-b border-white text-point" href="https://portfolio-publisher.vercel.app/">
+                    <Link target="_blank" className="font-bold border-b border-black dark:border-white text-point" href="https://portfolio-publisher.vercel.app/">
                         퍼블리싱 포트폴리오
                     </Link>
                     &nbsp;&&nbsp;
-                    <Link target="_blank" className="font-bold border-b border-white text-point" href="https://portfolio-goodaseuls-projects.vercel.app/">
+                    <Link target="_blank" className="font-bold border-b border-black dark:border-white text-point" href="https://portfolio-goodaseuls-projects.vercel.app/">
                         리액트 포트폴리오
                     </Link>
                     <br className="visible md:hidden" />
@@ -26,7 +26,7 @@ const Info = async () => {
                 </p>
                 <p>
                     저의 프로젝트가 궁금하시다면, <br className="visible md:hidden" />
-                    <Link className="font-bold border-b border-white text-point" href="/project">
+                    <Link className="font-bold border-b border-black dark:border-white text-point" href="/project">
                         프로젝트 링크 바로가기
                     </Link>
                     링크를 방문해주세요.

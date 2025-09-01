@@ -1,4 +1,4 @@
-import { AboutItem, MenuItem, SkillItem } from "@/types/apiType";
+import { AboutItem, MenuItem, ProjectItem, SkillItem } from "@/types/apiType";
 import notionClient from "./notion";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
@@ -57,9 +57,6 @@ export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> 
         }
 
         const data: AboutItem[] = await response.json();
-
-        console.log("certification data:", data);
-
         const certifications = data.map((item, index) => ({
             id: index, // 필요하면 index → uuid로 교체 가능
             ...item, // title, date, located, description 그대로 유지
@@ -84,14 +81,38 @@ export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> 
 
         const data: SkillItem[] = await response.json();
 
-        console.log("skill data:", data);
-
         const skills = data.map((item, index) => ({
             id: index, // 필요하면 index → uuid로 교체 가능
             ...item,
         }));
 
         return skills;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw new Error("Failed to fetch data. Please try again later.");
+    }
+};
+
+// Project 데이터 가져오기
+export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })[]> => {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+        const response = await fetch(`${baseUrl}/api/project`, { method: "GET" });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data: ProjectItem[] = await response.json();
+
+        console.log("project data:", data);
+
+        const projects = data.map((item, index) => ({
+            id: index, // 필요하면 index → uuid로 교체 가능
+            ...item,
+        }));
+
+        return projects;
     } catch (error) {
         console.error("Error fetching data:", error);
         throw new Error("Failed to fetch data. Please try again later.");

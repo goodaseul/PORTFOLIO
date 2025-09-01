@@ -15,7 +15,6 @@ export async function GET() {
 
         const certifications: AboutItem[] = pages.map((page) => {
             const props = page.properties as any;
-            console.log(props);
             return {
                 title: props.title?.title?.[0]?.plain_text ?? "",
                 date: props.date?.rich_text?.[0]?.plain_text ?? 0,

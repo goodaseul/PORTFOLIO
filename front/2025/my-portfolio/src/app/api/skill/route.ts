@@ -15,11 +15,9 @@ export async function GET() {
 
         const skills: SkillItem[] = pages.map((page) => {
             const props = page.properties as any;
-            console.log(props);
             return {
                 title: props.title?.title?.[0]?.plain_text ?? "",
                 classification: props.classification?.rich_text?.[0]?.plain_text ?? "",
-                icon: props.icon?.rich_text?.[0]?.plain_text ?? "",
             };
         });
 

@@ -15,5 +15,12 @@ export interface AboutItem {
 export interface SkillItem {
     title: string;
     classification: string;
-    icon: string;
+}
+
+export interface ProjectItem {
+    title: string;
+    lang: string;
+    url: string;
+    tag: string;
+    desc: string;
 }

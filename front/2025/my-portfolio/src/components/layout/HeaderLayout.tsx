@@ -5,7 +5,7 @@ import { MdOutlineMenu, MdOutlineClose } from "react-icons/md";
 import styles from "./Header.module.scss";
 
 import { motion } from "framer-motion";
-import { estonia } from "@/store/store";
+import { usePathname } from "next/navigation";
 
 interface IHeaderLayout {
     isOn: boolean;
@@ -13,12 +13,17 @@ interface IHeaderLayout {
     setIsVisible: (value: boolean) => void;
 }
 const HeaderLayout = ({ isOn, isVisible, setIsVisible }: IHeaderLayout) => {
+    const pathname = usePathname();
+    const isHome = pathname === "/";
+
     return (
         <header
             id="header"
             className={`
+            
             ${styles.header}
             ${isOn && !isVisible ? styles.on : ""}
+            ${!isHome && !isVisible ? "bg-gray-100 dark:bg-black" : ""}
         `}
         >
             <div className={"inner flex items-center justify-between transition-all"}>
