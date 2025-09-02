@@ -23,10 +23,9 @@ export async function getMenu(): Promise<MenuItem[]> {
 }
 
 // Work 데이터 가져오기
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
         const response = await fetch(`${baseUrl}/api/work`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -49,8 +48,6 @@ export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> =
 // Cerification 데이터 가져오기
 export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
         const response = await fetch(`${baseUrl}/api/certification`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -72,8 +69,6 @@ export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> 
 // Skill 데이터 가져오기
 export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
         const response = await fetch(`${baseUrl}/api/skill`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -96,8 +91,6 @@ export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> 
 // Project 데이터 가져오기
 export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })[]> => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
         const response = await fetch(`${baseUrl}/api/project`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -115,6 +108,6 @@ export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })
         return projects;
     } catch (error) {
         console.error("Error fetching data:", error);
-        throw new Error("Failed to fetch data. Please try again later.");
+        throw new Error(`${error},Failed to fetch data. Please try again later.`);
     }
 };

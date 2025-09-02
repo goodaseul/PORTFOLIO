@@ -19,8 +19,8 @@ export interface SkillItem {
 
 export interface ProjectItem {
     title: string;
-    lang: string;
-    url: string;
-    tag: string;
     desc: string;
+    url: string;
+    lang: string;
+    tag: string[];
 }
