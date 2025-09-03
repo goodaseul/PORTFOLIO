@@ -20,7 +20,11 @@ export async function GET() {
                 desc: props.desc?.rich_text[0]?.plain_text || "",
                 url: props.url?.rich_text[0]?.plain_text || "",
                 lang: props.lang?.rich_text[0]?.plain_text || "",
-                tag: props.tag?.multi_select?.map((t: { name: string }) => t.name) || [],
+                tag:
+                    props.tag?.multi_select?.map((t: { name: string; color: string }) => ({
+                        name: t.name,
+                        color: t.color,
+                    })) || [],
             };
         });
 

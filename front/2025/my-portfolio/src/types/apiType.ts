@@ -17,10 +17,16 @@ export interface SkillItem {
     classification: string;
 }
 
+export type NotionColor = "default" | "gray" | "brown" | "orange" | "yellow" | "green" | "blue" | "purple" | "pink" | "red";
+
+interface TagItem {
+    name: string;
+    color: NotionColor;
+}
 export interface ProjectItem {
     title: string;
     desc: string;
     url: string;
     lang: string;
-    tag: string[];
+    tag: TagItem[];
 }
