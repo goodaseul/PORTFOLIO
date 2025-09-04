@@ -5,7 +5,6 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 
 export async function GET() {
     try {
-        // Notion DB에서 Certification 데이터 가져오기
         const response = await notionClient.databases.query({
             database_id: process.env.NOTION_DATABASE_CERTI_ID!,
             sorts: [{ property: "date", direction: "descending" }],
