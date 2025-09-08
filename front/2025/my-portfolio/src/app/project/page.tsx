@@ -25,6 +25,7 @@ const Project = async () => {
                     <button>React</button>
                     <button>Next.js</button>
                 </div>
+                <ul className="flex">
                 {projects.map((item) => (
                     <li key={item.id} className="list-none">
                         <h2 className="font-semibold">{item.title}</h2>
@@ -52,6 +53,7 @@ const Project = async () => {
                         </p>
                     </li>
                 ))}
+                </ul>
             </div>
         </div>
     );
