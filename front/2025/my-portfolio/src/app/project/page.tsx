@@ -26,33 +26,33 @@ const Project = async () => {
                     <button>Next.js</button>
                 </div>
                 <ul className="flex">
-                {projects.map((item) => (
-                    <li key={item.id} className="list-none">
-                        <h2 className="font-semibold">{item.title}</h2>
-                        <p>{item.desc}</p>
-                        {item.url.startsWith("h") ? (
-                            <a href={item.url} target="_blank" className="text-blue-500 underline">
-                                {item.url}
-                            </a>
-                        ) : (
-                            <p>{item.url}</p>
-                        )}
+                    {projects.map((item) => (
+                        <li key={item.id} className="list-none">
+                            <h2 className="font-semibold">{item.title}</h2>
+                            <p>{item.desc}</p>
+                            {item.url.startsWith("h") ? (
+                                <a href={item.url} target="_blank" className="text-blue-500 underline">
+                                    {item.url}
+                                </a>
+                            ) : (
+                                <p>{item.url}</p>
+                            )}
 
-                        <p>Lang: {item.lang} </p>
+                            <p>Lang: {item.lang} </p>
 
-                        <p>
-                            Tags:
-                            {item.tag.map((tagitem, index) => {
-                                const bgColor = notionColorToTailwind[tagitem.color];
-                                return (
-                                    <span key={index} className={`${bgColor} text-white px-2 py-1 rounded mr-2 inline-block text-sm`}>
-                                        {tagitem.name}
-                                    </span>
-                                );
-                            })}
-                        </p>
-                    </li>
-                ))}
+                            <p>
+                                Tags:
+                                {item.tag.map((tagitem, index) => {
+                                    const bgColor = notionColorToTailwind[tagitem.color];
+                                    return (
+                                        <span key={index} className={`${bgColor} text-white px-2 py-1 rounded mr-2 inline-block text-sm`}>
+                                            {tagitem.name}
+                                        </span>
+                                    );
+                                })}
+                            </p>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>
