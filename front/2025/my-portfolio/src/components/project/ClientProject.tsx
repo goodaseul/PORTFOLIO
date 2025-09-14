@@ -16,7 +16,7 @@ const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
     const tabs = ["All", "React", "Next.js"];
 
     return (
-        <div className="w-full bg-gray-100 dark:bg-black min-h-[100vh]">
+        <div className="w-full bg-gray-100 dark:bg-black min-h-[100vh] !pb-60">
             <div className="inner !pt-28 md:!pt-48">
                 <div className="flex flex-wrap items-center gap-2 mb-5">
                     {tabs.map((tab) => (
@@ -24,7 +24,7 @@ const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`px-4 py-2 rounded text-[rgba(185,157,207,var(--tw-text-opacity))] bg-[rgba(185,157,207,0.1)] hover:bg-[rgba(185,157,207,0.2)] transition
-                        ${activeTab === tab ? "bg-[rgba(185,157,207,0.3)] text-white" : "bg-[rgba(185,157,207,0.1)] text-[rgba(185,157,207,var(--tw-text-opacity))]"}`}
+                        ${activeTab === tab ? "bg-[rgba(185,157,207,0.3)] text-black dark:text-white" : "bg-[rgba(185,157,207,0.1)] text-[rgba(185,157,207,var(--tw-text-opacity))]"}`}
                         >
                             {tab}
                         </button>

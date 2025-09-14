@@ -45,9 +45,9 @@ const HeaderLayout = ({ isOn, isVisible, setIsVisible }: IHeaderLayout) => {
                     <li>
                         <ThemeBtn />
                     </li>
-                    <li>
+                    {/* <li>
                         <button>가/A</button>
-                    </li>
+                    </li> */}
                     <li>
                         <motion.button className="text-2xl" onClick={() => setIsVisible(!isVisible)} whileTap={{ y: 1 }}>
                             {isVisible ? <MdOutlineClose /> : <MdOutlineMenu />}
