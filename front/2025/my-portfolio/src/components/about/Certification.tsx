@@ -2,7 +2,6 @@ import { fetchCertiData } from "@/lib/apiList";
 
 const Certification = async () => {
     const certifications = await fetchCertiData();
-    // env. 전 노트북에서 챙기기
     return (
         <div className="mt-20">
             <h2 className="mb-5 text-base font-bold sm:text-2xl lg:text-3xl">Certification</h2>
