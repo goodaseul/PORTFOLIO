@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Info = async () => {
+const Info = () => {
     return (
         <div className="inner flex justify-center flex-col items-center min-h-[100vh]">
             <div className=" text-xs font-bold text-center text-gray-900 sm:text-sm dark:text-gray-300 lg:text-lg xl:text-xl 2xl:text-2xl !leading-[2.3]">
