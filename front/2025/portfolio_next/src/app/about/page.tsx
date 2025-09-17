@@ -2,10 +2,12 @@ import Certification from "@/components/about/Certification";
 import Work from "@/components/about/Work";
 import Info from "@/components/about/Info";
 import Skill from "@/components/about/Skill";
-import Loading from "@/components/layout/loading";
+import { Suspense } from "react";
+import Loader from "@/components/layout/Loader";
+
 const About = () => {
     return (
-        <Loading>
+        <Suspense fallback={<Loader />}>
             <div className="w-full bg-gray-100 dark:bg-black min-h-[100vh]">
                 <div className="min-h-[100vh]">
                     <Info />
@@ -16,7 +18,7 @@ const About = () => {
                     <Skill />
                 </div>
             </div>
-        </Loading>
+        </Suspense>
     );
 };
 

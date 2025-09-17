@@ -5,7 +5,6 @@ import { NotionColor, ProjectItem } from "@/types/apiType";
 
 const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
     const [activeTab, setActiveTab] = useState("All");
-
     const notionColorToTailwind: Record<NotionColor, string> = { red: "bg-red-100 text-red-600", blue: "bg-sky-100 text-sky-600", green: "bg-emerald-100 text-emerald-600", yellow: "bg-amber-100 text-amber-600", purple: "bg-violet-100 text-violet-600", pink: "bg-pink-100 text-pink-600", gray: "bg-gray-100 text-gray-600", brown: "bg-amber-100 text-amber-700", orange: "bg-orange-100 text-orange-600", default: "bg-indigo-100 text-indigo-600" };
 
     const filteredProjects = useMemo(() => {
@@ -14,7 +13,6 @@ const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
     }, [activeTab, projects]);
 
     const tabs = ["All", "React", "Next.js"];
-
     return (
         <div className="w-full bg-gray-100 dark:bg-black min-h-[100vh] !pb-60">
             <div className="inner !pt-28 md:!pt-48">
