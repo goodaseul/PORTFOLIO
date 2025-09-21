@@ -1,11 +1,11 @@
-// [font] Estonia
-import { Estonia } from "next/font/google";
-export const estonia = Estonia({
-    weight: "400",
+// font
+import { Gowun_Batang } from "next/font/google";
+
+export const gowunBatang = Gowun_Batang({
+    weight: ["400", "700"],
     subsets: ["latin"],
     display: "swap",
 });
-
 // [Home] Gallery List
 export const galleryList = [
     { id: 1, src: "/images/home/me_1.jpg", alt: "Paris / 파리" },

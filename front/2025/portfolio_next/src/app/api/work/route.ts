@@ -5,16 +5,13 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 
 export async function GET() {
     try {
-        // Notion DB에서 work 데이터 가져오기
         const response = await notionClient.databases.query({
-            database_id: process.env.NOTION_DATABASE_WORK_ID!, // 👉 .env.local에 넣어둔 Work DB id
-            sorts: [{ property: "date", direction: "descending" }], // date 기준 정렬 (옵션)
+            database_id: process.env.NOTION_DATABASE_WORK_ID!,
+            sorts: [{ property: "date", direction: "descending" }],
         });
 
-        // page 타입만 필터링
         const pages = response.results.filter((item): item is PageObjectResponse => item.object === "page");
 
-        // Notion 속성 → AboutItem 으로 변환
         const works: AboutItem[] = pages.map((page) => {
             const props = page.properties as any;
             return {

@@ -5,7 +5,18 @@ import { NotionColor, ProjectItem } from "@/types/apiType";
 
 const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
     const [activeTab, setActiveTab] = useState("All");
-    const notionColorToTailwind: Record<NotionColor, string> = { red: "bg-red-100 text-red-600", blue: "bg-sky-100 text-sky-600", green: "bg-emerald-100 text-emerald-600", yellow: "bg-amber-100 text-amber-600", purple: "bg-violet-100 text-violet-600", pink: "bg-pink-100 text-pink-600", gray: "bg-gray-100 text-gray-600", brown: "bg-amber-100 text-amber-700", orange: "bg-orange-100 text-orange-600", default: "bg-indigo-100 text-indigo-600" };
+    const notionColorToTailwind: Record<NotionColor, string> = {
+        red: "bg-red-100 text-red-600",
+        blue: "bg-sky-100 text-sky-600",
+        green: "bg-emerald-100 text-emerald-600",
+        yellow: "bg-amber-200 text-amber-600",
+        purple: "bg-violet-100 text-violet-600",
+        pink: "bg-pink-100 text-pink-600",
+        gray: "bg-gray-100 text-gray-600",
+        brown: "bg-amber-100 text-amber-700",
+        orange: "bg-orange-100 text-orange-600",
+        default: "bg-indigo-100 text-indigo-600",
+    };
 
     const filteredProjects = useMemo(() => {
         if (activeTab === "All") return projects;
@@ -29,15 +40,15 @@ const ClientProject = ({ projects }: { projects: ProjectItem[] }) => {
                     ))}
                 </div>
 
-                <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 :grid-cols-3">
                     {filteredProjects.map((item, index) => (
-                        <li key={index} className="p-5 list-none rounded bg-[rgba(185,157,207,0.1)] dark:text-white text-black shadow">
+                        <li key={index} className="font-bold p-5 list-none rounded bg-[rgba(185,157,207,0.1)] dark:text-white text-black shadow">
                             <h2 className="mb-5 text-xl font-semibold">{item.title}</h2>
-                            <p className="mb-2">{item.desc}</p>
+                            <p className="mb-2 break-keep">{item.desc}</p>
                             <p className="mb-2">
                                 Link:&nbsp;
                                 {item.url.startsWith("h") ? (
-                                    <a href={item.url} target="_blank" className="text-blue-500 underline">
+                                    <a href={item.url} target="_blank" className="underline">
                                         {item.url}
                                     </a>
                                 ) : (

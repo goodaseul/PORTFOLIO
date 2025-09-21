@@ -30,3 +30,8 @@ export interface ProjectItem {
     lang: string;
     tag: TagItem[];
 }
+
+export interface InfoItem {
+    title: string;
+    info: number | string;
+}

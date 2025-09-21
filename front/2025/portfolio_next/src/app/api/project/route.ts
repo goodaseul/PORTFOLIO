@@ -14,7 +14,6 @@ export async function GET() {
 
         const projects: ProjectItem[] = pages.map((page) => {
             const props = page.properties as any;
-
             return {
                 title: props.title?.title[0]?.plain_text || "",
                 desc: props.desc?.rich_text[0]?.plain_text || "",

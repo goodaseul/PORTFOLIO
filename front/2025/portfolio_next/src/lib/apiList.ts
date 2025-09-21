@@ -1,4 +1,4 @@
-import { AboutItem, MenuItem, ProjectItem, SkillItem } from "@/types/apiType";
+import { AboutItem, InfoItem, MenuItem, ProjectItem, SkillItem } from "@/types/apiType";
 import notionClient from "./notion";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
@@ -34,8 +34,8 @@ export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> =
         const data: AboutItem[] = await response.json();
 
         const works = data.map((item, index) => ({
-            id: index, // 필요하면 index → uuid로 교체 가능
-            ...item, // title, date, located, description 그대로 유지
+            id: index,
+            ...item,
         }));
 
         return works;
@@ -55,8 +55,8 @@ export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> 
 
         const data: AboutItem[] = await response.json();
         const certifications = data.map((item, index) => ({
-            id: index, // 필요하면 index → uuid로 교체 가능
-            ...item, // title, date, located, description 그대로 유지
+            id: index,
+            ...item,
         }));
 
         return certifications;
@@ -77,7 +77,7 @@ export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> 
         const data: SkillItem[] = await response.json();
 
         const skills = data.map((item, index) => ({
-            id: index, // 필요하면 index → uuid로 교체 가능
+            id: index,
             ...item,
         }));
 
@@ -98,14 +98,33 @@ export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })
 
         const data: ProjectItem[] = await response.json();
 
-        console.log("project data:", data);
-
         const projects = data.map((item, index) => ({
-            id: index, // 필요하면 index → uuid로 교체 가능
+            id: index,
             ...item,
         }));
 
         return projects;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw new Error(`${error},Failed to fetch data. Please try again later.`);
+    }
+};
+
+// info 데이터 가져오기
+export const fetchInfoData = async (): Promise<InfoItem[]> => {
+    try {
+        const response = await fetch(`${baseUrl}/api/datainfo`, { method: "GET" });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data: InfoItem[] = await response.json();
+
+        const infos = data.map((item) => ({
+            ...item,
+        }));
+
+        return infos;
     } catch (error) {
         console.error("Error fetching data:", error);
         throw new Error(`${error},Failed to fetch data. Please try again later.`);

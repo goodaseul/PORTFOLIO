@@ -4,6 +4,7 @@ import Info from "@/components/about/Info";
 import Skill from "@/components/about/Skill";
 import { Suspense } from "react";
 import Loader from "@/components/layout/Loader";
+import DataInfo from "@/components/about/DataInfo";
 
 const About = () => {
     return (
@@ -13,6 +14,7 @@ const About = () => {
                     <Info />
                 </div>
                 <div className="inner !pb-60">
+                    <DataInfo />
                     <Work />
                     <Certification />
                     <Skill />

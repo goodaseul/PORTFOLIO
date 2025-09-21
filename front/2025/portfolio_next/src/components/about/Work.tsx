@@ -4,7 +4,7 @@ const Experience = async () => {
     const works = await fetchWorkData();
 
     return (
-        <div>
+        <div className="mt-20">
             <h2 className="mb-5 text-base font-bold sm:text-2xl lg:text-3xl">Work</h2>
             <div className="p-5 pt-0 border-separate border-t-[1px] border-b-[1px] border-color-gray-300 ">
                 {works.map((item, index) => (
