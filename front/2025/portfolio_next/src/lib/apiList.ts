@@ -22,12 +22,12 @@ export async function getMenu(): Promise<MenuItem[]> {
     });
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
 // Work 데이터 가져오기
 export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> => {
     try {
-        const response = await fetch(`${baseUrl}/api/work`, { method: "GET" });
+        const response = await fetch(`/api/work`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -49,7 +49,7 @@ export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> =
 // Cerification 데이터 가져오기
 export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> => {
     try {
-        const response = await fetch(`${baseUrl}/api/certification`, { method: "GET" });
+        const response = await fetch(`/api/certification`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -70,7 +70,7 @@ export const fetchCertiData = async (): Promise<(AboutItem & { id: number })[]> 
 // Skill 데이터 가져오기
 export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> => {
     try {
-        const response = await fetch(`${baseUrl}/api/skill`, { method: "GET" });
+        const response = await fetch(`/api/skill`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -92,7 +92,7 @@ export const fetchSkillData = async (): Promise<(SkillItem & { id: number })[]> 
 // Project 데이터 가져오기
 export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })[]> => {
     try {
-        const response = await fetch(`${baseUrl}/api/project`, { method: "GET" });
+        const response = await fetch(`/api/project`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -114,7 +114,7 @@ export const fetchProjectData = async (): Promise<(ProjectItem & { id: number })
 // info 데이터 가져오기
 export const fetchInfoData = async (): Promise<InfoItem[]> => {
     try {
-        const response = await fetch(`${baseUrl}/api/datainfo`, { method: "GET" });
+        const response = await fetch(`/api/datainfo`, { method: "GET" });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
