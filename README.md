@@ -10,27 +10,45 @@
 웹 퍼블리셔로 제작한 다양한 사이트들을 모아둔 포트를폴리오입니다.  
 HTML, CSS, JavaScript 기반의 정적인 사이트부터 반응형 웹까지 다양하게 구성되어 있습니다.
 
-- 🔗 [퍼블리싱 포트폴리오 링크](https://portfolio-publisher.vercel.app/)  
+- 🔗 [publish 포트폴리오 링크](https://portfolio-publisher.vercel.app/)  
 
 ---
 
-## ⚛️ React 포트폴리오 01 - 퍼블리싱 사이트 리스트 웹앱
+## ⚛️ React 포트폴리오 - 퍼블리싱 사이트 리스트
 
-React를 이용하여 만든 포트폴리오입니다.
-Supabase의 데이터베이스에서 퍼블리셔로 일하면서 만들었던 사이트 목록을 불러와 카드 형식으로 구성한 포트폴리오 사이트입니다.
-Recoil를 사용하여 API 연동 및 dark mode 를 구현하였습니다.
+React로 제작한 프론트엔드 포트폴리오 사이트입니다.
+
+Supabase를 활용해 퍼블리셔 시절 구축했던 데이터베이스를 불러와 프로젝트를 구성했습니다.
+
+Recoil을 사용하여 API 연동과 다크 모드를 구현했으며, recoil-persist를 통해 사용자가 선택한 테마를 기억하여 재방문 시 자동 적용됩니다.
 
 
-- 🔗 [리액트 포트폴리오 링크](https://portfolio-goodaseuls-projects.vercel.app/)  
-- 🛠 **Stack**: React, TypeScript, Supabase, Axios, styled-components, framer-motion
+- 🔗 [React 포트폴리오 링크](https://portfolio-goodaseuls-projects.vercel.app/)  
+- 🛠 **Stack**: React, TypeScript, Supabase, Recoil, styled-components, framer-motion, Recoil-persist
+
+---
+
+## ⚛️ Next.js 포트폴리오 - 프론트엔드 프로젝트 리스트
+
+Next.js로 제작한 프론트엔드 포트폴리오 사이트입니다.
+
+Notion API를 활용하여 프로젝트 데이터를 동적으로 불러와 구성했습니다.
+
+GSAP과 Framer Motion으로 애니메이션 효과를 적용하여 인터랙티브한 사용자 경험을 제공하며,
+
+js-cookie를 사용해 다크 모드를 구현하고, 사용자가 선택한 테마를 기억하여 재방문 시 자동 적용됩니다.
+
+
+- 🔗 [Next.js 포트폴리오 링크](https://portfolio-goodaseuls-projects.vercel.app/)  
+- 🛠 **Stack**: Next.js, TypeScript, Notion API, styled-components, framer-motion, gsap
 
 ---
 
 ## 📌 기술 스택 요약
 
-- **Frontend**: React, Next.js, TypeScript, styled-components, Tailwind CSS, framer-motion
-- **State Management**: Recoil  
-- **API / Database**: Supabase  
+- **Frontend**: React, Next.js, TypeScript, styled-components, Tailwind CSS, framer-motion, gsap
+- **State Management**: Recoil
+- **API / Database**: Supabase / Notion
 - **기타**: 반응형 웹, Semantic HTML, 웹 접근성 고려
 
 ---
