@@ -17,17 +17,27 @@ const About: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([fetchInfoData(), fetchWorkData(), fetchCertiData(), fetchSkillData()])
-            .then(([info, work, certi, skill]) => {
+        const fetchAll = async () => {
+            try {
+                // 모든 fetch가 끝나야 다음 단계로
+                const [info, work, certi, skill] = await Promise.all([fetchInfoData(), fetchWorkData(), fetchCertiData(), fetchSkillData()]);
+
                 setDataInfoData(info);
                 setWorkData(work);
                 setCertiData(certi);
                 setSkillData(skill);
-            })
-            .finally(() => setLoading(false));
+            } catch (error) {
+                console.error(error);
+            } finally {
+                // 모든 fetch가 끝난 후 Loader 종료
+                setLoading(false);
+            }
+        };
+
+        fetchAll();
     }, []);
 
-    if (loading) return <Loader />;
+    if (loading) return <Loader />; // 모든 데이터 준비될 때까지 Loader
 
     return (
         <div className="w-full bg-gray-100 dark:bg-black min-h-[100vh]">
