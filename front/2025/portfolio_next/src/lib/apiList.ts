@@ -22,7 +22,7 @@ export async function getMenu(): Promise<MenuItem[]> {
     });
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
 // Work 데이터 가져오기
 export const fetchWorkData = async (): Promise<(AboutItem & { id: number })[]> => {
