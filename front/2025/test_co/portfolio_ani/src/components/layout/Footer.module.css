@@ -1,12 +1,18 @@
 .menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-bottom: 2.5rem;
 }
+
 .menus .menu + .menu {
   margin-left: 1.25rem;
 }
 
 .ticker:hover span {
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }

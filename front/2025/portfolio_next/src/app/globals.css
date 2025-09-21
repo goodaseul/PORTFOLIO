@@ -2,6 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*::-moz-selection {
+  background: #b99dcf;
+  color: #121619;
+}
 *::selection {
   background: #b99dcf;
   color: #121619;
@@ -50,6 +54,7 @@
 .inner {
   padding: 2.5rem;
 }
+
 @media (max-width: 1280px) {
   .inner {
     padding: 1.25rem;
@@ -62,6 +67,7 @@
   color: transparent;
   -webkit-text-stroke: 1px #b99dcf;
 }
+
 .fillText::after {
   content: attr(data-text);
   position: absolute;
@@ -71,12 +77,15 @@
   overflow: hidden;
   width: 0;
   color: #b99dcf;
+  -webkit-transition: width 0.4s ease;
   transition: width 0.4s ease;
   z-index: 1;
 }
+
 .fillText:hover::after, .fillText.active::after {
   width: 105%;
 }
+
 .fillText.active {
   font-style: italic;
 }

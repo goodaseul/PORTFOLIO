@@ -1,17 +1,22 @@
 .galleryimg {
   padding-top: 25rem;
   padding-bottom: 25rem;
+  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
+
 .galleryimg:first-of-type {
   padding-top: 15rem;
 }
+
 .galleryimg img {
   width: 50%;
 }
+
 .galleryimg:nth-of-type(even) img {
   margin-left: auto;
 }
+
 .galleryimg:nth-of-type(3n + 1) img {
   margin: 0 auto;
 }
@@ -19,19 +24,23 @@
 .filter {
   overflow: hidden;
 }
+
 .filter::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
   background: #fff;
-  filter: blur(8px);
+  -webkit-filter: blur(8px);
+          filter: blur(8px);
   opacity: 0.5;
   z-index: -1;
 }
+
 :global(.dark) .filter::before {
   background: #000;
 }
