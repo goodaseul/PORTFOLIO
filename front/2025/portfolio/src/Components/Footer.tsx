@@ -8,7 +8,7 @@ const infoList = [
     { title: "NAME", value: "JEONG DASEUL" },
     { title: "깃허브", value: "바로가기", link: "https://github.com/goodaseul" },
     { title: "경력기술서", value: "바로가기", link: "https://brazen-preface-849.notion.site/1c5e95655242802285f3d7baeb09e0ef?pvs=74" },
-    { title: "E-MAIL", value: "gongdue3@gmail.com", link: "mailto:gongdue3@gmail.com" },
+    { title: "E-MAIL", value: "jds6408@naver.com", link: "mailto:jds6408@naver.com" },
     { title: "TEL", value: "+82 (0)10 8975 6408", link: "tel:+8201089756408" },
 ];
 
