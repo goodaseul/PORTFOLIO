@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import styles from "@/app/page.module.scss";
-import BioImg from "@/components/intro/BioImg";
-import Bio from "@/components/intro/Bio";
+import Bio from "@/components/Intro/Bio";
+import BioImg from "@/components/Intro/BioImg";
 
 export default function Home() {
     const containerRef = useRef<HTMLDivElement>(null);

@@ -1,12 +1,14 @@
-import { fetchCertiData } from "@/lib/apiList";
+import { AboutItem } from "@/types/apiType";
 
-const Certification = async () => {
-    const certifications = await fetchCertiData();
+interface CertiProps {
+    data: AboutItem[];
+}
+const Certification: React.FC<CertiProps> = ({ data }) => {
     return (
         <div className="mt-20">
             <h2 className="mb-5 text-base font-bold sm:text-2xl lg:text-3xl">Certification</h2>
             <div className="p-5 pt-0 border-separate border-t-[1px] border-b-[1px] border-color-gray-300">
-                {certifications.map((item, index) => (
+                {data.map((item, index) => (
                     <dl key={index} className="flex flex-wrap justify-between pt-5 mt-5 text-xs align-middle sm:text-lg lg:text-xl break-keep break-word first:mt-0">
                         <dt className="w-[50%] lg:w-[25%]">{item.title}</dt>
                         <dd className="w-[50%] lg:w-[25%]">{item.date}</dd>
