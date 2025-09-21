@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./Bio.module.scss";
 import { IntroTexts } from "@/store/store";
-export default function Bio({ containerRef }: any) {
+export default function Bio({ containerRef, styles, onLoad }: any) {
+    useEffect(() => {
+        onLoad?.(); // 마운트 완료 시 호출
+    }, []);
+
     const [globalProgress, setGlobalProgress] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -69,6 +73,7 @@ export default function Bio({ containerRef }: any) {
                                 <span className={`${index === 0 && "pl-2"} font-bold`}>{text}&nbsp;</span>
                                 <motion.span
                                     className="absolute left-0 bottom-0 h-[0.2rem] bg-point block origin-left"
+                                    initial={false}
                                     style={{
                                         width: "100%",
                                         zIndex: -1,

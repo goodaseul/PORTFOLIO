@@ -7,7 +7,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const BioImg = ({ styles }: any) => {
+const BioImg = ({ styles, onLoad }: any) => {
+    useEffect(() => {
+        onLoad?.();
+    }, []);
     useEffect(() => {
         const targets = gsap.utils.toArray(`.${styles.galleryimg}`) as HTMLElement[];
         targets.forEach((el) => {
